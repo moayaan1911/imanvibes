@@ -1,0 +1,232 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f1e8;
+  --foreground: #2f342f;
+  --sand-50: #f7f1e8;
+  --sand-100: #efe6d8;
+  --sand-200: #e5d8c2;
+  --sage-100: #e6f0e8;
+  --sage-200: #d3e1d5;
+  --sage-400: #8ca88e;
+  --sage-500: #6f8f7b;
+  --sage-700: #4d6556;
+  --gold-200: #e8d8ad;
+  --gold-400: #c6aa6b;
+  --ink-700: #566056;
+  --ink-900: #2f342f;
+  --page-bg: radial-gradient(
+      circle at top,
+      rgba(255, 255, 255, 0.72),
+      transparent 32%
+    ),
+    linear-gradient(
+      180deg,
+      var(--sand-50) 0%,
+      var(--sand-100) 52%,
+      var(--sage-100) 100%
+    );
+  --surface-strong: rgba(255, 255, 255, 0.82);
+  --surface-soft: rgba(255, 255, 255, 0.7);
+  --surface-card: rgba(255, 253, 248, 0.95);
+  --surface-solid: #ffffff;
+  --surface-border: rgba(255, 255, 255, 0.7);
+  --surface-line: rgba(111, 143, 123, 0.12);
+  --surface-line-strong: rgba(198, 170, 107, 0.18);
+  --shadow-panel: 0 24px 60px rgba(77, 101, 86, 0.08);
+  --shadow-soft: 0 18px 48px rgba(88, 102, 88, 0.06);
+  --shadow-card: 0 18px 48px rgba(88, 102, 88, 0.07);
+  --shadow-item: 0 10px 24px rgba(111, 143, 123, 0.06);
+  --shadow-button: 0 10px 24px rgba(111, 143, 123, 0.24);
+  --shadow-card-inset: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  --nav-bg: rgba(255, 253, 248, 0.96);
+  --button-secondary-bg: #ffffff;
+  --button-secondary-border: var(--sage-200);
+  --button-secondary-text: var(--sage-700);
+  --icon-ring: rgba(111, 143, 123, 0.18);
+  --stat-sage-bg: rgba(230, 240, 232, 0.72);
+  --stat-sand-bg: rgba(247, 241, 232, 0.82);
+  --footer-bg: rgba(12, 14, 13, 0.96);
+  --footer-text: rgba(255, 255, 255, 0.58);
+  --footer-link: #7f80ff;
+  --footer-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+  --theme-toggle-bg: rgba(255, 253, 248, 0.92);
+  --theme-toggle-border: rgba(111, 143, 123, 0.16);
+  --theme-toggle-text: var(--sage-700);
+}
+
+html[data-theme="dark"] {
+  --background: #0f1512;
+  --foreground: #ecf0ec;
+  --sand-50: #0f1512;
+  --sand-100: #141d18;
+  --sand-200: #1b261f;
+  --sage-100: #1f2d26;
+  --sage-200: #30443a;
+  --sage-400: #84a692;
+  --sage-500: #7e9f8a;
+  --sage-700: #d5e2d8;
+  --gold-200: #342c1d;
+  --gold-400: #d6b67a;
+  --ink-700: #b8c3bc;
+  --ink-900: #ecf0ec;
+  --page-bg: radial-gradient(
+      circle at top,
+      rgba(50, 62, 56, 0.78),
+      transparent 35%
+    ),
+    linear-gradient(180deg, #0f1512 0%, #141d18 52%, #0c110f 100%);
+  --surface-strong: rgba(18, 24, 20, 0.88);
+  --surface-soft: rgba(18, 24, 20, 0.76);
+  --surface-card: rgba(15, 20, 17, 0.96);
+  --surface-solid: #111814;
+  --surface-border: rgba(80, 97, 86, 0.4);
+  --surface-line: rgba(111, 143, 123, 0.24);
+  --surface-line-strong: rgba(214, 182, 122, 0.24);
+  --shadow-panel: 0 24px 60px rgba(0, 0, 0, 0.36);
+  --shadow-soft: 0 18px 48px rgba(0, 0, 0, 0.26);
+  --shadow-card: 0 18px 48px rgba(0, 0, 0, 0.3);
+  --shadow-item: 0 10px 24px rgba(0, 0, 0, 0.2);
+  --shadow-button: 0 10px 24px rgba(0, 0, 0, 0.26);
+  --shadow-card-inset: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --nav-bg: rgba(12, 17, 14, 0.94);
+  --button-secondary-bg: rgba(17, 24, 20, 0.96);
+  --button-secondary-border: rgba(111, 143, 123, 0.28);
+  --button-secondary-text: var(--sage-700);
+  --icon-ring: rgba(126, 159, 138, 0.34);
+  --stat-sage-bg: rgba(25, 39, 32, 0.92);
+  --stat-sand-bg: rgba(30, 25, 18, 0.88);
+  --footer-bg: rgba(6, 8, 7, 0.96);
+  --footer-text: rgba(255, 255, 255, 0.62);
+  --footer-link: #8f90ff;
+  --footer-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+  --theme-toggle-bg: rgba(14, 20, 17, 0.94);
+  --theme-toggle-border: rgba(111, 143, 123, 0.24);
+  --theme-toggle-text: var(--sage-700);
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-manrope);
+  --font-arabic: var(--font-naskh-arabic);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--page-bg);
+}
+
+body {
+  min-height: 100vh;
+  background: var(--page-bg);
+  color: var(--foreground);
+  font-family: var(--font-manrope), sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+.page-bg {
+  background: var(--page-bg);
+}
+
+.surface-panel {
+  border: 1px solid var(--surface-border);
+  background: var(--surface-strong);
+  box-shadow: var(--shadow-panel);
+  backdrop-filter: blur(18px);
+}
+
+.surface-section {
+  border: 1px solid var(--surface-border);
+  background: var(--surface-strong);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(18px);
+}
+
+.surface-soft-block {
+  background: var(--surface-soft);
+  box-shadow: var(--shadow-soft);
+}
+
+.surface-card {
+  border: 1px solid var(--surface-line-strong);
+  background: var(--surface-card);
+  box-shadow: var(--shadow-card-inset);
+}
+
+.surface-item {
+  border: 1px solid var(--surface-line);
+  background: var(--surface-solid);
+  box-shadow: var(--shadow-item);
+}
+
+.pill-soft {
+  background: var(--sage-100);
+  color: var(--sage-700);
+}
+
+.button-primary {
+  background: var(--sage-500);
+  color: #ffffff;
+  box-shadow: var(--shadow-button);
+}
+
+.button-secondary {
+  background: var(--button-secondary-bg);
+  border: 1px solid var(--button-secondary-border);
+  color: var(--button-secondary-text);
+}
+
+.stat-sage {
+  background: var(--stat-sage-bg);
+}
+
+.stat-sand {
+  background: var(--stat-sand-bg);
+}
+
+.icon-ring {
+  border-color: var(--icon-ring);
+}
+
+.nav-shell {
+  border-top: 1px solid var(--surface-border);
+  background: var(--nav-bg);
+}
+
+.theme-toggle-shell {
+  border: 1px solid var(--theme-toggle-border);
+  background: var(--theme-toggle-bg);
+  color: var(--theme-toggle-text);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(18px);
+}
+
+.footer-shell {
+  background: var(--footer-bg);
+  box-shadow: var(--footer-shadow);
+}
+
+.footer-muted {
+  color: var(--footer-text);
+}
+
+.footer-link {
+  color: var(--footer-link);
+}

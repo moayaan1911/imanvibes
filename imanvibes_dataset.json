@@ -1,0 +1,1454 @@
+{
+  "quranByMood": {
+    "Sad": [
+      {
+        "entry": 1,
+        "arabic": "قَالَ إِنَّمَآ أَشْكُوا۟ بَثِّى وَحُزْنِىٓ إِلَى ٱللَّهِ وَأَعْلَمُ مِنَ ٱللَّهِ مَا لَا تَعْلَمُونَ",
+        "translation": "He said, \"I only complain of my suffering and my grief to Allah, and I know from Allah that which you do not know.\"",
+        "source": "Surah Yusuf (12):86"
+      },
+      {
+        "entry": 2,
+        "arabic": "وَلَا يَحْزُنكَ قَوْلُهُمْ ۘ إِنَّ ٱلْعِزَّةَ لِلَّهِ جَمِيعًا ۚ هُوَ ٱلسَّمِيعُ ٱلْعَلِيمُ",
+        "translation": "And let not their speech grieve you. Indeed, honor [due to power] belongs to Allah entirely. He is the Hearing, the Knowing.",
+        "source": "Surah Yunus (10):65"
+      },
+      {
+        "entry": 3,
+        "arabic": "وَلَا تَهِنُوا۟ وَلَا تَحْزَنُوا۟ وَأَنتُمُ ٱلْأَعْلَوْنَ إِن كُنتُم مُّؤْمِنِينَ",
+        "translation": "So do not weaken and do not grieve, and you will be superior if you are [true] believers.",
+        "source": "Surah Ali 'Imran (3):139"
+      },
+      {
+        "entry": 4,
+        "arabic": "إِذْ يَقُولُ لِصَاحِبِهِ لَا تَحْزَنْ إِنَّ ٱللَّهَ مَعَنَا",
+        "translation": "...when he said to his companion, \"Do not grieve; indeed Allah is with us.\"",
+        "source": "Surah At-Tawbah (9):40"
+      },
+      {
+        "entry": 5,
+        "arabic": "فَلَا يَحْزُنكَ قَوْلُهُمْ ۘ إِنَّا نَعْلَمُ مَا يُسِرُّونَ وَمَا يُعْلِنُونَ",
+        "translation": "So let not their speech grieve you. Indeed, We know what they conceal and what they declare.",
+        "source": "Surah Ya-Sin (36):76"
+      }
+    ],
+    "Anxious": [
+      {
+        "entry": 1,
+        "arabic": "ٱلَّذِينَ ءَامَنُوا۟ وَتَطْمَئِنُّ قُلُوبُهُم بِذِكْرِ ٱللَّهِ ۗ أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ",
+        "translation": "Those who have believed and whose hearts are assured by the remembrance of Allah. Unquestionably, by the remembrance of Allah hearts are assured.",
+        "source": "Surah Ar-Ra'd (13):28"
+      },
+      {
+        "entry": 2,
+        "arabic": "وَيَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُ ۚ وَمَن يَتَوَكَّلْ عَلَى ٱللَّهِ فَهُوَ حَسْبُهُۥٓ",
+        "translation": "And will provide for him from where he does not expect. And whoever relies upon Allah - then He is sufficient for him.",
+        "source": "Surah At-Talaq (65):3"
+      },
+      {
+        "entry": 3,
+        "arabic": "لَا يُكَلِّفُ ٱللَّهُ نَفْسًا إِلَّا وُسْعَهَا",
+        "translation": "Allah does not charge a soul except [with that within] its capacity.",
+        "source": "Surah Al-Baqarah (2):286"
+      },
+      {
+        "entry": 4,
+        "arabic": "فَإِنَّ مَعَ ٱلْعُسْرِ يُسْرًا",
+        "translation": "For indeed, with hardship [will be] ease.",
+        "source": "Surah Ash-Sharh (94):5"
+      },
+      {
+        "entry": 5,
+        "arabic": "إِنَّ مَعَ ٱلْعُسْرِ يُسْرًا",
+        "translation": "Indeed, with hardship [will be] ease.",
+        "source": "Surah Ash-Sharh (94):6"
+      }
+    ],
+    "Lonely": [
+      {
+        "entry": 1,
+        "arabic": "قَالَ لَا تَخَافَآ ۖ إِنَّنِى مَعَكُمَآ أَسْمَعُ وَأَرَىٰ",
+        "translation": "[Allah] said, \"Fear not. Indeed, I am with you both; I hear and I see.\"",
+        "source": "Surah Taha (20):46"
+      },
+      {
+        "entry": 2,
+        "arabic": "وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌۖ أُجِيبُ دَعۡوَةَ ٱلدَّاعِ إِذَا دَعَانِ",
+        "translation": "And when My servants ask you, [O Muhammad], concerning Me - indeed I am near. I respond to the invocation of the supplicant when he calls upon Me.",
+        "source": "Surah Al-Baqarah (2):186"
+      },
+      {
+        "entry": 3,
+        "arabic": "إِذْ يَقُولُ لِصَاحِبِهِ لَا تَحْزَنْ إِنَّ ٱللَّهَ مَعَنَا",
+        "translation": "...when he said to his companion, \"Do not grieve; indeed Allah is with us.\"",
+        "source": "Surah At-Tawbah (9):40"
+      },
+      {
+        "entry": 4,
+        "arabic": "وَلَقَدْ خَلَقْنَا ٱلْإِنسَٰنَ وَنَعْلَمُ مَا تُوَسْوِسُ بِهِۦ نَفْسُهُۥ ۖ وَنَحْنُ أَقْرَبُ إِلَيْهِ مِنْ حَبْلِ ٱلْوَرِيدِ",
+        "translation": "And We have already created man and know what his soul whispers to him, and We are closer to him than [his] jugular vein.",
+        "source": "Surah Qaf (50):16"
+      },
+      {
+        "entry": 5,
+        "arabic": "وَهُوَ مَعَكُمْ أَيْنَ مَا كُنتُمْ",
+        "translation": "...and He is with you wherever you are.",
+        "source": "Surah Al-Hadid (57):4"
+      }
+    ],
+    "Angry": [
+      {
+        "entry": 1,
+        "arabic": "وَٱلْكَٰظِمِينَ ٱلْغَيْظَ وَٱلْعَافِينَ عَنِ ٱلنَّاسِ ۗ وَٱللَّهُ يُحِبُّ ٱلْمُحْسِنِينَ",
+        "translation": "...and who restrain anger and who pardon the people - and Allah loves the doers of good.",
+        "source": "Surah Ali 'Imran (3):134"
+      },
+      {
+        "entry": 2,
+        "arabic": "وَلَمَّا رَجَعَ مُوسَىٰٓ إِلَىٰ قَوْمِهِۦ غَضْبَٰنَ أَسِفًا",
+        "translation": "And when Moses returned to his people, angry and grieved...",
+        "source": "Surah Al-A'raf (7):150"
+      },
+      {
+        "entry": 3,
+        "arabic": "وَذَا ٱلنُّونِ إِذ ذَّهَبَ مُغَٰضِبًا فَظَنَّ أَن لَّن نَّقْدِرَ عَلَيْهِ",
+        "translation": "And [remember] the man of the fish, when he went off in anger and thought that We would not decree [anything] upon him.",
+        "source": "Surah Al-Anbya (21):87"
+      },
+      {
+        "entry": 4,
+        "arabic": "وَلَمَّا سَكَتَ عَن مُّوسَى ٱلْغَضَبُ أَخَذَ ٱلْأَلْوَاحَ",
+        "translation": "And when the anger subsided in Moses, he took up the tablets...",
+        "source": "Surah Al-A'raf (7):154"
+      },
+      {
+        "entry": 5,
+        "arabic": "وَٱلَّذِينَ يَجْتَنِبُونَ كَبَٰٓئِرَ ٱلْإِثْمِ وَٱلْفَوَٰحِشَ وَإِذَا مَا غَضِبُوا۟ هُمْ يَغْفِرُونَ",
+        "translation": "And those who avoid the major sins and immoralities, and when they are angry, they forgive.",
+        "source": "Surah Ash-Shura (42):37"
+      }
+    ],
+    "Grateful": [
+      {
+        "entry": 1,
+        "arabic": "وَإِذْ تَأَذَّنَ رَبُّكُمْ لَئِن شَكَرْتُمْ لَأَزِيدَنَّكُمْ",
+        "translation": "And [remember] when your Lord proclaimed, 'If you are grateful, I will surely increase you [in favor]...'",
+        "source": "Surah Ibrahim (14):7"
+      },
+      {
+        "entry": 2,
+        "arabic": "فَاذْكُرُونِي أَذْكُرْكُمْ وَاشْكُرُوا لِي وَلَا تَكْفُرُونِ",
+        "translation": "So remember Me; I will remember you. And be grateful to Me and do not deny Me.",
+        "source": "Surah Al-Baqarah (2):152"
+      },
+      {
+        "entry": 3,
+        "arabic": "ٱعْمَلُوٓا۟ ءَالَ دَاوُۥدَ شُكْرًا ۚ وَقَلِيلٌ مِّنْ عِبَادِىَ ٱلشَّكُورُ",
+        "translation": "..., \"Work, O family of David, in gratitude.\" And few of My servants are grateful.",
+        "source": "Surah Saba (34):13"
+      },
+      {
+        "entry": 4,
+        "arabic": "أَنِ ٱشْكُرْ لِلَّهِ ۚ وَمَن يَشْكُرْ فَإِنَّمَا يَشْكُرُ لِنَفْسِهِۦ",
+        "translation": "...\"Be grateful to Allah.\" And whoever is grateful is grateful for [the benefit of] himself.",
+        "source": "Surah Luqman (31):12"
+      },
+      {
+        "entry": 5,
+        "arabic": "بَلِ ٱللَّهَ فَٱعْبُدْ وَكُن مِّنَ ٱلشَّٰكِرِينَ",
+        "translation": "Rather, worship Allah and be among the grateful.",
+        "source": "Surah Az-Zumar (39):66"
+      }
+    ],
+    "Thankful": [
+      {
+        "entry": 1,
+        "arabic": "مَا يَفْعَلُ ٱللَّهُ بِعَذَابِكُمْ إِن شَكَرْتُمْ وَءَامَنتُمْ",
+        "translation": "What would Allah do with your punishment if you are grateful and believe?",
+        "source": "Surah An-Nisa (4):147"
+      },
+      {
+        "entry": 2,
+        "arabic": "وَكُلُوا۟ وَٱشْرَبُوا۟ وَلَا تُسْرِفُوٓا۟ ۚ إِنَّهُۥ لَا يُحِبُّ ٱلْمُسْرِفِينَ",
+        "translation": "And eat and drink, but be not excessive. Indeed, He likes not those who commit excess.",
+        "source": "Surah Al-A'raf (7):31"
+      },
+      {
+        "entry": 3,
+        "arabic": "وَءَاتَىٰكُم مِّن كُلِّ مَا سَأَلْتُمُوهُ ۚ وَإِن تَعُدُّوا۟ نِعْمَتَ ٱللَّهِ لَا تُحْصُوهَآ",
+        "translation": "And He gave you from all you asked of Him. And if you should count the favor of Allah, you could not enumerate them.",
+        "source": "Surah Ibrahim (14):34"
+      },
+      {
+        "entry": 4,
+        "arabic": "وَلِتَبْتَغُوا۟ مِن فَضْلِهِۦ وَلَعَلَّكُمْ تَشْكُرُونَ",
+        "translation": "...and [He subjected it] that you may seek of His bounty; and perhaps you will be grateful.",
+        "source": "Surah An-Nahl (16):14"
+      },
+      {
+        "entry": 5,
+        "arabic": "وَجَعَلَ لَكُمُ ٱلسَّمْعَ وَٱلْأَبْصَٰرَ وَٱلْأَفْـِٔدَةَ ۙ لَعَلَّكُمْ تَشْكُرُونَ",
+        "translation": "...and He made for you hearing and vision and intellect that perhaps you would be grateful.",
+        "source": "Surah An-Nahl (16):78"
+      }
+    ],
+    "Happy": [
+      {
+        "entry": 1,
+        "arabic": "قُلْ بِفَضْلِ ٱللَّهِ وَبِرَحْمَتِهِۦ فَبِذَٰلِكَ فَلْيَفْرَحُوا۟",
+        "translation": "Say, \"In the bounty of Allah and in His mercy - in that let them rejoice...\"",
+        "source": "Surah Yunus (10):58"
+      },
+      {
+        "entry": 2,
+        "arabic": "فَرِحِينَ بِمَآ ءَاتَىٰهُمُ ٱللَّهُ مِن فَضْلِهِۦ",
+        "translation": "Rejoicing in what Allah has bestowed upon them of His bounty...",
+        "source": "Surah Ali 'Imran (3):170"
+      },
+      {
+        "entry": 3,
+        "arabic": "وُجُوهٌ يَوْمَئِذٍ نَّاضِرَةٌ",
+        "translation": "faces, that Day, will be radiant.",
+        "source": "Surah Al-Qiyamah (75):22"
+      },
+      {
+        "entry": 4,
+        "arabic": "وُجُوهٌ يَوْمَئِذٍ مُّسْفِرَةٌ",
+        "translation": "faces, that Day, will be bright.",
+        "source": "Surah Abasa (80):38"
+      },
+      {
+        "entry": 5,
+        "arabic": "ضَاحِكَةٌ مُّسْتَبْشِرَةٌ",
+        "translation": "Laughing, rejoicing at good news.",
+        "source": "Surah Abasa (80):39"
+      }
+    ],
+    "Celebration": [
+      {
+        "entry": 1,
+        "arabic": "يَوْمَئِذٍ يَصْدُرُ ٱلنَّاسُ أَشْتَاتًا لِّيُرَوْا۟ أَعْمَٰلَهُمْ",
+        "translation": "That Day, the people will depart separated [into categories] to be shown their deeds.",
+        "source": "Surah Az-Zalzalah (99):6"
+      },
+      {
+        "entry": 2,
+        "arabic": "جَنَّٰتِ عَدْنٍ يَدْخُلُونَهَا وَمَن صَلَحَ مِنْ ءَابَآئِهِمْ وَأَزْوَٰجِهِمْ وَذُرِّيَّٰتِهِمْ",
+        "translation": "Gardens of perpetual residence, which they will enter, with whoever was righteous among their fathers, their spouses and their descendants.",
+        "source": "Surah Ar-Ra'd (13):23"
+      },
+      {
+        "entry": 3,
+        "arabic": "سَلَٰمٌ عَلَيْكُم بِمَا صَبَرْتُمْ ۚ فَنِعْمَ عُقْبَى ٱلدَّارِ",
+        "translation": ", \"Peace be upon you for what you patiently endured. And excellent is the final home.\"",
+        "source": "Surah Ar-Ra'd (13):24"
+      },
+      {
+        "entry": 4,
+        "arabic": "وَسِيقَ ٱلَّذِينَ ٱتَّقَوْا۟ رَبَّهُمْ إِلَى ٱلْجَنَّةِ زُمَرًا",
+        "translation": "But those who feared their Lord will be driven to Paradise in groups.",
+        "source": "Surah Az-Zumar (39):73"
+      },
+      {
+        "entry": 5,
+        "arabic": "وَقَالُوا۟ ٱلْحَمْدُ لِلَّهِ ٱلَّذِى صَدَقَنَا وَعْدَهُۥ وَأَوْرَثَنَا ٱلْأَرْضَ نَتَبَوَّأُ مِنَ ٱلْجَنَّةِ حَيْثُ نَشَآءُ",
+        "translation": "And they will say, \"Praise has been to Allah, who has fulfilled for us His promise and made us inherit the earth [so] we may settle in Paradise wherever we will.\"",
+        "source": "Surah Az-Zumar (39):74"
+      }
+    ],
+    "Hopeful": [
+      {
+        "entry": 1,
+        "arabic": "قُلْ يَٰعِبَادِىَ ٱلَّذِينَ أَسْرَفُوا۟ عَلَىٰٓ أَنفُسِهِمْ لَا تَقْنَطُوا۟ مِن رَّحْمَةِ ٱللَّهِ",
+        "translation": "Say, \"O My servants who have transgressed against themselves [by sinning], do not despair of the mercy of Allah.\"",
+        "source": "Surah Az-Zumar (39):53"
+      },
+      {
+        "entry": 2,
+        "arabic": "وَلَا تَيْـَٔسُوا۟ مِن رَّوْحِ ٱللَّهِ ۖ إِنَّهُۥ لَا يَيْـَٔسُ مِن رَّوْحِ ٱللَّهِ إِلَّا ٱلْقَوْمُ ٱلْكَٰفِرُونَ",
+        "translation": "And despair not of relief from Allah. Indeed, no one despairs of relief from Allah except the disbelieving people.",
+        "source": "Surah Yusuf (12):87"
+      },
+      {
+        "entry": 3,
+        "arabic": "وَأَنَا غَفَّارٌ لِّمَن تَابَ وَءَامَنَ وَعَمِلَ صَٰلِحًا ثُمَّ ٱهْتَدَىٰ",
+        "translation": "But indeed, I am the Perpetual Forgiver of whoever repents and believes and does righteousness and then continues in guidance.",
+        "source": "Surah Taha (20):82"
+      },
+      {
+        "entry": 4,
+        "arabic": "يَمْحُوا۟ ٱللَّهُ مَا يَشَآءُ وَيُثْبِتُ ۖ وَعِندَهُۥٓ أُمُّ ٱلْكِتَٰبِ",
+        "translation": "Allah eliminates what He wills or confirms, and with Him is the Mother of the Book.",
+        "source": "Surah Ar-Ra'd (13):39"
+      },
+      {
+        "entry": 5,
+        "arabic": "وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَىٰ",
+        "translation": "And your Lord is going to give you, and you will be satisfied.",
+        "source": "Surah Ad-Duha (93):5"
+      }
+    ],
+    "Depressed": [
+      {
+        "entry": 1,
+        "arabic": "مَا وَدَّعَكَ رَبُّكَ وَمَا قَلَىٰ",
+        "translation": "Your Lord has not taken leave of you, [O Muhammad], nor has He detested [you].",
+        "source": "Surah Ad-Duha (93):3"
+      },
+      {
+        "entry": 2,
+        "arabic": "وَلَلْـَٔاخِرَةُ خَيْرٌ لَّكَ مِنَ ٱلْأُولَىٰ",
+        "translation": "And the Hereafter is better for you than the first [life].",
+        "source": "Surah Ad-Duha (93):4"
+      },
+      {
+        "entry": 3,
+        "arabic": "أَلَمْ يَرَوْا۟ أَنَّا جَعَلْنَا ٱلَّيْلَ لِيَسْكُنُوا۟ فِيهِ",
+        "translation": "Do they not see that We made the night for them to rest in...",
+        "source": "Surah An-Naml (27):86"
+      },
+      {
+        "entry": 4,
+        "arabic": "يُرِيدُ ٱللَّهُ أَن يُخَفِّفَ عَنكُمْ ۚ وَخُلِقَ ٱلْإِنسَٰنُ ضَعِيفًا",
+        "translation": "Allah wants to lighten for you [your difficulties]; and mankind was created weak.",
+        "source": "Surah An-Nisa (4):28"
+      },
+      {
+        "entry": 5,
+        "arabic": "فَمَن كَانَ مَرْجُوًّا لِّقَآءَ رَبِّهِۦ فَلْيَعْمَلْ عَمَلاً صَٰلِحًا",
+        "translation": "So whoever would hope for the meeting with his Lord - let him do righteous work...",
+        "source": "Surah Al-Kahf (18):110"
+      }
+    ],
+    "Stressed": [
+      {
+        "entry": 1,
+        "arabic": "لَا يُكَلِّفُ ٱللَّهُ نَفْسًا إِلَّا وُسْعَهَا",
+        "translation": "Allah does not charge a soul except [with that within] its capacity.",
+        "source": "Surah Al-Baqarah (2):286"
+      },
+      {
+        "entry": 2,
+        "arabic": "فَإِنَّ مَعَ ٱلْعُسْرِ يُسْرًا",
+        "translation": "For indeed, with hardship [will be] ease.",
+        "source": "Surah Ash-Sharh (94):5"
+      },
+      {
+        "entry": 3,
+        "arabic": "إِنَّ مَعَ ٱلْعُسْرِ يُسْرًا",
+        "translation": "Indeed, with hardship [will be] ease.",
+        "source": "Surah Ash-Sharh (94):6"
+      },
+      {
+        "entry": 4,
+        "arabic": "وَٱسْتَعِينُوا۟ بِٱلصَّبْرِ وَٱلصَّلَوٰةِ",
+        "translation": "And seek help through patience and prayer...",
+        "source": "Surah Al-Baqarah (2):45"
+      },
+      {
+        "entry": 5,
+        "arabic": "قُل لَّن يُصِيبَنَآ إِلَّا مَا كَتَبَ ٱللَّهُ لَنَا هُوَ مَوْلَىٰنَا",
+        "translation": "Say, \"Never will we be struck except by what Allah has decreed for us; He is our protector.\"",
+        "source": "Surah At-Tawbah (9):51"
+      }
+    ],
+    "Lost": [
+      {
+        "entry": 1,
+        "arabic": "وَوَجَدَكَ ضَآلاًّ فَهَدَىٰ",
+        "translation": "And He found you lost and guided [you].",
+        "source": "Surah Ad-Duha (93):7"
+      },
+      {
+        "entry": 2,
+        "arabic": "يُرِيدُ ٱللَّهُ لِيُبَيِّنَ لَكُمْ وَيَهْدِيَكُمْ سُنَنَ ٱلَّذِينَ مِن قَبْلِكُمْ",
+        "translation": "Allah wants to make clear to you [the lawful from the unlawful] and guide you to the [good] practices of those before you...",
+        "source": "Surah An-Nisa (4):26"
+      },
+      {
+        "entry": 3,
+        "arabic": "قُلْ إِنَّ هُدَى ٱللَّهِ هُوَ ٱلْهُدَىٰ",
+        "translation": "Say, \"Indeed, the guidance of Allah is the [only] guidance...\"",
+        "source": "Surah Al-An'am (6):71"
+      },
+      {
+        "entry": 4,
+        "arabic": "يَٰٓأَيُّهَا ٱلنَّاسُ قَدْ جَآءَتْكُم مَّوْعِظَةٌ مِّن رَّبِّكُمْ وَشِفَآءٌ لِّمَا فِى ٱلصُّدُورِ وَهُدًى وَرَحْمَةٌ لِّلْمُؤْمِنِينَ",
+        "translation": "O mankind, there has to come to you instruction from your Lord and healing for what is in the breasts and guidance and mercy for the believers.",
+        "source": "Surah Yunus (10):57"
+      },
+      {
+        "entry": 5,
+        "arabic": "وَإِن كُنتُمْ فِى رَيْبٍ مِّمَّا نَزَّلْنَا عَلَىٰ عَبْدِنَا فَأْتُوا۟ بِسُورَةٍ مِّن مِّثْلِهِۦ",
+        "translation": "And if you are in doubt about what We have sent down upon Our Servant [Muhammad], then produce a surah the like thereof.",
+        "source": "Surah Al-Baqarah (2):23"
+      }
+    ],
+    "Guilty": [
+      {
+        "entry": 1,
+        "arabic": "وَمَن يَعْمَلْ سُوٓءًا أَوْ يَظْلِمْ نَفْسَهُۥ ثُمَّ يَسْتَغْفِرِ ٱللَّهَ يَجِدِ ٱللَّهَ غَفُورًا رَّحِيمًا",
+        "translation": "And whoever does a wrong or wrongs himself but then seeks forgiveness of Allah will find Allah Forgiving and Merciful.",
+        "source": "Surah An-Nisa (4):110"
+      },
+      {
+        "entry": 2,
+        "arabic": "وَءَاخَرُونَ ٱعْتَرَفُوا۟ بِذُنُوبِهِمْ خَلَطُوا۟ عَمَلاً صَٰلِحًا وَءَاخَرَ سَيِّئًا عَسَى ٱللَّهُ أَن يَتُوبَ عَلَيْهِمْ",
+        "translation": "And [there are] others who have acknowledged their sins. They had mixed a righteous deed with another that was bad. Perhaps Allah will accept their repentance.",
+        "source": "Surah At-Tawbah (9):102"
+      },
+      {
+        "entry": 3,
+        "arabic": "وَهُوَ ٱلَّذِى يَقْبَلُ ٱلتَّوْبَةَ عَنْ عِبَادِهِۦ وَيَعْفُوا۟ عَنِ ٱلسَّيِّـَٔاتِ",
+        "translation": "And it is He who accepts repentance from his servants and pardons misdeeds...",
+        "source": "Surah Ash-Shura (42):25"
+      },
+      {
+        "entry": 4,
+        "arabic": "إِلَّا مَن تَابَ وَءَامَنَ وَعَمِلَ عَمَلاً صَٰلِحًا فَأُو۟لَٰٓئِكَ يُبَدِّلُ ٱللَّهُ سَيِّـَٔاتِهِمْ حَسَنَٰتٍ",
+        "translation": "Except for those who repent, believe and do righteous work. For them Allah will replace their evil deeds with good.",
+        "source": "Surah Al-Furqan (25):70"
+      },
+      {
+        "entry": 5,
+        "arabic": "وَٱلَّذِينَ إِذَا فَعَلُوا۟ فَٰحِشَةً أَوْ ظَلَمُوٓا۟ أَنفُسَهُمْ ذَكَرُوا۟ ٱللَّهَ فَٱسْتَغْفَرُوا۟ لِذُنُوبِهِمْ",
+        "translation": "And those who, when they commit an immorality or wrong themselves [by transgression], remember Allah and seek forgiveness for their sins...",
+        "source": "Surah Ali 'Imran (3):135"
+      }
+    ],
+    "Heartbroken": [
+      {
+        "entry": 1,
+        "arabic": "وَاصْبِرْ وَمَا صَبْرُكَ إِلَّا بِٱللَّهِ ۚ وَلَا تَحْزَنْ عَلَيْهِمْ وَلَا تَكُ فِى ضَيْقٍ مِّمَّا يَمْكُرُونَ",
+        "translation": "And be patient, [O Muhammad], and your patience is not but through Allah. And do not grieve over them and do not be in distress over what they conspire.",
+        "source": "Surah An-Nahl (16):127"
+      },
+      {
+        "entry": 2,
+        "arabic": "مَّسَّتْهُمُ ٱلْبَأْسَآءُ وَٱلضَّرَّآءُ وَزُلْزِلُوا۟",
+        "translation": "...They were touched by poverty and hardship and were shaken...",
+        "source": "Surah Al-Baqarah (2):214"
+      },
+      {
+        "entry": 3,
+        "arabic": "وَلَقَدْ نَعْلَمُ أَنَّكَ يَضِيقُ صَدْرُكَ بِمَا يَقُولُونَ",
+        "translation": "And We already know that your breast is constrained by what they say.",
+        "source": "Surah Al-Hijr (15):97"
+      },
+      {
+        "entry": 4,
+        "arabic": "فَسَبِّحْ بِحَمْدِ رَبِّكَ وَكُن مِّنَ ٱلسَّٰجِدِينَ",
+        "translation": "So exalt [Allah] with praise of your Lord and be of those who prostrate [to Him].",
+        "source": "Surah Al-Hijr (15):98"
+      },
+      {
+        "entry": 5,
+        "arabic": "وَٱلَّذِينَ جَٰهَدُوا۟ فِينَا لَنَهْدِيَنَّهُمْ سُبُلَنَا",
+        "translation": "And those who strive for Us - We will surely guide them to Our ways.",
+        "source": "Surah Al-'Ankabut (29):69"
+      }
+    ],
+    "Fearful": [
+      {
+        "entry": 1,
+        "arabic": "وَلَنَبْلُوَنَّكُم بِشَىْءٍ مِّنَ ٱلْخَوْفِ وَٱلْجُوعِ وَنَقْصٍ مِّنَ ٱلْأَمْوَٰلِ وَٱلْأَنفُسِ وَٱلثَّمَرَٰتِ",
+        "translation": "And We will surely test you with something of fear and hunger and a loss of wealth and lives and fruits...",
+        "source": "Surah Al-Baqarah (2):155"
+      },
+      {
+        "entry": 2,
+        "arabic": "فَلَا تَخَافُوهُمْ وَخَافُونِ إِن كُنتُم مُّؤْمِنِينَ",
+        "translation": "So fear them not, but fear Me, if you are [indeed] believers.",
+        "source": "Surah Ali 'Imran (3):175"
+      },
+      {
+        "entry": 3,
+        "arabic": "أَلَيْسَ ٱللَّهُ بِكَافٍ عَبْدَهُۥ ۖ وَيُخَوِّفُونَكَ بِٱلَّذِينَ مِن دُونِهِۦ",
+        "translation": "Is not Allah sufficient for His Servant? And [yet], they threaten you with those other than Him.",
+        "source": "Surah Az-Zumar (39):36"
+      },
+      {
+        "entry": 4,
+        "arabic": "فَلْيَعْبُدُوا۟ رَبَّ هَٰذَا ٱلْبَيْتِ",
+        "translation": "Let them worship the Lord of this House.",
+        "source": "Surah Quraysh (106):3"
+      },
+      {
+        "entry": 5,
+        "arabic": "ٱلَّذِىٓ أَطْعَمَهُم مِّن جُوعٍ وَءَامَنَهُم مِّنْ خَوْفٍۭ",
+        "translation": "Who has fed them, [saving them] from hunger, and made them safe, [saving them] from fear.",
+        "source": "Surah Quraysh (106):4"
+      }
+    ],
+    "Seeking Peace": [
+      {
+        "entry": 1,
+        "arabic": "ٱلَّذِينَ ءَامَنُوا۟ وَتَطْمَئِنُّ قُلُوبُهُم بِذِكْرِ ٱللَّهِ ۗ أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ",
+        "translation": "Those who have believed and whose hearts are assured by the remembrance of Allah. Unquestionably, by the remembrance of Allah hearts are assured.",
+        "source": "Surah Ar-Ra'd (13):28"
+      },
+      {
+        "entry": 2,
+        "arabic": "هُوَ ٱلَّذِىٓ أَنزَلَ ٱلسَّكِينَةَ فِى قُلُوبِ ٱلْمُؤْمِنِينَ لِيَزْدَادُوٓا۟ إِيمَٰنًا مَّعَ إِيمَٰنِهِمْ",
+        "translation": "It is He who sent down tranquility into the hearts of the believers that they would increase in faith along with their [present] faith.",
+        "source": "Surah Al-Fath (48):4"
+      },
+      {
+        "entry": 3,
+        "arabic": "وَٱللَّهُ يَدْعُوٓا۟ إِلَىٰ دَارِ ٱلسَّلَٰمِ وَيَهْدِى مَن يَشَآءُ إِلَىٰ صِرَٰطٍ مُّسْتَقِيمٍ",
+        "translation": "And Allah invites to the Home of Peace and guides whom He wills to a straight path.",
+        "source": "Surah Yunus (10):25"
+      },
+      {
+        "entry": 4,
+        "arabic": "يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ ٱدْخُلُوا۟ فِى ٱلسِّلْمِ كَآفَّةً",
+        "translation": "O you who have believed, enter into Islam completely [and perfectly]...",
+        "source": "Surah Al-Baqarah (2):208"
+      },
+      {
+        "entry": 5,
+        "arabic": "لَهُمْ دَارُ ٱلسَّلَٰمِ عِندَ رَبِّهِمْ ۖ وَهُوَ وَلِيُّهُم بِمَا كَانُوا۟ يَعْمَلُونَ",
+        "translation": "For them will be the Home of Peace with their Lord. And He is their protecting ally because of what they used to do.",
+        "source": "Surah Al-An'am (6):127"
+      }
+    ],
+    "Seeking Forgiveness": [
+      {
+        "entry": 1,
+        "arabic": "وَٱسْتَغْفِرُوا۟ ٱللَّهَ ۖ إِنَّ ٱللَّهَ غَفُورٌ رَّحِيمٌ",
+        "translation": "And seek forgiveness of Allah. Indeed, Allah is Forgiving and Merciful.",
+        "source": "Surah Al-Baqarah (2):199"
+      },
+      {
+        "entry": 2,
+        "arabic": "رَبَّنَا لَا تُؤَاخِذْنَآ إِن نَّسِينَآ أَوْ أَخْطَأْنَا",
+        "translation": "\"Our Lord, do not impose blame upon us if we have forgotten or erred.\"",
+        "source": "Surah Al-Baqarah (2):286"
+      },
+      {
+        "entry": 3,
+        "arabic": "فَسَبِّحْ بِحَمْدِ رَبِّكَ وَٱسْتَغْفِرْهُ ۚ إِنَّهُۥ كَانَ تَوَّابًۢا",
+        "translation": "Then exalt [Him] with praise of your Lord and ask forgiveness of Him. Indeed, He is ever Accepting of repentance.",
+        "source": "Surah An-Nasr (110):3"
+      },
+      {
+        "entry": 4,
+        "arabic": "وَقُل رَّبِّ ٱغْفِرْ وَٱرْحَمْ وَأَنتَ خَيْرُ ٱلرَّٰحِمِينَ",
+        "translation": "And, [O Muhammad], say, \"My Lord, forgive and have mercy, and You are the best of the merciful.\"",
+        "source": "Surah Al-Mu'minun (23):118"
+      },
+      {
+        "entry": 5,
+        "arabic": "وَأَنِ ٱسْتَغْفِرُوا۟ رَبَّكُمْ ثُمَّ تُوبُوٓا۟ إِلَيْهِ",
+        "translation": "And [commanding you]: \"Seek forgiveness of your Lord and repent to Him.\"",
+        "source": "Surah Hud (11):3"
+      }
+    ],
+    "Low Iman": [
+      {
+        "entry": 1,
+        "arabic": "إِذَا ذُكِرَ ٱللَّهُ وَجِلَتْ قُلُوبُهُمْ وَإِذَا تُلِيَتْ عَلَيْهِمْ ءَايَٰتُهُۥ زَادَتْهُمْ إِيمَٰنًا",
+        "translation": "...when Allah is mentioned, their hearts become fearful, and when His verses are recited to them, it increases them in faith...",
+        "source": "Surah Al-Anfal (8):2"
+      },
+      {
+        "entry": 2,
+        "arabic": "أَلَمْ يَأْنِ لِلَّذِينَ ءَامَنُوٓا۟ أَن تَخْشَعَ قُلُوبُهُمْ لِذِكْرِ ٱللَّهِ",
+        "translation": "Has the time not come for those who have believed that their hearts should become humbly submissive at the remembrance of Allah...",
+        "source": "Surah Al-Hadid (57):16"
+      },
+      {
+        "entry": 3,
+        "arabic": "وَلَقَدْ يَسَّرْنَا ٱلْقُرْءَانَ لِلذِّكْرِ فَهَلْ مِن مُّدَّكِرٍ",
+        "translation": "And We have certainly made the Qur'an easy for remembrance, so is there any who will remember?",
+        "source": "Surah Al-Qamar (54):17"
+      },
+      {
+        "entry": 4,
+        "arabic": "قَالَتِ ٱلْأَعْرَابُ ءَامَنَّا ۖ قُل لَّمْ تُؤْمِنُوا۟ وَلَٰكِن قُولُوٓا۟ أَسْلَمْنَا وَلَمَّا يَدْخُلِ ٱلْإِيمَٰنُ فِى قُلُوبِكُمْ",
+        "translation": "The bedouins say, \"We have believed.\" Say, \"You have not [yet] believed; but say [instead], 'We have submitted,' for faith has not yet entered your hearts.\"",
+        "source": "Surah Al-Hujurat (49):14"
+      },
+      {
+        "entry": 5,
+        "arabic": "فَذَكِّرْ بِٱلْقُرْءَانِ مَن يَخَافُ وَعِيدِ",
+        "translation": "So remind with the Qur'an whoever fears My threat.",
+        "source": "Surah Qaf (50):45"
+      }
+    ],
+    "Need Motivation": [
+      {
+        "entry": 1,
+        "arabic": "وَأَن لَّيْسَ لِلْإِنسَٰنِ إِلَّا مَا سَعَىٰ",
+        "translation": "And that there is not for man except that for which he strives.",
+        "source": "Surah An-Najm (53):39"
+      },
+      {
+        "entry": 2,
+        "arabic": "وَأَنَّ سَعْيَهُۥ سَوْفَ يُرَىٰ",
+        "translation": "And that his effort is going to be seen.",
+        "source": "Surah An-Najm (53):40"
+      },
+      {
+        "entry": 3,
+        "arabic": "فَاسْتَبِقُوا الْخَيْرَاتِ",
+        "translation": "So race to [all that is] good.",
+        "source": "Surah Al-Baqarah (2):148"
+      },
+      {
+        "entry": 4,
+        "arabic": "وَسَارِعُوٓا۟ إِلَىٰ مَغْفِرَةٍ مِّن رَّبِّكُمْ وَجَنَّةٍ",
+        "translation": "And hasten to forgiveness from your Lord and a garden...",
+        "source": "Surah Ali 'Imran (3):133"
+      },
+      {
+        "entry": 5,
+        "arabic": "وَفِى ذَٰلِكَ فَلْيَتَنَافَسِ ٱلْمُتَنَٰفِسُونَ",
+        "translation": "So for this let the competitors compete.",
+        "source": "Surah Al-Mutaffifin (83):26"
+      }
+    ],
+    "Patience": [
+      {
+        "entry": 1,
+        "arabic": "يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ ٱسْتَعِينُوا۟ بِٱلصَّبْرِ وَٱلصَّلَوٰةِ ۚ إِنَّ ٱللَّهَ مَعَ ٱلصَّٰبِرِينَ",
+        "translation": "O you who have believed, seek help through patience and prayer. Indeed, Allah is with the patient.",
+        "source": "Surah Al-Baqarah (2):153"
+      },
+      {
+        "entry": 2,
+        "arabic": "وَٱصْبِرْ لِحُكْمِ رَبِّكَ فَإِنَّكَ بِأَعْيُنِنَا",
+        "translation": "And be patient, [O Muhammad], for the decision of your Lord, for indeed, you are in Our eyes.",
+        "source": "Surah At-Tur (52):48"
+      },
+      {
+        "entry": 3,
+        "arabic": "فَاصْبِرْ صَبْرًا جَمِيلاً",
+        "translation": "So endure with beautiful patience.",
+        "source": "Surah Al-Ma'arij (70):5"
+      },
+      {
+        "entry": 4,
+        "arabic": "وَجَزَٰهُم بِمَا صَبَرُوا۟ جَنَّةً وَحَرِيرًا",
+        "translation": "And will reward them for what they patiently endured with a garden [in Paradise] and silk [garments].",
+        "source": "Surah Al-Insan (76):12"
+      },
+      {
+        "entry": 5,
+        "arabic": "إِنَّمَا يُوَفَّى ٱلصَّٰبِرُونَ أَجْرَهُم بِغَيْرِ حِسَابٍ",
+        "translation": "Indeed, the patient will be given their reward without account.",
+        "source": "Surah Az-Zumar (39):10"
+      }
+    ],
+    "Tawakkul": [
+      {
+        "entry": 1,
+        "arabic": "وَيَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُ ۚ وَمَن يَتَوَكَّلْ عَلَى ٱللَّهِ فَهُوَ حَسْبُهُۥٓ",
+        "translation": "And will provide for him from where he does not expect. And whoever relies upon Allah - then He is sufficient for him.",
+        "source": "Surah At-Talaq (65):3"
+      },
+      {
+        "entry": 2,
+        "arabic": "وَتَوَكَّلْ عَلَى ٱلْحَيِّ ٱلَّذِى لَا يَمُوتُ وَسَبِّحْ بِحَمْدِهِۦ",
+        "translation": "And rely upon the Ever-Living who does not die, and exalt [Allah] with His praise.",
+        "source": "Surah Al-Furqan (25):58"
+      },
+      {
+        "entry": 3,
+        "arabic": "فَإِذَا عَزَمْتَ فَتَوَكَّلْ عَلَى ٱللَّهِ ۚ إِنَّ ٱللَّهَ يُحِبُّ ٱلْمُتَوَكِّلِينَ",
+        "translation": "And when you have decided, then rely upon Allah. Indeed, Allah loves those who rely [upon Him].",
+        "source": "Surah Ali 'Imran (3):159"
+      },
+      {
+        "entry": 4,
+        "arabic": "فَقَالُوا۟ عَلَى ٱللَّهِ تَوَكَّلْنَا رَبَّنَا لَا تَجْعَلْنَا فِتْنَةً لِّلْقَوْمِ ٱلظَّٰلِمِينَ",
+        "translation": "So they said, \"Upon Allah do we rely. Our Lord, make us not [objects of] trial for the wrongdoing people.\"",
+        "source": "Surah Yunus (10):85"
+      },
+      {
+        "entry": 5,
+        "arabic": "إِن يَنصُرْكُمُ ٱللَّهُ فَلَا غَالِبَ لَكُمْ ۖ وَإِن يَخْذُلْكُمْ فَمَن ذَا ٱلَّذِى يَنصُرُكُم مِّنۢ بَعْدِهِۦ",
+        "translation": "If Allah should aid you, no one can overcome you; but if He should forsake you, who is there that can aid you after Him?",
+        "source": "Surah Ali 'Imran (3):160Contextualizing Authentic Prophetic Traditions in Mobile Application FrameworksDeveloping a verified dataset of prophetic traditions involves a rigorous filtering mechanism to ensure only highly authenticated narrations support user interactions. In standard digital curation, primary reliance is directed toward the canonical collections of Sahih al-Bukhari and Sahih Muslim, which are deemed the most authentic authorities in Sunni jurisprudence. Adhering to specific reference numbers from verified resources prevents duplication and aligns mobile software queries with globally recognized hardcopy databases.A core liability of automated religious content extraction remains the proliferation of weak or fabricated accounts. To protect digital users from unreliable scriptural attributions, strict source tracking requires hard citations of specific volume and hadith identifiers. Traditional hadith science prioritizes continuity in transmission chains, a concept that translates digitally into strictly non-hallucinated dataset architectures. The listed Traditions are localized strictly within trusted classical texts to maintain high accuracy parameters."
+      }
+    ]
+  },
+  "hadithCollection": [
+    {
+      "id": 1,
+      "arabic": "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ",
+      "translation": "Verily, deeds are only with intentions.",
+      "source": "Sahih al-Bukhari 1"
+    },
+    {
+      "id": 2,
+      "arabic": "الصِّيَامُ جُنَّةٌ",
+      "translation": "Fasting is a shield.",
+      "source": "Sahih al-Bukhari 1894"
+    },
+    {
+      "id": 3,
+      "arabic": "خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ",
+      "translation": "The best among you is he who learns and teaches the Qur'an.",
+      "source": "Sahih al-Bukhari 5027"
+    },
+    {
+      "id": 4,
+      "arabic": "الدِّينُ النَّصِيحَةُ",
+      "translation": "The religion is sincere advice.",
+      "source": "Sahih Muslim 55"
+    },
+    {
+      "id": 5,
+      "arabic": "الطُّهُورُ شَطْرُ الْإِيمَانِ",
+      "translation": "Cleanliness is half of faith.",
+      "source": "Sahih Muslim 223"
+    },
+    {
+      "id": 6,
+      "arabic": "الْحَيَاءُ شُعْبَةٌ مِنَ الْإِيمَانِ",
+      "translation": "Modesty is a branch of faith.",
+      "source": "Sahih al-Bukhari 9"
+    },
+    {
+      "id": 7,
+      "arabic": "لَا تَغْضَبْ",
+      "translation": "Do not become angry.",
+      "source": "Sahih al-Bukhari 6116"
+    },
+    {
+      "id": 8,
+      "arabic": "مَنْ لَا يَرْحَمْ لَا يُرْحَمْ",
+      "translation": "He who does not show mercy will not be shown mercy.",
+      "source": "Sahih al-Bukhari 5997"
+    },
+    {
+      "id": 9,
+      "arabic": "الْيَدُ الْعُلْيَا خَيْرٌ مِنَ الْيَدِ السُّفْلَى",
+      "translation": "The upper hand is better than the lower hand.",
+      "source": "Sahih al-Bukhari 1427"
+    },
+    {
+      "id": 10,
+      "arabic": "مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ",
+      "translation": "Whoever believes in Allah and the Last Day should speak good or remain silent.",
+      "source": "Sahih al-Bukhari 6018"
+    },
+    {
+      "id": 11,
+      "arabic": "الْمُسْلِمُ مَنْ سَلِمَ الْمُسْلِمُونَ مِنْ لِسَانِهِ وَيَدِهِ",
+      "translation": "A Muslim is the one from whose tongue and hands the Muslims are safe.",
+      "source": "Sahih al-Bukhari 10"
+    },
+    {
+      "id": 12,
+      "arabic": "لَا يُؤْمِنُ أَحَدُكُمْ حَتَّى يُحِبَّ لِأَخِيهِ مَا يُحِبُّ لِنَفْسِهِ",
+      "translation": "None of you truly believes until he loves for his brother what he loves for himself.",
+      "source": "Sahih al-Bukhari 13"
+    },
+    {
+      "id": 13,
+      "arabic": "دَعْ مَا يَرِيبُكَ إِلَى مَا لَا يَرِيبُكَ",
+      "translation": "Leave what makes you doubt for what does not make you doubt.",
+      "source": "Jami' at-Tirmidhi 2518"
+    },
+    {
+      "id": 14,
+      "arabic": "كُنْ فِي الدُّنْيَا كَأَنَّكَ غَرِيبٌ أَوْ عَابِرُ سَبِيلٍ",
+      "translation": "Be in this world as if you were a stranger or a traveler.",
+      "source": "Sahih al-Bukhari 6416"
+    },
+    {
+      "id": 15,
+      "arabic": "كُلُّ بِدْعَةٍ ضَلَالَةٌ",
+      "translation": "Every innovation is a misguidance.",
+      "source": "Sahih Muslim 867"
+    },
+    {
+      "id": 16,
+      "arabic": "أَحَبُّ الْأَعْمَالِ إِلَى اللَّهِ أَدْوَمُهَا وَإِنْ قَلَّ",
+      "translation": "The most beloved deeds to Allah are those that are consistent, even if small.",
+      "source": "Sahih al-Bukhari 6464"
+    },
+    {
+      "id": 17,
+      "arabic": "قُلْ آمَنْتُ بِاللَّهِ ثُمَّ اسْتَقِمْ",
+      "translation": "Say: \"I believe in Allah,\" and then be steadfast.",
+      "source": "Sahih Muslim 38"
+    },
+    {
+      "id": 18,
+      "arabic": "اتَّقِ اللَّهَ حَيْثُمَا كُنْتَ",
+      "translation": "Fear Allah wherever you are.",
+      "source": "Jami' at-Tirmidhi 1987"
+    },
+    {
+      "id": 19,
+      "arabic": "وَأَتْبِعِ السَّيِّئَةَ الْحَسَنَةَ تَمْحُهَا",
+      "translation": "And follow up a bad deed with a good deed, which will wipe it out.",
+      "source": "Jami' at-Tirmidhi 1987"
+    },
+    {
+      "id": 20,
+      "arabic": "احْفَظِ اللَّهَ يَحْفَظْكَ",
+      "translation": "Be mindful of Allah, and He will protect you.",
+      "source": "Jami' at-Tirmidhi 2516"
+    },
+    {
+      "id": 21,
+      "arabic": "إِذَا سَأَلْتَ فَاسْأَلِ اللَّهَ",
+      "translation": "If you ask, ask only of Allah.",
+      "source": "Jami' at-Tirmidhi 2516"
+    },
+    {
+      "id": 22,
+      "arabic": "وَإِذَا اسْتَعَنْتَ فَاسْتَعِنْ بِاللَّهِ",
+      "translation": "And if you seek help, seek it from Allah.",
+      "source": "Jami' at-Tirmidhi 2516"
+    },
+    {
+      "id": 23,
+      "arabic": "إِنَّ اللَّهَ جَمِيلٌ يُحِبُّ الْجَمَالَ",
+      "translation": "Indeed, Allah is beautiful and He loves beauty.",
+      "source": "Sahih Muslim 91"
+    },
+    {
+      "id": 24,
+      "arabic": "الْمَرْءُ مَعَ مَنْ أَحَبَّ",
+      "translation": "A person is with those whom he loves.",
+      "source": "Sahih al-Bukhari 6168"
+    },
+    {
+      "id": 25,
+      "arabic": "مِنْ حُسْنِ إِسْلَامِ الْمَرْءِ تَرْكُهُ مَا لَا يَعْنِيهِ",
+      "translation": "Part of the perfection of a person's Islam is his leaving that which does not concern him.",
+      "source": "Jami' at-Tirmidhi 2317"
+    },
+    {
+      "id": 26,
+      "arabic": "لَيْسَ الشَّدِيدُ بِالصُّرَعَةِ إِنَّمَا الشَّدِيدُ الَّذِي يَمْلِكُ نَفْسَهُ عِنْدَ الْغَضَبِ",
+      "translation": "The strong man is not the one who can wrestle, but the one who controls himself in a fit of rage.",
+      "source": "Sahih al-Bukhari 6114"
+    },
+    {
+      "id": 27,
+      "arabic": "الْبِرُّ حُسْنُ الْخُلُقِ",
+      "translation": "Righteousness is good character.",
+      "source": "Sahih Muslim 2553"
+    },
+    {
+      "id": 28,
+      "arabic": "لَنْ يُدْخِلَ أَحَدًا مِنْكُمْ عَمَلُهُ الْجَنَّةَ",
+      "translation": "None of you will enter Paradise by his deeds alone.",
+      "source": "Sahih al-Bukhari 5673"
+    },
+    {
+      "id": 29,
+      "arabic": "أَفْشُوا السَّلَامَ",
+      "translation": "Spread peace.",
+      "source": "Sahih Muslim 54"
+    },
+    {
+      "id": 30,
+      "arabic": "اغْتَنِمْ خَمْسًا قَبْلَ خَمْسٍ",
+      "translation": "Take advantage of five before five.",
+      "source": "Mustadrak al-Hakim 7846"
+    }
+  ],
+  "allahNames": [
+    {
+      "id": 1,
+      "arabic": "الرَّحْمَنُ",
+      "transliteration": "Ar-Rahman",
+      "meaning": "The Most Merciful"
+    },
+    {
+      "id": 2,
+      "arabic": "الرَّحِيمُ",
+      "transliteration": "Ar-Raheem",
+      "meaning": "The Bestower of Mercy"
+    },
+    {
+      "id": 3,
+      "arabic": "الْمَلِكُ",
+      "transliteration": "Al-Malik",
+      "meaning": "The King"
+    },
+    {
+      "id": 4,
+      "arabic": "الْقُدُّوسُ",
+      "transliteration": "Al-Quddus",
+      "meaning": "The Absolutely Pure"
+    },
+    {
+      "id": 5,
+      "arabic": "السَّلَامُ",
+      "transliteration": "As-Salam",
+      "meaning": "The Source of Peace"
+    },
+    {
+      "id": 6,
+      "arabic": "الْمُؤْمِنُ",
+      "transliteration": "Al-Mu'min",
+      "meaning": "The Infuser of Faith"
+    },
+    {
+      "id": 7,
+      "arabic": "الْمُهَيْمِنُ",
+      "transliteration": "Al-Muhaymin",
+      "meaning": "The Preserver of Safety"
+    },
+    {
+      "id": 8,
+      "arabic": "الْعَزِيزُ",
+      "transliteration": "Al-Aziz",
+      "meaning": "The All-Mighty"
+    },
+    {
+      "id": 9,
+      "arabic": "الْجَبَّارُ",
+      "transliteration": "Al-Jabbar",
+      "meaning": "The Compeller"
+    },
+    {
+      "id": 10,
+      "arabic": "الْمُتَكَبِّرُ",
+      "transliteration": "Al-Mutakabbir",
+      "meaning": "The Supreme"
+    },
+    {
+      "id": 11,
+      "arabic": "الْخَالِقُ",
+      "transliteration": "Al-Khaliq",
+      "meaning": "The Creator"
+    },
+    {
+      "id": 12,
+      "arabic": "الْبَارِئُ",
+      "transliteration": "Al-Bari",
+      "meaning": "The Originator"
+    },
+    {
+      "id": 13,
+      "arabic": "الْمُصَوِّرُ",
+      "transliteration": "Al-Musawwir",
+      "meaning": "The Fashioner"
+    },
+    {
+      "id": 14,
+      "arabic": "الْغَفَّارُ",
+      "transliteration": "Al-Ghaffar",
+      "meaning": "The Constant Forgiver"
+    },
+    {
+      "id": 15,
+      "arabic": "الْقَهَّارُ",
+      "transliteration": "Al-Qahhar",
+      "meaning": "The All-Prevailing"
+    },
+    {
+      "id": 16,
+      "arabic": "الْوَهَّابُ",
+      "transliteration": "Al-Wahhab",
+      "meaning": "The Supreme Bestower"
+    },
+    {
+      "id": 17,
+      "arabic": "الرَّزَّاقُ",
+      "transliteration": "Ar-Razzaq",
+      "meaning": "The Total Provider"
+    },
+    {
+      "id": 18,
+      "arabic": "الْفَتَّاحُ",
+      "transliteration": "Al-Fattah",
+      "meaning": "The Opener"
+    },
+    {
+      "id": 19,
+      "arabic": "الْعَلِيمُ",
+      "transliteration": "Al-Alim",
+      "meaning": "The All-Knowing"
+    },
+    {
+      "id": 20,
+      "arabic": "الْقَابِضُ",
+      "transliteration": "Al-Qabid",
+      "meaning": "The Withholder"
+    },
+    {
+      "id": 21,
+      "arabic": "الْبَاسِطُ",
+      "transliteration": "Al-Basit",
+      "meaning": "The Extender"
+    },
+    {
+      "id": 22,
+      "arabic": "الْخَافِضُ",
+      "transliteration": "Al-Khafid",
+      "meaning": "The Reducer"
+    },
+    {
+      "id": 23,
+      "arabic": "الرَّافِعُ",
+      "transliteration": "Ar-Rafi",
+      "meaning": "The Exalter"
+    },
+    {
+      "id": 24,
+      "arabic": "الْمُعِزُّ",
+      "transliteration": "Al-Mu'izz",
+      "meaning": "The Honourer"
+    },
+    {
+      "id": 25,
+      "arabic": "الْمُذِلُّ",
+      "transliteration": "Al-Mudhill",
+      "meaning": "The Dishonourer"
+    },
+    {
+      "id": 26,
+      "arabic": "السَّمِيعُ",
+      "transliteration": "As-Sami",
+      "meaning": "The All-Hearing"
+    },
+    {
+      "id": 27,
+      "arabic": "الْبَصِيرُ",
+      "transliteration": "Al-Basir",
+      "meaning": "The All-Seeing"
+    },
+    {
+      "id": 28,
+      "arabic": "الْحَكَمُ",
+      "transliteration": "Al-Hakam",
+      "meaning": "The Impartial Judge"
+    },
+    {
+      "id": 29,
+      "arabic": "الْعَدْلُ",
+      "transliteration": "Al-Adl",
+      "meaning": "The Utterly Just"
+    },
+    {
+      "id": 30,
+      "arabic": "اللَّطِيفُ",
+      "transliteration": "Al-Latif",
+      "meaning": "The Knower of Subtleties"
+    },
+    {
+      "id": 31,
+      "arabic": "الْخَبِيرُ",
+      "transliteration": "Al-Khabir",
+      "meaning": "The All-Aware"
+    },
+    {
+      "id": 32,
+      "arabic": "الْحَلِيمُ",
+      "transliteration": "Al-Halim",
+      "meaning": "The Most Forbearing"
+    },
+    {
+      "id": 33,
+      "arabic": "الْعَظِيمُ",
+      "transliteration": "Al-Azim",
+      "meaning": "The Magnificent"
+    },
+    {
+      "id": 34,
+      "arabic": "الْغَفُورُ",
+      "transliteration": "Al-Ghafoor",
+      "meaning": "The Great Forgiver"
+    },
+    {
+      "id": 35,
+      "arabic": "الشَّكُورُ",
+      "transliteration": "Ash-Shakoor",
+      "meaning": "The Most Appreciative"
+    },
+    {
+      "id": 36,
+      "arabic": "الْعَلِيُّ",
+      "transliteration": "Al-Aliyy",
+      "meaning": "The Most High"
+    },
+    {
+      "id": 37,
+      "arabic": "الْكَبِيرُ",
+      "transliteration": "Al-Kabeer",
+      "meaning": "The Most Great"
+    },
+    {
+      "id": 38,
+      "arabic": "الْحَفِيظُ",
+      "transliteration": "Al-Hafiz",
+      "meaning": "The Preserver"
+    },
+    {
+      "id": 39,
+      "arabic": "الْمُقِيتُ",
+      "transliteration": "Al-Muqeet",
+      "meaning": "The Sustainer"
+    },
+    {
+      "id": 40,
+      "arabic": "الْحَسِيبُ",
+      "transliteration": "Al-Haseeb",
+      "meaning": "The Reckoner"
+    },
+    {
+      "id": 41,
+      "arabic": "الْجَلِيلُ",
+      "transliteration": "Al-Jaleel",
+      "meaning": "The Majestic"
+    },
+    {
+      "id": 42,
+      "arabic": "الْكَرِيمُ",
+      "transliteration": "Al-Kareem",
+      "meaning": "The Most Generous"
+    },
+    {
+      "id": 43,
+      "arabic": "الرَّقِيبُ",
+      "transliteration": "Ar-Raqeeb",
+      "meaning": "The Watchful"
+    },
+    {
+      "id": 44,
+      "arabic": "الْمُجِيبُ",
+      "transliteration": "Al-Mujeeb",
+      "meaning": "The Responsive"
+    },
+    {
+      "id": 45,
+      "arabic": "الْوَاسِعُ",
+      "transliteration": "Al-Wasi'",
+      "meaning": "The All-Encompassing"
+    },
+    {
+      "id": 46,
+      "arabic": "الْحَكِيمُ",
+      "transliteration": "Al-Hakeem",
+      "meaning": "The All-Wise"
+    },
+    {
+      "id": 47,
+      "arabic": "الْوَدُودُ",
+      "transliteration": "Al-Wadud",
+      "meaning": "The Loving One"
+    },
+    {
+      "id": 48,
+      "arabic": "الْمَجِيدُ",
+      "transliteration": "Al-Majeed",
+      "meaning": "The Glorious"
+    },
+    {
+      "id": 49,
+      "arabic": "الْبَاعِثُ",
+      "transliteration": "Al-Ba'ith",
+      "meaning": "The Resurrector"
+    },
+    {
+      "id": 50,
+      "arabic": "الشَّهِيدُ",
+      "transliteration": "Ash-Shaheed",
+      "meaning": "The All-Observing Witness"
+    },
+    {
+      "id": 51,
+      "arabic": "الْحَقُّ",
+      "transliteration": "Al-Haqq",
+      "meaning": "The Absolute Truth"
+    },
+    {
+      "id": 52,
+      "arabic": "الْوَكِيلُ",
+      "transliteration": "Al-Wakeel",
+      "meaning": "The Universal Trustee"
+    },
+    {
+      "id": 53,
+      "arabic": "الْقَوِيُّ",
+      "transliteration": "Al-Qawiyy",
+      "meaning": "The All-Strong"
+    },
+    {
+      "id": 54,
+      "arabic": "الْمَتِينُ",
+      "transliteration": "Al-Matin",
+      "meaning": "The Firm One"
+    },
+    {
+      "id": 55,
+      "arabic": "الْوَلِيُّ",
+      "transliteration": "Al-Waliyy",
+      "meaning": "The Protecting Associate"
+    },
+    {
+      "id": 56,
+      "arabic": "الْحَمِيدُ",
+      "transliteration": "Al-Hameed",
+      "meaning": "The Praiseworthy"
+    },
+    {
+      "id": 57,
+      "arabic": "الْمُحْصِي",
+      "transliteration": "Al-Muhsee",
+      "meaning": "The All-Enumerating"
+    },
+    {
+      "id": 58,
+      "arabic": "الْمُبْدِئُ",
+      "transliteration": "Al-Mubdi'",
+      "meaning": "The Originator"
+    },
+    {
+      "id": 59,
+      "arabic": "الْمُعِيدُ",
+      "transliteration": "Al-Mu'id",
+      "meaning": "The Restorer"
+    },
+    {
+      "id": 60,
+      "arabic": "الْمُحْيِي",
+      "transliteration": "Al-Muhyi",
+      "meaning": "The Maintainer of Life"
+    },
+    {
+      "id": 61,
+      "arabic": "الْمُمِيتُ",
+      "transliteration": "Al-Mumeet",
+      "meaning": "The Inflictor of Death"
+    },
+    {
+      "id": 62,
+      "arabic": "الْحَيُّ",
+      "transliteration": "Al-Hayy",
+      "meaning": "The Eternally Living"
+    },
+    {
+      "id": 63,
+      "arabic": "الْقَيُّومُ",
+      "transliteration": "Al-Qayyoom",
+      "meaning": "The Self-Subsisting"
+    },
+    {
+      "id": 64,
+      "arabic": "الْوَاجِدُ",
+      "transliteration": "Al-Wajid",
+      "meaning": "The Perceiver"
+    },
+    {
+      "id": 65,
+      "arabic": "الْمَاجِدُ",
+      "transliteration": "Al-Majid",
+      "meaning": "The All-Noble"
+    },
+    {
+      "id": 66,
+      "arabic": "الْوَاحِدُ",
+      "transliteration": "Al-Wahid",
+      "meaning": "The Only One"
+    },
+    {
+      "id": 67,
+      "arabic": "الْأَحَدُ",
+      "transliteration": "Al-Ahad",
+      "meaning": "The Sole One"
+    },
+    {
+      "id": 68,
+      "arabic": "الصَّمَدُ",
+      "transliteration": "As-Samad",
+      "meaning": "The Supreme Provider"
+    },
+    {
+      "id": 69,
+      "arabic": "الْقَادِرُ",
+      "transliteration": "Al-Qadir",
+      "meaning": "The Omnipotent"
+    },
+    {
+      "id": 70,
+      "arabic": "الْمُقْتَدِرُ",
+      "transliteration": "Al-Muqtadir",
+      "meaning": "The All-Authoritative"
+    },
+    {
+      "id": 71,
+      "arabic": "الْمُقَدِّمُ",
+      "transliteration": "Al-Muqaddim",
+      "meaning": "The Expediter"
+    },
+    {
+      "id": 72,
+      "arabic": "الْمُؤَخِّرُ",
+      "transliteration": "Al-Mu'akhkhir",
+      "meaning": "The Delayer"
+    },
+    {
+      "id": 73,
+      "arabic": "الْأَوَّلُ",
+      "transliteration": "Al-Awwal",
+      "meaning": "The Very First"
+    },
+    {
+      "id": 74,
+      "arabic": "الْآخِرُ",
+      "transliteration": "Al-Akhir",
+      "meaning": "The Infinite Last"
+    },
+    {
+      "id": 75,
+      "arabic": "الظَّاهِرُ",
+      "transliteration": "Az-Zahir",
+      "meaning": "The Perceptible"
+    },
+    {
+      "id": 76,
+      "arabic": "الْبَاطِنُ",
+      "transliteration": "Al-Batin",
+      "meaning": "The Imperceptible"
+    },
+    {
+      "id": 77,
+      "arabic": "الْوَالِي",
+      "transliteration": "Al-Waali",
+      "meaning": "The Sole Governor"
+    },
+    {
+      "id": 78,
+      "arabic": "الْمُتَعَالِي",
+      "transliteration": "Al-Muta'ali",
+      "meaning": "The Extremely Exalted"
+    },
+    {
+      "id": 79,
+      "arabic": "الْبَرُّ",
+      "transliteration": "Al-Barr",
+      "meaning": "The Source of All Goodness"
+    },
+    {
+      "id": 80,
+      "arabic": "التَّوَّابُ",
+      "transliteration": "At-Tawwab",
+      "meaning": "The Ever-Acceptor of Repentance"
+    },
+    {
+      "id": 81,
+      "arabic": "الْمُنْتَقِمُ",
+      "transliteration": "Al-Muntaqim",
+      "meaning": "The Avenger"
+    },
+    {
+      "id": 82,
+      "arabic": "الْعَفُوُّ",
+      "transliteration": "Al-Afuww",
+      "meaning": "The Supreme Pardoner"
+    },
+    {
+      "id": 83,
+      "arabic": "الرَّؤُوفُ",
+      "transliteration": "Ar-Ra'oof",
+      "meaning": "The Benign One"
+    },
+    {
+      "id": 84,
+      "arabic": "مَالِكُ الْمُلْكِ",
+      "transliteration": "Malik-ul-Mulk",
+      "meaning": "The Eternal Possessor of Sovereignty"
+    },
+    {
+      "id": 85,
+      "arabic": "ذُو الْجَلَالِ وَالْإِكْرَامِ",
+      "transliteration": "Dhul-Jalaali-wal-Ikram",
+      "meaning": "The Possessor of Majesty and Honour"
+    },
+    {
+      "id": 86,
+      "arabic": "الْمُقْسِطُ",
+      "transliteration": "Al-Muqsit",
+      "meaning": "The Just One"
+    },
+    {
+      "id": 87,
+      "arabic": "الْجَامِعُ",
+      "transliteration": "Al-Jami'",
+      "meaning": "The Assembler of Scattered Creation"
+    },
+    {
+      "id": 88,
+      "arabic": "الْغَنِيُّ",
+      "transliteration": "Al-Ghaniyy",
+      "meaning": "The Self-Sufficient"
+    },
+    {
+      "id": 89,
+      "arabic": "الْمُغْنِي",
+      "transliteration": "Al-Mughni",
+      "meaning": "The Bestower of Sufficiency"
+    },
+    {
+      "id": 90,
+      "arabic": "الْمَانِعُ",
+      "transliteration": "Al-Mani'",
+      "meaning": "The Withholder"
+    },
+    {
+      "id": 91,
+      "arabic": "الضَّارُّ",
+      "transliteration": "Ad-Dharr",
+      "meaning": "The Distresser"
+    },
+    {
+      "id": 92,
+      "arabic": "النَّافِعُ",
+      "transliteration": "An-Nafi'",
+      "meaning": "The Propitious"
+    },
+    {
+      "id": 93,
+      "arabic": "النُّورُ",
+      "transliteration": "An-Nur",
+      "meaning": "The Light"
+    },
+    {
+      "id": 94,
+      "arabic": "الْهَادِي",
+      "transliteration": "Al-Hadi",
+      "meaning": "The Guide"
+    },
+    {
+      "id": 95,
+      "arabic": "الْبَدِيعُ",
+      "transliteration": "Al-Badi'",
+      "meaning": "The Incomparable Originator"
+    },
+    {
+      "id": 96,
+      "arabic": "الْبَاقِي",
+      "transliteration": "Al-Baqi",
+      "meaning": "The Everlasting"
+    },
+    {
+      "id": 97,
+      "arabic": "الْوَارِثُ",
+      "transliteration": "Al-Warith",
+      "meaning": "The Inheritor"
+    },
+    {
+      "id": 98,
+      "arabic": "الرَّشِيدُ",
+      "transliteration": "Ar-Rasheed",
+      "meaning": "The Righteous Teacher"
+    },
+    {
+      "id": 99,
+      "arabic": "الصَّبُورُ",
+      "transliteration": "As-Sabur",
+      "meaning": "The Patient One"
+    }
+  ]
+}
