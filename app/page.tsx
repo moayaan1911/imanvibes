@@ -1,7 +1,10 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { FaGithub, FaMugHot } from "react-icons/fa6";
 import AddToHomeButton from "@/components/AddToHomeButton";
+import BrandWordmark from "@/components/BrandWordmark";
+import JsonLd from "@/components/JsonLd";
 import MoodGrid from "@/components/MoodGrid";
 import ThemeToggle from "@/components/ThemeToggle";
 import {
@@ -10,6 +13,9 @@ import {
   moodNames,
   quranByMood,
 } from "@/lib/content";
+import { createSeoMetadata } from "@/lib/seo";
+import { getWebPageJsonLd } from "@/lib/structured-data";
+import { siteDescription, siteName } from "@/lib/site";
 
 const featuredMood = "Anxious";
 const featuredVerse = quranByMood[featuredMood][0];
@@ -45,6 +51,13 @@ const sectionLinks = [
   },
 ];
 
+export const metadata: Metadata = createSeoMetadata({
+  description: siteDescription,
+  path: "/",
+  imagePath: "/opengraph-image",
+  keywords: ["Quran by mood", "Hadith", "99 Names of Allah"],
+});
+
 function SectionLinkCard({
   href,
   label,
@@ -78,14 +91,25 @@ export default function Home() {
   return (
     <div className="page-bg relative min-h-screen overflow-x-hidden">
       <main className="mx-auto flex min-h-screen w-full max-w-md flex-col px-4 pt-5">
-        <section className="mb-4 flex items-center justify-between gap-3">
+        <JsonLd
+          data={getWebPageJsonLd({
+            title: siteName,
+            description: siteDescription,
+            path: "/",
+          })}
+        />
+
+        <section
+          className="mb-4 flex items-center justify-between gap-3"
+          data-nosnippet
+        >
           <div className="flex items-center gap-2">
             <AddToHomeButton variant="inline" />
             <ThemeToggle variant="inline" />
           </div>
 
           <div className="flex items-center gap-2">
-            <a
+            <Link
               href="https://github.com/moayaan1911/imanvibes"
               target="_blank"
               rel="noreferrer"
@@ -93,9 +117,9 @@ export default function Home() {
               className="theme-toggle-shell flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-full text-sm"
             >
               <FaGithub />
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="https://moayaan.com/donate"
               target="_blank"
               rel="noreferrer"
@@ -103,7 +127,7 @@ export default function Home() {
               className="theme-toggle-shell flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-full text-sm"
             >
               <FaMugHot />
-            </a>
+            </Link>
           </div>
         </section>
 
@@ -117,14 +141,10 @@ export default function Home() {
               priority
               className="icon-ring rounded-full border"
             />
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[var(--sage-700)]">
-                ImanVibes
-              </p>
-              <p className="mt-1 max-w-xs text-sm leading-6 text-[var(--ink-700)]">
-                Quranic comfort for every mood
-              </p>
-            </div>
+            <BrandWordmark
+              showTagline
+              wordmarkClassName="text-[1.7rem]"
+            />
           </div>
 
           <div className="mt-6 space-y-4">

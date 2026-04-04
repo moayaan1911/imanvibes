@@ -140,13 +140,14 @@ export default function AddToHomeButton({
         type="button"
         onClick={handleInstallClick}
         className={buttonClassName}
+        data-nosnippet
       >
         {installMode === "ios" ? <FaArrowUpFromBracket /> : <FaMobileScreenButton />}
         <span>{buttonLabel}</span>
       </button>
 
       {showHelp ? (
-        <div className={helpClassName}>
+        <div className={helpClassName} data-nosnippet>
           <p className="text-sm leading-6 text-[var(--ink-700)]">
             {installMode === "ios"
               ? "On iPhone or iPad, open the Share menu and tap Add to Home Screen."

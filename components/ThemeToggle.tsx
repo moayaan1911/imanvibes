@@ -65,6 +65,7 @@ export default function ThemeToggle({
       className={className}
       aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
       suppressHydrationWarning
+      data-nosnippet
     >
       {theme === "dark" ? <FaSun /> : <FaMoon />}
       <span>{displayLabel}</span>

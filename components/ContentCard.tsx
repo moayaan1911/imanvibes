@@ -3,7 +3,7 @@
 import { toBlob } from "html-to-image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaTelegramPlane, FaWhatsapp } from "react-icons/fa";
 import { FaCopy, FaDownload, FaShareNodes, FaXTwitter } from "react-icons/fa6";
 import ShareButton from "@/components/ShareButton";
 
@@ -19,6 +19,7 @@ export type ContentCardItem = {
 type ContentCardProps = {
   items: ContentCardItem[];
   kind: "quran" | "hadith" | "names";
+  initialItemId?: string;
 };
 
 const kindLabels = {
@@ -39,9 +40,12 @@ const kindLabels = {
   },
 } as const;
 
-export default function ContentCard({ items, kind }: ContentCardProps) {
+export default function ContentCard({
+  items,
+  kind,
+  initialItemId,
+}: ContentCardProps) {
   const [copyLabel, setCopyLabel] = useState("Copy link");
-  const [instagramLabel, setInstagramLabel] = useState("Instagram");
   const [shareImageLabel, setShareImageLabel] = useState("Share image");
   const [downloadImageLabel, setDownloadImageLabel] = useState("Download image");
   const shareCardRef = useRef<HTMLDivElement>(null);
@@ -49,15 +53,16 @@ export default function ContentCard({ items, kind }: ContentCardProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const requestedItem = searchParams.get("item");
+  const activeItemId = requestedItem ?? initialItemId ?? null;
 
   const index = useMemo(() => {
-    if (!requestedItem) {
+    if (!activeItemId) {
       return 0;
     }
 
-    const matchedIndex = items.findIndex((entry) => entry.id === requestedItem);
+    const matchedIndex = items.findIndex((entry) => entry.id === activeItemId);
     return matchedIndex >= 0 ? matchedIndex : 0;
-  }, [items, requestedItem]);
+  }, [activeItemId, items]);
 
   const item = items[index];
 
@@ -137,32 +142,6 @@ export default function ContentCard({ items, kind }: ContentCardProps) {
     }
   }
 
-  async function handleInstagramShare() {
-    try {
-      if (navigator.share) {
-        await navigator.share({
-          title: "ImanVibes",
-          text: longShareText,
-        });
-        setInstagramLabel("Instagram");
-        return;
-      }
-
-      await navigator.clipboard.writeText(longShareText);
-      window.open("https://www.instagram.com/", "_blank", "noopener,noreferrer");
-      setInstagramLabel("Copied");
-      window.setTimeout(() => setInstagramLabel("Instagram"), 1400);
-    } catch (error) {
-      if (error instanceof Error && error.name === "AbortError") {
-        setInstagramLabel("Instagram");
-        return;
-      }
-
-      setInstagramLabel("Try again");
-      window.setTimeout(() => setInstagramLabel("Instagram"), 1400);
-    }
-  }
-
   function handleNext() {
     const nextItem = items[(index + 1) % items.length];
     const params = new URLSearchParams(searchParams.toString());
@@ -171,12 +150,19 @@ export default function ContentCard({ items, kind }: ContentCardProps) {
     setCopyLabel("Copy link");
   }
 
-  function openShareWindow(platform: "whatsapp" | "x") {
-    const text = platform === "whatsapp" ? longShareText : shortShareText;
+  function openShareWindow(platform: "whatsapp" | "x" | "telegram") {
+    const text =
+      platform === "whatsapp" || platform === "telegram"
+        ? longShareText
+        : shortShareText;
     const href =
       platform === "whatsapp"
         ? `https://wa.me/?text=${encodeURIComponent(text)}`
-        : `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+        : platform === "telegram"
+          ? `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(
+              kindLabels[kind].shareIntro,
+            )}`
+          : `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
 
     window.open(href, "_blank", "noopener,noreferrer");
   }
@@ -263,7 +249,7 @@ export default function ContentCard({ items, kind }: ContentCardProps) {
       id={`${kind}-item-${item.id}`}
       className="surface-section rounded-[30px] p-5"
     >
-      <div className="flex items-center justify-between gap-3">
+      <div className="flex items-center justify-between gap-3" data-nosnippet>
         <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--sage-700)]">
           {kindLabels[kind].badge}
         </p>
@@ -306,7 +292,7 @@ export default function ContentCard({ items, kind }: ContentCardProps) {
         ) : null}
       </div>
 
-      <div className="mt-4 grid grid-cols-2 gap-3">
+      <div className="mt-4 grid grid-cols-2 gap-3" data-nosnippet>
         <button
           type="button"
           onClick={handleNext}
@@ -324,7 +310,7 @@ export default function ContentCard({ items, kind }: ContentCardProps) {
         </button>
       </div>
 
-      <div className="mt-3 grid grid-cols-4 gap-3">
+      <div className="mt-3 grid grid-cols-4 gap-3" data-nosnippet>
         <ShareButton
           label="WhatsApp"
           icon={<FaWhatsapp />}
@@ -338,9 +324,9 @@ export default function ContentCard({ items, kind }: ContentCardProps) {
           iconOnly
         />
         <ShareButton
-          label={instagramLabel}
-          icon={<FaInstagram />}
-          onClick={handleInstagramShare}
+          label="Telegram"
+          icon={<FaTelegramPlane />}
+          onClick={() => openShareWindow("telegram")}
           iconOnly
         />
         <ShareButton
@@ -351,7 +337,7 @@ export default function ContentCard({ items, kind }: ContentCardProps) {
         />
       </div>
 
-      <div className="mt-3 grid grid-cols-2 gap-3">
+      <div className="mt-3 grid grid-cols-2 gap-3" data-nosnippet>
         <ShareButton
           label={shareImageLabel}
           icon={<FaShareNodes />}
@@ -367,53 +353,53 @@ export default function ContentCard({ items, kind }: ContentCardProps) {
       <div className="pointer-events-none fixed left-[-9999px] top-0 w-[720px]">
         <div
           ref={shareCardRef}
-          className="surface-card rounded-[38px] p-8"
+          className="rounded-[38px] border border-[#f1e5c8] bg-[#fffdf8] p-8 shadow-[0_24px_60px_rgba(77,101,86,0.08)]"
         >
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--sage-700)]">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#6f8f7b]">
               ImanVibes
             </p>
-            <p className="mt-2 text-sm text-[var(--ink-700)]">
+            <p className="mt-2 text-sm text-[#566056]">
               Quranic comfort for every mood
             </p>
           </div>
 
-          <div className="surface-item mt-6 rounded-[30px] p-8">
+          <div className="mt-6 rounded-[30px] border border-[rgba(111,143,123,0.12)] bg-white p-8 shadow-[0_10px_24px_rgba(111,143,123,0.06)]">
             <p
               dir="rtl"
               lang="ar"
-              className="text-right text-[3rem] leading-[1.9] text-[var(--ink-900)] [font-family:var(--font-arabic)]"
+              className="text-right text-[3rem] leading-[1.9] text-[#2f342f] [font-family:var(--font-arabic)]"
             >
               {item.arabic}
             </p>
 
             {item.transliteration ? (
-              <p className="mt-6 text-lg font-semibold uppercase tracking-[0.18em] text-[var(--sage-700)]">
+              <p className="mt-6 text-lg font-semibold uppercase tracking-[0.18em] text-[#6f8f7b]">
                 {item.transliteration}
               </p>
             ) : null}
 
             {item.translation ? (
-              <p className="mt-6 text-[1.65rem] leading-[1.7] text-[var(--ink-900)]">
+              <p className="mt-6 text-[1.65rem] leading-[1.7] text-[#2f342f]">
                 {item.translation}
               </p>
             ) : null}
 
             {item.meaning ? (
-              <p className="mt-6 text-[1.65rem] leading-[1.7] text-[var(--ink-900)]">
+              <p className="mt-6 text-[1.65rem] leading-[1.7] text-[#2f342f]">
                 {item.meaning}
               </p>
             ) : null}
 
             {item.source ? (
-              <p className="mt-6 text-lg font-medium text-[var(--sage-700)]">
+              <p className="mt-6 text-lg font-medium text-[#6f8f7b]">
                 {item.source}
               </p>
             ) : null}
           </div>
 
           <div className="mt-6 flex justify-end">
-            <p className="text-right text-xs leading-5 text-[var(--ink-700)]">
+            <p className="text-right text-xs leading-5 text-[#566056]">
               {shareHomeUrl}
             </p>
           </div>

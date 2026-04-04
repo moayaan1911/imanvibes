@@ -52,3 +52,15 @@ export function getMoodHref(mood: string) {
 export function getMoodFromSlug(slug: string) {
   return moodNames.find((mood) => slugifyMood(mood) === slug) ?? null;
 }
+
+export function getQuranEntryByMoodAndId(mood: string, itemId: string) {
+  return quranByMood[mood]?.find((entry) => String(entry.entry) === itemId) ?? null;
+}
+
+export function getHadithById(itemId: string) {
+  return hadithCollection.find((entry) => String(entry.id) === itemId) ?? null;
+}
+
+export function getAllahNameById(itemId: string) {
+  return allahNames.find((entry) => String(entry.id) === itemId) ?? null;
+}

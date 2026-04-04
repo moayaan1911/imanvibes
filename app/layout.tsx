@@ -1,14 +1,36 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import Footer from "@/components/Footer";
-import { Manrope, Noto_Naskh_Arabic } from "next/font/google";
+import JsonLd from "@/components/JsonLd";
+import {
+  Amiri,
+  Cormorant_Garamond,
+  Manrope,
+  Noto_Naskh_Arabic,
+} from "next/font/google";
 import BottomNav from "@/components/BottomNav";
 import ThemeToggle from "@/components/ThemeToggle";
-import { Analytics } from "@vercel/analytics/next";
+import { createSeoMetadata } from "@/lib/seo";
+import { getOrganizationJsonLd, getWebsiteJsonLd } from "@/lib/structured-data";
+import { getSiteUrl, siteDescription, siteName } from "@/lib/site";
 import "./globals.css";
 
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
+});
+
+const cormorantGaramond = Cormorant_Garamond({
+  variable: "--font-cormorant-garamond",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  style: ["normal", "italic"],
+});
+
+const amiri = Amiri({
+  variable: "--font-amiri",
+  subsets: ["arabic"],
+  weight: ["400", "700"],
 });
 
 const notoNaskhArabic = Noto_Naskh_Arabic({
@@ -18,8 +40,20 @@ const notoNaskhArabic = Noto_Naskh_Arabic({
 });
 
 export const metadata: Metadata = {
-  title: "ImanVibes",
-  description: "Quran by mood, Hadith, and the 99 Names of Allah.",
+  metadataBase: new URL(getSiteUrl()),
+  title: {
+    default: siteName,
+    template: `%s | ${siteName}`,
+  },
+  applicationName: siteName,
+  creator: "moayaan.eth",
+  publisher: siteName,
+  category: "Religion & spirituality",
+  ...createSeoMetadata({
+    description: siteDescription,
+    path: "/",
+    imagePath: "/opengraph-image",
+  }),
   manifest: "/manifest.webmanifest",
   icons: {
     icon: "/favicon.ico",
@@ -71,13 +105,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${notoNaskhArabic.variable} h-full antialiased`}
+      className={`${manrope.variable} ${cormorantGaramond.variable} ${amiri.variable} ${notoNaskhArabic.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="min-h-full flex flex-col pb-[11.5rem]">
+        <JsonLd data={[getOrganizationJsonLd(), getWebsiteJsonLd()]} />
         <ThemeToggle hideOnHome />
         <div className="flex-1">{children}</div>
         <Footer />

@@ -14,7 +14,10 @@ export default function BottomNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="nav-shell fixed inset-x-0 bottom-0 z-20 px-4 pb-[calc(0.9rem+env(safe-area-inset-bottom))] pt-3 backdrop-blur">
+    <nav
+      className="nav-shell fixed inset-x-0 bottom-0 z-20 px-4 pb-[calc(0.9rem+env(safe-area-inset-bottom))] pt-3 backdrop-blur"
+      data-nosnippet
+    >
       <div className="mx-auto flex w-full max-w-md items-center justify-between gap-2">
         {items.map((item) => {
           const active =
