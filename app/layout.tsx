@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { Manrope, Noto_Naskh_Arabic } from "next/font/google";
 import BottomNav from "@/components/BottomNav";
 import ThemeToggle from "@/components/ThemeToggle";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -81,6 +82,7 @@ export default function RootLayout({
         <div className="flex-1">{children}</div>
         <Footer />
         <BottomNav />
+        <Analytics />
       </body>
     </html>
   );
