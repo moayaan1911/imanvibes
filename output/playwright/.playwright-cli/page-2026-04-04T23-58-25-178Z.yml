@@ -1,0 +1,51 @@
+- generic [active] [ref=e1]:
+  - button "Switch to light mode" [ref=e2] [cursor=pointer]:
+    - img [ref=e3]
+    - generic [ref=e5]: Light mode
+  - main [ref=e8]:
+    - generic [ref=e9]:
+      - paragraph [ref=e10]: Quran by Mood
+      - heading "Anxious" [level=1] [ref=e11]
+      - paragraph [ref=e12]: Browse 5 verses selected for this feeling. Use the next button to move through them one by one.
+    - generic [ref=e13]:
+      - heading "Explore more moods" [level=2] [ref=e14]
+      - generic [ref=e15]:
+        - link "Sad 5 verses" [ref=e16] [cursor=pointer]:
+          - /url: /quran/sad
+          - paragraph [ref=e17]: Sad
+          - paragraph [ref=e18]: 5 verses
+        - link "Lonely 5 verses" [ref=e19] [cursor=pointer]:
+          - /url: /quran/lonely
+          - paragraph [ref=e20]: Lonely
+          - paragraph [ref=e21]: 5 verses
+        - link "Angry 5 verses" [ref=e22] [cursor=pointer]:
+          - /url: /quran/angry
+          - paragraph [ref=e23]: Angry
+          - paragraph [ref=e24]: 5 verses
+        - link "Grateful 5 verses" [ref=e25] [cursor=pointer]:
+          - /url: /quran/grateful
+          - paragraph [ref=e26]: Grateful
+          - paragraph [ref=e27]: 5 verses
+        - link "Thankful 5 verses" [ref=e28] [cursor=pointer]:
+          - /url: /quran/thankful
+          - paragraph [ref=e29]: Thankful
+          - paragraph [ref=e30]: 5 verses
+        - link "Happy 5 verses" [ref=e31] [cursor=pointer]:
+          - /url: /quran/happy
+          - paragraph [ref=e32]: Happy
+          - paragraph [ref=e33]: 5 verses
+  - generic [ref=e34]:
+    - text: © 2026
+    - link "♦moayaan.eth♦" [ref=e35] [cursor=pointer]:
+      - /url: https://moayaan.com
+  - navigation [ref=e36]:
+    - generic [ref=e37]:
+      - link "Home" [ref=e38] [cursor=pointer]:
+        - /url: /
+      - link "Quran" [ref=e39] [cursor=pointer]:
+        - /url: /quran
+      - link "Hadith" [ref=e40] [cursor=pointer]:
+        - /url: /hadith
+      - link "Names" [ref=e41] [cursor=pointer]:
+        - /url: /names
+  - alert [ref=e42]

@@ -1,0 +1,122 @@
+- generic [active] [ref=e1]:
+  - main [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - button "Add to Home" [ref=e8] [cursor=pointer]:
+            - img [ref=e9]
+            - generic [ref=e11]: Add to Home
+          - paragraph [ref=e107]: In Safari on Mac, open the File menu and choose Add to Dock.
+        - button "Switch to dark mode" [ref=e12] [cursor=pointer]:
+          - img [ref=e13]
+          - generic [ref=e15]: Dark mode
+      - generic [ref=e16]:
+        - link "GitHub" [ref=e17] [cursor=pointer]:
+          - /url: https://github.com/moayaan1911/imanvibes
+          - img [ref=e18]
+        - link "Support" [ref=e20] [cursor=pointer]:
+          - /url: https://moayaan.com/donate
+          - img [ref=e21]
+    - generic [ref=e23]:
+      - generic [ref=e24]:
+        - img "ImanVibes icon" [ref=e25]
+        - generic [ref=e26]:
+          - paragraph [ref=e27]:
+            - generic [ref=e28]: إيمان
+            - generic [ref=e29]: Vibes
+          - paragraph [ref=e30]: Quranic comfort for every mood
+      - generic [ref=e31]:
+        - heading "A quiet place for Quran, Hadith, and the 99 Names of Allah." [level=1] [ref=e32]
+        - paragraph [ref=e33]: Open the mood you are carrying, read content exactly as stored, and move through reminders without noise, sign-ups, or clutter.
+      - generic [ref=e34]:
+        - link "Browse moods" [ref=e35] [cursor=pointer]:
+          - /url: /quran
+        - link "Read hadith" [ref=e36] [cursor=pointer]:
+          - /url: /hadith
+    - generic [ref=e37]:
+      - link "Quran by mood Find verses grouped around what your heart is carrying. 21 moods" [ref=e38] [cursor=pointer]:
+        - /url: /quran
+        - generic [ref=e39]:
+          - generic [ref=e40]:
+            - paragraph [ref=e41]: Quran by mood
+            - paragraph [ref=e42]: Find verses grouped around what your heart is carrying.
+          - generic [ref=e43]: 21 moods
+      - link "Hadith Short reminders you can return to without friction. 30 narrations" [ref=e44] [cursor=pointer]:
+        - /url: /hadith
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - paragraph [ref=e47]: Hadith
+            - paragraph [ref=e48]: Short reminders you can return to without friction.
+          - generic [ref=e49]: 30 narrations
+      - link "99 Names Reflect through the names, meanings, and mercy of Allah. 99 names" [ref=e50] [cursor=pointer]:
+        - /url: /names
+        - generic [ref=e51]:
+          - generic [ref=e52]:
+            - paragraph [ref=e53]: 99 Names
+            - paragraph [ref=e54]: Reflect through the names, meanings, and mercy of Allah.
+          - generic [ref=e55]: 99 names
+    - generic [ref=e56]:
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - paragraph [ref=e59]: Featured Ayah
+          - heading "Quran for anxious hearts" [level=2] [ref=e60]
+        - generic [ref=e61]: Anxious
+      - article [ref=e62]:
+        - paragraph [ref=e63]: ٱلَّذِينَ ءَامَنُوا۟ وَتَطْمَئِنُّ قُلُوبُهُم بِذِكْرِ ٱللَّهِ ۗ أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ
+        - paragraph [ref=e64]: Those who have believed and whose hearts are assured by the remembrance of Allah. Unquestionably, by the remembrance of Allah hearts are assured.
+        - paragraph [ref=e65]: Surah Ar-Ra'd (13):28
+    - generic [ref=e66]:
+      - generic [ref=e67]:
+        - generic [ref=e68]:
+          - paragraph [ref=e69]: Start Here
+          - heading "Browse by mood" [level=2] [ref=e70]
+        - link "See all" [ref=e71] [cursor=pointer]:
+          - /url: /quran
+      - generic [ref=e72]:
+        - link "Sad 5 verses" [ref=e73] [cursor=pointer]:
+          - /url: /quran/sad
+          - paragraph [ref=e74]: Sad
+          - paragraph [ref=e75]: 5 verses
+        - link "Anxious 5 verses" [ref=e76] [cursor=pointer]:
+          - /url: /quran/anxious
+          - paragraph [ref=e77]: Anxious
+          - paragraph [ref=e78]: 5 verses
+        - link "Lonely 5 verses" [ref=e79] [cursor=pointer]:
+          - /url: /quran/lonely
+          - paragraph [ref=e80]: Lonely
+          - paragraph [ref=e81]: 5 verses
+        - link "Heartbroken 5 verses" [ref=e82] [cursor=pointer]:
+          - /url: /quran/heartbroken
+          - paragraph [ref=e83]: Heartbroken
+          - paragraph [ref=e84]: 5 verses
+        - link "Grateful 5 verses" [ref=e85] [cursor=pointer]:
+          - /url: /quran/grateful
+          - paragraph [ref=e86]: Grateful
+          - paragraph [ref=e87]: 5 verses
+        - link "Seeking Peace 5 verses" [ref=e88] [cursor=pointer]:
+          - /url: /quran/seeking-peace
+          - paragraph [ref=e89]: Seeking Peace
+          - paragraph [ref=e90]: 5 verses
+        - link "Low Iman 5 verses" [ref=e91] [cursor=pointer]:
+          - /url: /quran/low-iman
+          - paragraph [ref=e92]: Low Iman
+          - paragraph [ref=e93]: 5 verses
+        - link "Tawakkul 5 verses" [ref=e94] [cursor=pointer]:
+          - /url: /quran/tawakkul
+          - paragraph [ref=e95]: Tawakkul
+          - paragraph [ref=e96]: 5 verses
+  - generic [ref=e97]:
+    - text: © 2026
+    - link "♦moayaan.eth♦" [ref=e98] [cursor=pointer]:
+      - /url: https://moayaan.com
+  - navigation [ref=e99]:
+    - generic [ref=e100]:
+      - link "Home" [ref=e101] [cursor=pointer]:
+        - /url: /
+      - link "Quran" [ref=e102] [cursor=pointer]:
+        - /url: /quran
+      - link "Hadith" [ref=e103] [cursor=pointer]:
+        - /url: /hadith
+      - link "Names" [ref=e104] [cursor=pointer]:
+        - /url: /names
+  - alert [ref=e105]

@@ -1,5 +1,25 @@
-const STATIC_CACHE = "imanvibes-static-v1";
-const OFFLINE_ASSETS = ["/", "/favicon.ico", "/icon-192x192.png", "/icon-512x512.png"];
+const STATIC_CACHE = "imanvibes-static-v2";
+const RUNTIME_CACHE = "imanvibes-runtime-v2";
+const OFFLINE_ASSETS = [
+  "/",
+  "/quran",
+  "/hadith",
+  "/names",
+  "/manifest.webmanifest",
+  "/favicon.ico",
+  "/icon-192x192.png",
+  "/icon-512x512.png",
+];
+
+async function cacheResponse(cacheName, request, response) {
+  if (!response || !response.ok || request.method !== "GET") {
+    return response;
+  }
+
+  const cache = await caches.open(cacheName);
+  cache.put(request, response.clone()).catch(() => {});
+  return response;
+}
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -39,26 +59,54 @@ self.addEventListener("fetch", (event) => {
   }
 
   if (request.mode === "navigate") {
-    event.respondWith(fetch(request).catch(() => caches.match("/")));
+    event.respondWith(
+      fetch(request)
+        .then((response) => cacheResponse(RUNTIME_CACHE, request, response))
+        .catch(async () => {
+          const cachedPage =
+            (await caches.match(request)) || (await caches.match("/"));
+          return cachedPage || Response.error();
+        }),
+    );
     return;
   }
 
-  if (request.destination === "image") {
+  if (
+    ["style", "script", "font", "image"].includes(request.destination) ||
+    url.pathname.endsWith(".webmanifest")
+  ) {
     event.respondWith(
       caches.match(request).then((cachedResponse) => {
+        const networkFetch = fetch(request)
+          .then((networkResponse) =>
+            cacheResponse(
+              request.destination === "image" ? STATIC_CACHE : RUNTIME_CACHE,
+              request,
+              networkResponse,
+            ),
+          )
+          .catch(() => cachedResponse);
+
         if (cachedResponse) {
+          event.waitUntil(networkFetch);
           return cachedResponse;
         }
 
-        return fetch(request).then((networkResponse) => {
-          const responseClone = networkResponse.clone();
-          caches
-            .open(STATIC_CACHE)
-            .then((cache) => cache.put(request, responseClone))
-            .catch(() => {});
-          return networkResponse;
-        });
+        return networkFetch;
       }),
     );
+    return;
   }
+
+  event.respondWith(
+    caches.match(request).then((cachedResponse) => {
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+
+      return fetch(request).then((networkResponse) =>
+        cacheResponse(RUNTIME_CACHE, request, networkResponse),
+      );
+    }),
+  );
 });

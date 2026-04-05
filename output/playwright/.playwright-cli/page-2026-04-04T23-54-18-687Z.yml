@@ -1,0 +1,89 @@
+- generic [active] [ref=e1]:
+  - button "Switch to dark mode" [ref=e2] [cursor=pointer]:
+    - img [ref=e3]
+    - generic [ref=e5]: Dark mode
+  - main [ref=e8]:
+    - generic [ref=e9]:
+      - paragraph [ref=e10]: Quran by Mood
+      - heading "Anxious" [level=1] [ref=e11]
+      - paragraph [ref=e12]: Browse 5 verses selected for this feeling. Use the next button to move through them one by one.
+    - article [ref=e14]:
+      - generic [ref=e15]:
+        - paragraph [ref=e16]: Quran
+        - generic [ref=e17]: 1 / 5
+      - generic [ref=e18]:
+        - paragraph [ref=e19]: ٱلَّذِينَ ءَامَنُوا۟ وَتَطْمَئِنُّ قُلُوبُهُم بِذِكْرِ ٱللَّهِ ۗ أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ
+        - paragraph [ref=e20]: Those who have believed and whose hearts are assured by the remembrance of Allah. Unquestionably, by the remembrance of Allah hearts are assured.
+        - paragraph [ref=e21]: Surah Ar-Ra'd (13):28
+      - generic [ref=e22]:
+        - button "Next verse" [ref=e23] [cursor=pointer]
+        - button "Coming soon" [disabled] [ref=e24]
+      - generic [ref=e25]:
+        - button "WhatsApp" [ref=e26] [cursor=pointer]:
+          - img [ref=e28]
+        - button "X" [ref=e30] [cursor=pointer]:
+          - img [ref=e32]
+        - button "Telegram" [ref=e34] [cursor=pointer]:
+          - img [ref=e36]
+        - button "Copy link" [ref=e38] [cursor=pointer]:
+          - img [ref=e40]
+      - generic [ref=e42]:
+        - button "Share image" [ref=e43] [cursor=pointer]:
+          - img [ref=e45]
+          - generic [ref=e47]: Share image
+        - button "Download image" [ref=e48] [cursor=pointer]:
+          - img [ref=e50]
+          - generic [ref=e52]: Download image
+      - generic:
+        - generic:
+          - generic:
+            - paragraph: ImanVibes
+            - paragraph: Quranic comfort for every mood
+          - generic:
+            - paragraph: ٱلَّذِينَ ءَامَنُوا۟ وَتَطْمَئِنُّ قُلُوبُهُم بِذِكْرِ ٱللَّهِ ۗ أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ
+            - paragraph: Those who have believed and whose hearts are assured by the remembrance of Allah. Unquestionably, by the remembrance of Allah hearts are assured.
+            - paragraph: Surah Ar-Ra'd (13):28
+          - generic:
+            - paragraph: 127.0.0.1:3000
+    - generic [ref=e53]:
+      - heading "Explore more moods" [level=2] [ref=e54]
+      - generic [ref=e55]:
+        - link "Sad 5 verses" [ref=e56] [cursor=pointer]:
+          - /url: /quran/sad
+          - paragraph [ref=e57]: Sad
+          - paragraph [ref=e58]: 5 verses
+        - link "Lonely 5 verses" [ref=e59] [cursor=pointer]:
+          - /url: /quran/lonely
+          - paragraph [ref=e60]: Lonely
+          - paragraph [ref=e61]: 5 verses
+        - link "Angry 5 verses" [ref=e62] [cursor=pointer]:
+          - /url: /quran/angry
+          - paragraph [ref=e63]: Angry
+          - paragraph [ref=e64]: 5 verses
+        - link "Grateful 5 verses" [ref=e65] [cursor=pointer]:
+          - /url: /quran/grateful
+          - paragraph [ref=e66]: Grateful
+          - paragraph [ref=e67]: 5 verses
+        - link "Thankful 5 verses" [ref=e68] [cursor=pointer]:
+          - /url: /quran/thankful
+          - paragraph [ref=e69]: Thankful
+          - paragraph [ref=e70]: 5 verses
+        - link "Happy 5 verses" [ref=e71] [cursor=pointer]:
+          - /url: /quran/happy
+          - paragraph [ref=e72]: Happy
+          - paragraph [ref=e73]: 5 verses
+  - generic [ref=e74]:
+    - text: © 2026
+    - link "♦moayaan.eth♦" [ref=e75] [cursor=pointer]:
+      - /url: https://moayaan.com
+  - navigation [ref=e76]:
+    - generic [ref=e77]:
+      - link "Home" [ref=e78] [cursor=pointer]:
+        - /url: /
+      - link "Quran" [ref=e79] [cursor=pointer]:
+        - /url: /quran
+      - link "Hadith" [ref=e80] [cursor=pointer]:
+        - /url: /hadith
+      - link "Names" [ref=e81] [cursor=pointer]:
+        - /url: /names
+  - alert [ref=e82]

@@ -25,11 +25,22 @@ export default function AddToHomeButton({
   const [installMode, setInstallMode] = useState<InstallMode>("fallback");
   const [buttonLabel, setButtonLabel] = useState("Add to Home");
   const [showHelp, setShowHelp] = useState(false);
+  const [fallbackHelpText, setFallbackHelpText] = useState(
+    "If no prompt appears, open the browser menu and tap Install app or Add to Home Screen.",
+  );
 
   useEffect(() => {
     if (typeof window === "undefined") {
       return;
     }
+
+    const userAgent = window.navigator.userAgent;
+    const isArc = /\bArc\//i.test(userAgent);
+    const isIPhoneLike = /iphone|ipad|ipod/i.test(userAgent);
+    const isSafariDesktop =
+      /Safari/i.test(userAgent) &&
+      !/Chrome|CriOS|Edg|OPR|Arc/i.test(userAgent) &&
+      !isIPhoneLike;
 
     const isStandalone =
       window.matchMedia("(display-mode: standalone)").matches ||
@@ -37,20 +48,23 @@ export default function AddToHomeButton({
 
     const nextMode = isStandalone
       ? "hidden"
-      : /iphone|ipad|ipod/i.test(window.navigator.userAgent)
+      : isIPhoneLike
         ? "ios"
         : "fallback";
 
     const frame = window.requestAnimationFrame(() => {
       setInstallMode(nextMode);
+      setFallbackHelpText(
+        isArc
+          ? "Arc on desktop does not support installing PWAs. Open this site in Chrome or Edge to install it."
+          : isSafariDesktop
+            ? "In Safari on Mac, open the File menu and choose Add to Dock."
+            : "If no prompt appears, open the browser menu and choose Install app or Add to Home Screen.",
+      );
     });
 
     if (isStandalone) {
       return () => window.cancelAnimationFrame(frame);
-    }
-
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("/sw.js").catch(() => {});
     }
 
     function handleBeforeInstallPrompt(event: Event) {
@@ -151,7 +165,7 @@ export default function AddToHomeButton({
           <p className="text-sm leading-6 text-[var(--ink-700)]">
             {installMode === "ios"
               ? "On iPhone or iPad, open the Share menu and tap Add to Home Screen."
-              : "If no prompt appears, open the browser menu and tap Install app or Add to Home Screen."}
+              : fallbackHelpText}
           </p>
         </div>
       ) : null}

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
+import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import {
   Amiri,
   Cormorant_Garamond,
@@ -112,6 +113,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="min-h-full flex flex-col pb-[11.5rem]">
+        <ServiceWorkerRegistration />
         <JsonLd data={[getOrganizationJsonLd(), getWebsiteJsonLd()]} />
         <ThemeToggle hideOnHome />
         <div className="flex-1">{children}</div>

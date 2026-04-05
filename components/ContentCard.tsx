@@ -1,7 +1,7 @@
 "use client";
 
 import { toBlob } from "html-to-image";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { FaTelegramPlane, FaWhatsapp } from "react-icons/fa";
 import { FaCopy, FaDownload, FaShareNodes, FaXTwitter } from "react-icons/fa6";
@@ -54,6 +54,11 @@ export default function ContentCard({
   const searchParams = useSearchParams();
   const requestedItem = searchParams.get("item");
   const activeItemId = requestedItem ?? initialItemId ?? null;
+  const runtimeOrigin = useSyncExternalStore(
+    () => () => {},
+    () => window.location.origin,
+    () => "",
+  );
 
   const index = useMemo(() => {
     if (!activeItemId) {
@@ -78,6 +83,28 @@ export default function ContentCard({
   }, [item.id, pathname, router, searchParams]);
 
   const shareUrl = useMemo(() => {
+    if (!runtimeOrigin) {
+      return "";
+    }
+
+    const url = new URL(pathname, runtimeOrigin);
+    url.searchParams.set("item", item.id);
+    return url.toString();
+  }, [item.id, pathname, runtimeOrigin]);
+
+  const shareHomeUrl = useMemo(() => {
+    if (!runtimeOrigin) {
+      return "";
+    }
+
+    return runtimeOrigin.replace(/^https?:\/\//, "");
+  }, [runtimeOrigin]);
+
+  function resolveShareUrl() {
+    if (shareUrl) {
+      return shareUrl;
+    }
+
     if (typeof window === "undefined") {
       return "";
     }
@@ -85,15 +112,7 @@ export default function ContentCard({
     const url = new URL(pathname, window.location.origin);
     url.searchParams.set("item", item.id);
     return url.toString();
-  }, [item.id, pathname]);
-
-  const shareHomeUrl = useMemo(() => {
-    if (!shareUrl) {
-      return "";
-    }
-
-    return new URL(shareUrl).origin.replace(/^https?:\/\//, "");
-  }, [shareUrl]);
+  }
 
   const longShareText = useMemo(() => {
     const lines =
@@ -132,8 +151,16 @@ export default function ContentCard({
   }, [item, kind, shareUrl]);
 
   async function handleCopy() {
+    const urlToCopy = resolveShareUrl();
+
+    if (!urlToCopy) {
+      setCopyLabel("Copy failed");
+      window.setTimeout(() => setCopyLabel("Copy link"), 1400);
+      return;
+    }
+
     try {
-      await navigator.clipboard.writeText(shareUrl);
+      await navigator.clipboard.writeText(urlToCopy);
       setCopyLabel("Link copied");
       window.setTimeout(() => setCopyLabel("Copy link"), 1400);
     } catch {
@@ -151,15 +178,16 @@ export default function ContentCard({
   }
 
   function openShareWindow(platform: "whatsapp" | "x" | "telegram") {
+    const resolvedShareUrl = resolveShareUrl();
     const text =
       platform === "whatsapp" || platform === "telegram"
-        ? longShareText
-        : shortShareText;
+        ? longShareText.replace(shareUrl, resolvedShareUrl)
+        : shortShareText.replace(shareUrl, resolvedShareUrl);
     const href =
       platform === "whatsapp"
         ? `https://wa.me/?text=${encodeURIComponent(text)}`
-        : platform === "telegram"
-          ? `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(
+        : platform === "telegram" && resolvedShareUrl
+          ? `https://t.me/share/url?url=${encodeURIComponent(resolvedShareUrl)}&text=${encodeURIComponent(
               kindLabels[kind].shareIntro,
             )}`
           : `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
@@ -200,6 +228,7 @@ export default function ContentCard({
 
   async function handleShareImage() {
     setShareImageLabel("Preparing...");
+    const resolvedShareUrl = resolveShareUrl();
 
     try {
       const { blob, file } = await createImageAsset();
@@ -208,7 +237,7 @@ export default function ContentCard({
         await navigator.share({
           files: [file],
           title: "ImanVibes",
-          text: `${kindLabels[kind].shareIntro} ${shareUrl}`,
+          text: `${kindLabels[kind].shareIntro} ${resolvedShareUrl}`.trim(),
         });
 
         setShareImageLabel("Shared");
