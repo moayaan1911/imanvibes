@@ -1,0 +1,66 @@
+- generic [active] [ref=e1]:
+  - button "Switch to dark mode" [ref=e2] [cursor=pointer]:
+    - img [ref=e3]
+    - generic [ref=e5]: Dark mode
+  - main [ref=e8]:
+    - generic [ref=e9]:
+      - generic [ref=e10]:
+        - img "ImanVibes icon" [ref=e11]
+        - paragraph [ref=e13]:
+          - generic [ref=e14]: إيمان
+          - generic [ref=e15]: Vibes
+      - heading "99 Names" [level=1] [ref=e16]
+      - paragraph [ref=e17]: Reflect through the names of Allah.
+    - article [ref=e19]:
+      - generic [ref=e20]:
+        - paragraph [ref=e21]: 99 Names
+        - generic [ref=e22]: 1 / 99
+      - generic [ref=e23]:
+        - paragraph [ref=e24]: الرَّحْمَنُ
+        - paragraph [ref=e25]: Ar-Rahman
+        - paragraph [ref=e26]: The Most Merciful
+      - generic [ref=e27]:
+        - button "Next name" [ref=e28] [cursor=pointer]
+        - button "Coming soon" [disabled] [ref=e29]
+      - generic [ref=e30]:
+        - button "WhatsApp" [ref=e31] [cursor=pointer]:
+          - img [ref=e33]
+        - button "X" [ref=e35] [cursor=pointer]:
+          - img [ref=e37]
+        - button "Telegram" [ref=e39] [cursor=pointer]:
+          - img [ref=e41]
+        - button "Copy link" [ref=e43] [cursor=pointer]:
+          - img [ref=e45]
+      - generic [ref=e47]:
+        - button "Share image" [ref=e48] [cursor=pointer]:
+          - img [ref=e50]
+          - generic [ref=e52]: Share image
+        - button "Download image" [ref=e53] [cursor=pointer]:
+          - img [ref=e55]
+          - generic [ref=e57]: Download image
+      - generic:
+        - generic:
+          - generic:
+            - paragraph: ImanVibes
+            - paragraph: Quranic comfort for every mood
+          - generic:
+            - paragraph: الرَّحْمَنُ
+            - paragraph: Ar-Rahman
+            - paragraph: The Most Merciful
+          - generic:
+            - paragraph: 127.0.0.1:3000
+  - generic [ref=e58]:
+    - text: © 2026
+    - link "♦moayaan.eth♦" [ref=e59] [cursor=pointer]:
+      - /url: https://moayaan.com
+  - navigation [ref=e60]:
+    - generic [ref=e61]:
+      - link "Home" [ref=e62] [cursor=pointer]:
+        - /url: /
+      - link "Quran" [ref=e63] [cursor=pointer]:
+        - /url: /quran
+      - link "Hadith" [ref=e64] [cursor=pointer]:
+        - /url: /hadith
+      - link "Names" [ref=e65] [cursor=pointer]:
+        - /url: /names
+  - alert [ref=e66]
