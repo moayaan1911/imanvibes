@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/temp"],
+        disallow: ["/temp", "/test"],
       },
       {
         userAgent: [
@@ -23,7 +23,7 @@ export default function robots(): MetadataRoute.Robots {
           "PerplexityBot",
         ],
         allow: "/",
-        disallow: ["/temp"],
+        disallow: ["/temp", "/test"],
       },
       {
         userAgent: ["ChatGPT-User", "Claude-User", "Perplexity-User"],

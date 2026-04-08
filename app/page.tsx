@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { FaGithub, FaMugHot } from "react-icons/fa6";
+import { FaGithub, FaMicrochip, FaMugHot } from "react-icons/fa6";
 import AddToHomeButton from "@/components/AddToHomeButton";
 import BrandWordmark from "@/components/BrandWordmark";
 import JsonLd from "@/components/JsonLd";
@@ -160,15 +160,27 @@ export default function Home() {
           <div className="mt-6 grid grid-cols-2 gap-3">
             <Link
               href="/quran"
-              className="button-primary cursor-pointer rounded-full px-4 py-3 text-center text-sm font-semibold"
+              className="button-primary flex min-h-[3.5rem] cursor-pointer items-center justify-center rounded-[22px] px-4 py-2 text-center text-sm font-semibold"
             >
               Browse moods
             </Link>
             <Link
-              href="/hadith"
-              className="button-secondary cursor-pointer rounded-full px-4 py-3 text-center text-sm font-semibold"
+              href="/alif"
+              className="button-secondary relative flex min-h-[3.5rem] cursor-pointer items-center overflow-visible rounded-[22px] px-4 py-2 text-left"
             >
-              Read hadith
+              <span className="absolute left-1/2 top-0 z-10 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full border border-[var(--gold-400)] bg-[color:rgba(232,216,173,0.18)] px-2.5 py-1 text-[8px] font-semibold uppercase tracking-[0.1em] text-[var(--gold-400)] shadow-[0_8px_18px_rgba(200,169,107,0.2)] backdrop-blur">
+                Our first AI model
+              </span>
+              <span className="flex w-full items-center justify-center gap-3">
+                <span className="pill-soft inline-flex size-7 shrink-0 items-center justify-center rounded-full text-sm">
+                  <FaMicrochip />
+                </span>
+                <span className="block">
+                  <span className="block whitespace-nowrap text-base font-semibold text-[var(--ink-900)]">
+                    Alif-1.0
+                  </span>
+                </span>
+              </span>
             </Link>
           </div>
         </section>

@@ -14,6 +14,8 @@ Quranic comfort for every mood.
 
 ImanVibes is a calm, mobile-first Islamic web app built around a simple idea: open the Quran by how you feel right now, then move through a small set of verses without noise, sign-ups, or clutter. Alongside Quran by mood, the app includes Hadith and the 99 Names of Allah in the same quiet, text-first experience.
 
+The project now also includes **Alif-1.0**, the first Islamic AI model by ImanVibes, with its own landing page inside the same product.
+
 It is intentionally lightweight:
 
 - no auth
@@ -25,6 +27,8 @@ It is intentionally lightweight:
 ## Live
 
 - App: [https://imanvibes.vercel.app/](https://imanvibes.vercel.app/)
+- Alif page: [https://imanvibes.vercel.app/alif](https://imanvibes.vercel.app/alif)
+- Alif on Hugging Face: [https://huggingface.co/mdayaan1911/alif-1.0](https://huggingface.co/mdayaan1911/alif-1.0)
 - GitHub: [https://github.com/moayaan1911/imanvibes](https://github.com/moayaan1911/imanvibes)
 
 ## Preview
@@ -42,6 +46,7 @@ It is intentionally lightweight:
 - Browse Quran verses grouped by mood
 - Read one item at a time in a clean, card-based flow
 - Open Hadith and the 99 Names of Allah in the same interface
+- Explore **Alif-1.0**, the first Islamic AI model by ImanVibes
 - Share each item by link, WhatsApp, X, Telegram, share image, or download image
 - Generate dynamic Open Graph images for the homepage and quote pages
 - Install the site to the home screen / dock as a PWA
@@ -54,6 +59,7 @@ flowchart TD
   A[Home] --> B[Quran by Mood]
   A --> C[Hadith]
   A --> D[99 Names]
+  A --> I[Alif-1.0]
   B --> E[Item-specific link]
   C --> E
   D --> E
@@ -67,6 +73,7 @@ flowchart TD
 | Route           | Purpose                                       |
 | --------------- | --------------------------------------------- |
 | `/`             | Landing page and entry point                  |
+| `/alif`         | Alif-1.0 landing page                         |
 | `/quran`        | Mood picker                                   |
 | `/quran/[mood]` | Quran verses filtered by mood                 |
 | `/hadith`       | Hadith reader                                 |
@@ -103,6 +110,20 @@ Each Quran, Hadith, and Name card supports:
 
 The exported image is intentionally rendered in the light share-card style, even if the app is being viewed in dark mode.
 
+## Alif-1.0
+
+Alif-1.0 is the first Islamic AI model by ImanVibes. Inside this repo, it currently has a dedicated product page at [`/alif`](https://imanvibes.vercel.app/alif), while the public model listing lives on Hugging Face:
+
+- Product page: [https://imanvibes.vercel.app/alif](https://imanvibes.vercel.app/alif)
+- Hugging Face: [https://huggingface.co/mdayaan1911/alif-1.0](https://huggingface.co/mdayaan1911/alif-1.0)
+
+The `/alif` route includes:
+
+- route-specific metadata
+- its own OG image
+- `SoftwareApplication` JSON-LD
+- sitemap and `llms.txt` discoverability
+
 ## SEO And GEO
 
 The app includes a full metadata foundation for both traditional search and AI-driven discovery:
@@ -116,6 +137,7 @@ The app includes a full metadata foundation for both traditional search and AI-d
 - `sitemap.xml`
 - `llms.txt`
 - JSON-LD for organization, website, collection pages, breadcrumbs, Quran quotes, Hadith, and the 99 Names
+- JSON-LD for the Alif-1.0 software/application page
 - `data-nosnippet` applied to non-content UI chrome where useful
 
 ## Stack
@@ -157,6 +179,8 @@ Open `http://localhost:3000`.
 ```text
 app/
   page.tsx
+  alif/page.tsx
+  alif/opengraph-image.tsx
   quran/page.tsx
   quran/[mood]/page.tsx
   hadith/page.tsx
