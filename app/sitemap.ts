@@ -65,7 +65,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   for (const entry of hadithCollection) {
     entries.push({
-      url: absoluteUrl(`/hadith?item=${entry.id}`),
+      url: absoluteUrl(`/hadith/${entry.id}`),
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.65,
@@ -74,7 +74,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   for (const entry of allahNames) {
     entries.push({
-      url: absoluteUrl(`/names?item=${entry.id}`),
+      url: absoluteUrl(`/names/${entry.id}`),
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.65,

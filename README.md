@@ -37,9 +37,9 @@ It is intentionally lightweight:
 | ----------------------------------------------------------- | ----------------------------------------------------------------- | --------------------------------------------------------------- |
 | ![ImanVibes home screen](public/screenshots/home-light.png) | ![Quran by mood light screen](public/screenshots/quran-light.png) | ![Quran by mood dark screen](public/screenshots/quran-dark.png) |
 
-| Hadith                                                | 99 Names                                               |
-| ----------------------------------------------------- | ------------------------------------------------------ |
-| ![Hadith screen](public/screenshots/hadith-light.png) | ![99 Names screen](public/screenshots/names-light.png) |
+| Hadith                                                | 99 Names                                               | Alif-1.0                                              |
+| ----------------------------------------------------- | ------------------------------------------------------ | ----------------------------------------------------- |
+| ![Hadith screen](public/screenshots/hadith-light.png) | ![99 Names screen](public/screenshots/names-light.png) | ![Alif-1.0 screen](public/screenshots/alif-light.png) |
 
 ## What The App Does
 
@@ -76,8 +76,10 @@ flowchart TD
 | `/alif`         | Alif-1.0 landing page                         |
 | `/quran`        | Mood picker                                   |
 | `/quran/[mood]` | Quran verses filtered by mood                 |
-| `/hadith`       | Hadith reader                                 |
-| `/names`        | 99 Names of Allah                             |
+| `/hadith`       | Hadith collection landing page                |
+| `/hadith/[item]`| Item-specific Hadith page                     |
+| `/names`        | 99 Names collection landing page              |
+| `/names/[item]` | Item-specific Name page                       |
 | `/temp`         | Local OG preview route for development review |
 
 ## PWA Features
@@ -101,7 +103,7 @@ flowchart TD
 Each Quran, Hadith, and Name card supports:
 
 - next item navigation
-- item-specific deep link with `?item=<id>`
+- item-specific deep links
 - WhatsApp share
 - X share
 - Telegram share
@@ -249,7 +251,7 @@ Rules followed by the app:
 <details>
 <summary><strong>Item links and sharing</strong></summary>
 
-Item URLs use `?item=<id>` so individual quotes can be shared directly. Metadata is generated with item awareness so shared URLs can produce meaningful titles, descriptions, and preview images.
+Quran item URLs use `?item=<id>` within each mood route, while Hadith and Names use cleaner path-based item routes like `/hadith/1` and `/names/1`. Metadata is generated with item awareness so shared URLs can produce meaningful titles, descriptions, and preview images.
 
 </details>
 

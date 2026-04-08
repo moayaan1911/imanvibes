@@ -4,14 +4,9 @@ import { Suspense } from "react";
 import BrandWordmark from "@/components/BrandWordmark";
 import ContentCard, { type ContentCardItem } from "@/components/ContentCard";
 import JsonLd from "@/components/JsonLd";
-import { getHadithById, hadithCollection } from "@/lib/content";
+import { hadithCollection } from "@/lib/content";
 import { createSeoMetadata } from "@/lib/seo";
-import {
-  getBreadcrumbJsonLd,
-  getQuoteJsonLd,
-  getWebPageJsonLd,
-} from "@/lib/structured-data";
-import { summarizeText, withItemParam } from "@/lib/site";
+import { getBreadcrumbJsonLd, getWebPageJsonLd } from "@/lib/structured-data";
 
 const items: ContentCardItem[] = hadithCollection.map((entry) => ({
   id: String(entry.id),
@@ -23,35 +18,15 @@ const items: ContentCardItem[] = hadithCollection.map((entry) => ({
 const pageTitle = "Hadith";
 const pageDescription = "Short hadith reminders to return to without friction.";
 
-export async function generateMetadata({
-  searchParams,
-}: {
-  searchParams: Promise<{ item?: string }>;
-}): Promise<Metadata> {
-  const { item } = await searchParams;
-  const entry = item ? getHadithById(item) : null;
-  const path = withItemParam("/hadith", entry ? String(entry.id) : null);
+export const metadata: Metadata = createSeoMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: "/hadith",
+  imagePath: `/og/hadith/${hadithCollection[0].id}/opengraph-image`,
+  keywords: ["Hadith", "Islamic reminders", "Prophetic sayings"],
+});
 
-  return createSeoMetadata({
-    title: entry?.source ? `Hadith - ${entry.source}` : pageTitle,
-    description: entry
-      ? `${summarizeText(entry.translation, 150)}${entry.source ? ` Source: ${entry.source}.` : ""}`
-      : pageDescription,
-    path,
-    imagePath: `/og/hadith/${entry?.id ?? hadithCollection[0].id}/opengraph-image`,
-    keywords: ["Hadith", "Islamic reminders", "Prophetic sayings"],
-  });
-}
-
-export default async function HadithPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ item?: string }>;
-}) {
-  const { item } = await searchParams;
-  const currentEntry = item ? getHadithById(item) : null;
-  const currentItemId = currentEntry ? String(currentEntry.id) : items[0]?.id;
-  const currentPath = withItemParam("/hadith", currentItemId);
+export default function HadithPage() {
   const structuredData = [
     getWebPageJsonLd({
       title: pageTitle,
@@ -63,19 +38,6 @@ export default async function HadithPage({
       { name: "Home", path: "/" },
       { name: "Hadith", path: "/hadith" },
     ]),
-    ...(currentEntry
-      ? [
-          getQuoteJsonLd({
-            urlPath: currentPath,
-            title: currentEntry.source || pageTitle,
-            text: currentEntry.translation,
-            source: currentEntry.source,
-            arabic: currentEntry.arabic,
-            parentPath: "/hadith",
-            genre: "Hadith",
-          }),
-        ]
-      : []),
   ];
 
   return (
@@ -105,7 +67,7 @@ export default async function HadithPage({
 
         <section className="mt-5">
           <Suspense fallback={null}>
-            <ContentCard items={items} kind="hadith" initialItemId={currentItemId} />
+            <ContentCard items={items} kind="hadith" />
           </Suspense>
         </section>
       </main>

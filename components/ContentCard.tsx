@@ -22,6 +22,24 @@ type ContentCardProps = {
   initialItemId?: string;
 };
 
+function buildItemHref(
+  kind: ContentCardProps["kind"],
+  pathname: string,
+  itemId: string,
+) {
+  if (kind === "hadith") {
+    return `/hadith/${itemId}`;
+  }
+
+  if (kind === "names") {
+    return `/names/${itemId}`;
+  }
+
+  const params = new URLSearchParams();
+  params.set("item", itemId);
+  return `${pathname}?${params.toString()}`;
+}
+
 const kindLabels = {
   quran: {
     badge: "Quran",
@@ -52,6 +70,7 @@ export default function ContentCard({
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
+  const searchParamsString = searchParams.toString();
   const requestedItem = searchParams.get("item");
   const activeItemId = requestedItem ?? initialItemId ?? null;
   const runtimeOrigin = useSyncExternalStore(
@@ -72,6 +91,21 @@ export default function ContentCard({
   const item = items[index];
 
   useEffect(() => {
+    if (kind === "hadith" || kind === "names") {
+      if (!requestedItem) {
+        return;
+      }
+
+      const nextPath = buildItemHref(kind, pathname, item.id);
+
+      if (pathname === nextPath && !searchParamsString) {
+        return;
+      }
+
+      router.replace(nextPath, { scroll: false });
+      return;
+    }
+
     const params = new URLSearchParams(searchParams.toString());
 
     if (params.get("item") === item.id) {
@@ -80,17 +114,16 @@ export default function ContentCard({
 
     params.set("item", item.id);
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-  }, [item.id, pathname, router, searchParams]);
+  }, [item.id, kind, pathname, requestedItem, router, searchParams, searchParamsString]);
 
   const shareUrl = useMemo(() => {
     if (!runtimeOrigin) {
       return "";
     }
 
-    const url = new URL(pathname, runtimeOrigin);
-    url.searchParams.set("item", item.id);
+    const url = new URL(buildItemHref(kind, pathname, item.id), runtimeOrigin);
     return url.toString();
-  }, [item.id, pathname, runtimeOrigin]);
+  }, [item.id, kind, pathname, runtimeOrigin]);
 
   const shareHomeUrl = useMemo(() => {
     if (!runtimeOrigin) {
@@ -109,8 +142,7 @@ export default function ContentCard({
       return "";
     }
 
-    const url = new URL(pathname, window.location.origin);
-    url.searchParams.set("item", item.id);
+    const url = new URL(buildItemHref(kind, pathname, item.id), window.location.origin);
     return url.toString();
   }
 
@@ -171,9 +203,7 @@ export default function ContentCard({
 
   function handleNext() {
     const nextItem = items[(index + 1) % items.length];
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("item", nextItem.id);
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    router.replace(buildItemHref(kind, pathname, nextItem.id), { scroll: false });
     setCopyLabel("Copy link");
   }
 
