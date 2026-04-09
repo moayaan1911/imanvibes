@@ -16,6 +16,8 @@ import { getOrganizationJsonLd, getWebsiteJsonLd } from "@/lib/structured-data";
 import { getSiteUrl, siteDescription, siteName } from "@/lib/site";
 import "./globals.css";
 
+const isCapacitorExport = process.env.CAPACITOR_EXPORT === "1";
+
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
@@ -113,13 +115,13 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="min-h-full flex flex-col pb-[11.5rem]">
-        <ServiceWorkerRegistration />
+        {isCapacitorExport ? null : <ServiceWorkerRegistration />}
         <JsonLd data={[getOrganizationJsonLd(), getWebsiteJsonLd()]} />
         <ThemeToggle hideOnHome />
         <div className="flex-1">{children}</div>
         <Footer />
         <BottomNav />
-        <Analytics />
+        {isCapacitorExport ? null : <Analytics />}
       </body>
     </html>
   );

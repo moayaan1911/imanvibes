@@ -2,6 +2,7 @@ import { allahNames, hadithCollection, moodNames } from "@/lib/content";
 import { absoluteUrl, siteDescription, siteName, siteTagline } from "@/lib/site";
 
 export const runtime = "nodejs";
+export const dynamic = "force-static";
 
 export async function GET() {
   const body = [

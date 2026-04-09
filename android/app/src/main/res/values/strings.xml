@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ImanVibes</string>
+    <string name="title_activity_main">ImanVibes</string>
+    <string name="package_name">com.moayaan.imanvibes</string>
+    <string name="custom_url_scheme">com.moayaan.imanvibes</string>
+</resources>

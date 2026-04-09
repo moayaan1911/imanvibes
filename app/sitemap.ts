@@ -8,6 +8,8 @@ import {
 } from "@/lib/content";
 import { absoluteUrl } from "@/lib/site";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const entries: MetadataRoute.Sitemap = [

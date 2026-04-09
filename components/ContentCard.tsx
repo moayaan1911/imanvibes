@@ -1,11 +1,16 @@
 "use client";
 
 import { toBlob } from "html-to-image";
-import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { Clipboard } from "@capacitor/clipboard";
+import { Capacitor } from "@capacitor/core";
+import { Directory, Filesystem } from "@capacitor/filesystem";
+import { Share } from "@capacitor/share";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { FaTelegramPlane, FaWhatsapp } from "react-icons/fa";
-import { FaCopy, FaDownload, FaShareNodes, FaXTwitter } from "react-icons/fa6";
+import { FaCopy, FaImage, FaShareNodes, FaXTwitter } from "react-icons/fa6";
 import ShareButton from "@/components/ShareButton";
+import { absoluteUrl, siteDomain } from "@/lib/site";
 
 export type ContentCardItem = {
   id: string;
@@ -54,10 +59,9 @@ export default function ContentCard({
   const searchParams = useSearchParams();
   const requestedItem = searchParams.get("item");
   const activeItemId = requestedItem ?? initialItemId ?? null;
-  const runtimeOrigin = useSyncExternalStore(
-    () => () => {},
-    () => window.location.origin,
-    () => "",
+  const isAndroidNativeApp = useMemo(
+    () => Capacitor.isNativePlatform() && Capacitor.getPlatform() === "android",
+    [],
   );
 
   const index = useMemo(() => {
@@ -83,35 +87,13 @@ export default function ContentCard({
   }, [item.id, pathname, router, searchParams]);
 
   const shareUrl = useMemo(() => {
-    if (!runtimeOrigin) {
-      return "";
-    }
-
-    const url = new URL(pathname, runtimeOrigin);
+    const url = new URL(absoluteUrl(pathname || "/"));
     url.searchParams.set("item", item.id);
     return url.toString();
-  }, [item.id, pathname, runtimeOrigin]);
-
-  const shareHomeUrl = useMemo(() => {
-    if (!runtimeOrigin) {
-      return "";
-    }
-
-    return runtimeOrigin.replace(/^https?:\/\//, "");
-  }, [runtimeOrigin]);
+  }, [item.id, pathname]);
 
   function resolveShareUrl() {
-    if (shareUrl) {
-      return shareUrl;
-    }
-
-    if (typeof window === "undefined") {
-      return "";
-    }
-
-    const url = new URL(pathname, window.location.origin);
-    url.searchParams.set("item", item.id);
-    return url.toString();
+    return shareUrl;
   }
 
   const longShareText = useMemo(() => {
@@ -160,7 +142,15 @@ export default function ContentCard({
     }
 
     try {
-      await navigator.clipboard.writeText(urlToCopy);
+      if (isAndroidNativeApp) {
+        await Clipboard.write({
+          string: urlToCopy,
+          label: "ImanVibes link",
+        });
+      } else {
+        await navigator.clipboard.writeText(urlToCopy);
+      }
+
       setCopyLabel("Link copied");
       window.setTimeout(() => setCopyLabel("Copy link"), 1400);
     } catch {
@@ -175,6 +165,24 @@ export default function ContentCard({
     params.set("item", nextItem.id);
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
     setCopyLabel("Copy link");
+  }
+
+  async function handleNativeShareLink() {
+    const resolvedShareUrl = resolveShareUrl();
+
+    try {
+      await Share.share({
+        title: "ImanVibes",
+        text:
+          kind === "names"
+            ? `${kindLabels[kind].shareIntro}\n\n${item.transliteration} - ${item.meaning}`
+            : `${kindLabels[kind].shareIntro}\n\n${item.translation}${item.source ? `\n- ${item.source}` : ""}`,
+        url: resolvedShareUrl,
+        dialogTitle: "Share from ImanVibes",
+      });
+    } catch {
+      // Ignore aborted native share flow.
+    }
   }
 
   function openShareWindow(platform: "whatsapp" | "x" | "telegram") {
@@ -217,6 +225,25 @@ export default function ContentCard({
     };
   }
 
+  async function blobToBase64(blob: Blob) {
+    return new Promise<string>((resolve, reject) => {
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        if (typeof reader.result !== "string") {
+          reject(new Error("Could not convert image"));
+          return;
+        }
+
+        const [, base64 = ""] = reader.result.split(",");
+        resolve(base64);
+      };
+
+      reader.onerror = () => reject(reader.error ?? new Error("Could not convert image"));
+      reader.readAsDataURL(blob);
+    });
+  }
+
   function downloadImage(blob: Blob, filename: string) {
     const blobUrl = URL.createObjectURL(blob);
     const link = document.createElement("a");
@@ -232,6 +259,28 @@ export default function ContentCard({
 
     try {
       const { blob, file } = await createImageAsset();
+
+      if (isAndroidNativeApp) {
+        const base64Data = await blobToBase64(blob);
+        const path = `shares/${kind}-${item.id}.png`;
+        const saved = await Filesystem.writeFile({
+          path,
+          data: base64Data,
+          directory: Directory.Cache,
+          recursive: true,
+        });
+
+        await Share.share({
+          title: "ImanVibes",
+          text: `${kindLabels[kind].shareIntro}\n${resolvedShareUrl}`.trim(),
+          files: [saved.uri],
+          dialogTitle: "Share image from ImanVibes",
+        });
+
+        setShareImageLabel("Shared");
+        window.setTimeout(() => setShareImageLabel("Share image"), 1400);
+        return;
+      }
 
       if (navigator.canShare?.({ files: [file] })) {
         await navigator.share({
@@ -256,20 +305,6 @@ export default function ContentCard({
 
       setShareImageLabel("Try again");
       window.setTimeout(() => setShareImageLabel("Share image"), 1400);
-    }
-  }
-
-  async function handleDownloadImage() {
-    setDownloadImageLabel("Preparing...");
-
-    try {
-      const { blob, file } = await createImageAsset();
-      downloadImage(blob, file.name);
-      setDownloadImageLabel("Downloaded");
-      window.setTimeout(() => setDownloadImageLabel("Download image"), 1400);
-    } catch {
-      setDownloadImageLabel("Try again");
-      window.setTimeout(() => setDownloadImageLabel("Download image"), 1400);
     }
   }
 
@@ -329,55 +364,92 @@ export default function ContentCard({
         >
           {kindLabels[kind].next}
         </button>
-        <button
-          type="button"
-          disabled
-          aria-disabled="true"
-          className="button-secondary cursor-not-allowed rounded-full px-4 py-3 text-sm font-semibold opacity-55"
-        >
-          Coming soon
-        </button>
+        {isAndroidNativeApp ? (
+          <ShareButton
+            label={copyLabel}
+            icon={<FaCopy />}
+            onClick={handleCopy}
+          />
+        ) : (
+          <button
+            type="button"
+            disabled
+            aria-disabled="true"
+            className="button-secondary cursor-not-allowed rounded-full px-4 py-3 text-sm font-semibold opacity-55"
+          >
+            Coming soon
+          </button>
+        )}
       </div>
 
-      <div className="mt-3 grid grid-cols-4 gap-3" data-nosnippet>
-        <ShareButton
-          label="WhatsApp"
-          icon={<FaWhatsapp />}
-          onClick={() => openShareWindow("whatsapp")}
-          iconOnly
-        />
-        <ShareButton
-          label="X"
-          icon={<FaXTwitter />}
-          onClick={() => openShareWindow("x")}
-          iconOnly
-        />
-        <ShareButton
-          label="Telegram"
-          icon={<FaTelegramPlane />}
-          onClick={() => openShareWindow("telegram")}
-          iconOnly
-        />
-        <ShareButton
-          label={copyLabel}
-          icon={<FaCopy />}
-          onClick={handleCopy}
-          iconOnly
-        />
-      </div>
+      {isAndroidNativeApp ? (
+        <div className="mt-3 grid grid-cols-2 gap-3" data-nosnippet>
+          <ShareButton
+            label="Share link"
+            icon={<FaShareNodes />}
+            onClick={handleNativeShareLink}
+          />
+          <ShareButton
+            label={shareImageLabel}
+            icon={<FaImage />}
+            onClick={handleShareImage}
+          />
+        </div>
+      ) : (
+        <>
+          <div className="mt-3 grid grid-cols-4 gap-3" data-nosnippet>
+            <ShareButton
+              label="WhatsApp"
+              icon={<FaWhatsapp />}
+              onClick={() => openShareWindow("whatsapp")}
+              iconOnly
+            />
+            <ShareButton
+              label="X"
+              icon={<FaXTwitter />}
+              onClick={() => openShareWindow("x")}
+              iconOnly
+            />
+            <ShareButton
+              label="Telegram"
+              icon={<FaTelegramPlane />}
+              onClick={() => openShareWindow("telegram")}
+              iconOnly
+            />
+            <ShareButton
+              label={copyLabel}
+              icon={<FaCopy />}
+              onClick={handleCopy}
+              iconOnly
+            />
+          </div>
 
-      <div className="mt-3 grid grid-cols-2 gap-3" data-nosnippet>
-        <ShareButton
-          label={shareImageLabel}
-          icon={<FaShareNodes />}
-          onClick={handleShareImage}
-        />
-        <ShareButton
-          label={downloadImageLabel}
-          icon={<FaDownload />}
-          onClick={handleDownloadImage}
-        />
-      </div>
+          <div className="mt-3 grid grid-cols-2 gap-3" data-nosnippet>
+            <ShareButton
+              label={shareImageLabel}
+              icon={<FaShareNodes />}
+              onClick={handleShareImage}
+            />
+            <ShareButton
+              label={downloadImageLabel}
+              icon={<FaImage />}
+              onClick={async () => {
+                setDownloadImageLabel("Preparing...");
+
+                try {
+                  const { blob, file } = await createImageAsset();
+                  downloadImage(blob, file.name);
+                  setDownloadImageLabel("Downloaded");
+                  window.setTimeout(() => setDownloadImageLabel("Download image"), 1400);
+                } catch {
+                  setDownloadImageLabel("Try again");
+                  window.setTimeout(() => setDownloadImageLabel("Download image"), 1400);
+                }
+              }}
+            />
+          </div>
+        </>
+      )}
 
       <div className="pointer-events-none fixed left-[-9999px] top-0 w-[720px]">
         <div
@@ -429,7 +501,7 @@ export default function ContentCard({
 
           <div className="mt-6 flex justify-end">
             <p className="text-right text-xs leading-5 text-[#566056]">
-              {shareHomeUrl}
+              {siteDomain}
             </p>
           </div>
         </div>

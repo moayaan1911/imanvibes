@@ -6,18 +6,12 @@ import JsonLd from "@/components/JsonLd";
 import MoodGrid from "@/components/MoodGrid";
 import {
   getMoodFromSlug,
-  getQuranEntryByMoodAndId,
   moodNames,
   quranByMood,
   slugifyMood,
 } from "@/lib/content";
 import { createSeoMetadata } from "@/lib/seo";
-import {
-  getBreadcrumbJsonLd,
-  getQuoteJsonLd,
-  getWebPageJsonLd,
-} from "@/lib/structured-data";
-import { summarizeText, withItemParam } from "@/lib/site";
+import { getBreadcrumbJsonLd, getWebPageJsonLd } from "@/lib/structured-data";
 
 export function generateStaticParams() {
   return moodNames.map((mood) => ({
@@ -27,13 +21,10 @@ export function generateStaticParams() {
 
 export async function generateMetadata({
   params,
-  searchParams,
 }: {
   params: Promise<{ mood: string }>;
-  searchParams: Promise<{ item?: string }>;
 }): Promise<Metadata> {
   const { mood: moodSlug } = await params;
-  const { item } = await searchParams;
   const mood = getMoodFromSlug(moodSlug);
 
   if (!mood) {
@@ -44,30 +35,21 @@ export async function generateMetadata({
     });
   }
 
-  const entry = item ? getQuranEntryByMoodAndId(mood, item) : null;
-  const basePath = `/quran/${moodSlug}`;
-  const path = withItemParam(basePath, entry ? String(entry.entry) : null);
-
   return createSeoMetadata({
-    title: entry?.source ? `${mood} - ${entry.source}` : `Quran for ${mood}`,
-    description: entry
-      ? `${summarizeText(entry.translation, 150)}${entry.source ? ` Source: ${entry.source}.` : ""}`
-      : `Browse ${quranByMood[mood].length} Quran verses selected for ${mood.toLowerCase()} hearts.`,
-    path,
-    imagePath: `/og/quran/${moodSlug}/${entry?.entry ?? quranByMood[mood][0].entry}/opengraph-image`,
+    title: `Quran for ${mood}`,
+    description: `Browse ${quranByMood[mood].length} Quran verses selected for ${mood.toLowerCase()} hearts.`,
+    path: `/quran/${moodSlug}`,
+    imagePath: `/og/quran/${moodSlug}/${quranByMood[mood][0].entry}/opengraph-image`,
     keywords: ["Quran", "Quran by mood", mood],
   });
 }
 
 export default async function QuranMoodPage({
   params,
-  searchParams,
 }: {
   params: Promise<{ mood: string }>;
-  searchParams: Promise<{ item?: string }>;
 }) {
   const { mood: moodSlug } = await params;
-  const { item } = await searchParams;
   const mood = getMoodFromSlug(moodSlug);
 
   if (!mood) {
@@ -80,9 +62,6 @@ export default async function QuranMoodPage({
     translation: entry.translation,
     source: entry.source,
   }));
-  const currentEntry = item ? getQuranEntryByMoodAndId(mood, item) : null;
-  const currentItemId = currentEntry ? String(currentEntry.entry) : items[0]?.id;
-  const currentPath = withItemParam(`/quran/${moodSlug}`, currentItemId);
   const structuredData = [
     getWebPageJsonLd({
       title: `Quran for ${mood}`,
@@ -95,19 +74,6 @@ export default async function QuranMoodPage({
       { name: "Quran by Mood", path: "/quran" },
       { name: mood, path: `/quran/${moodSlug}` },
     ]),
-    ...(currentEntry
-      ? [
-          getQuoteJsonLd({
-            urlPath: currentPath,
-            title: currentEntry.source || `Quran for ${mood}`,
-            text: currentEntry.translation,
-            source: currentEntry.source,
-            arabic: currentEntry.arabic,
-            parentPath: `/quran/${moodSlug}`,
-            genre: "Quran",
-          }),
-        ]
-      : []),
   ];
 
   const relatedMoods = moodNames.filter((item) => item !== mood).slice(0, 6);
@@ -131,7 +97,7 @@ export default async function QuranMoodPage({
 
         <section className="mt-5">
           <Suspense fallback={null}>
-            <ContentCard items={items} kind="quran" initialItemId={currentItemId} />
+            <ContentCard items={items} kind="quran" />
           </Suspense>
         </section>
 

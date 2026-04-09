@@ -36,6 +36,18 @@ yarn-error.log*
 # vercel
 .vercel
 
+# capacitor / android
+/android/.gradle/
+/android/build/
+/android/app/build/
+/android/capacitor-cordova-android-plugins/build/
+/android/local.properties
+*.apk
+*.aab
+*.idsig
+*.keystore
+*.jks
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaGithub, FaMugHot } from "react-icons/fa6";
 import AddToHomeButton from "@/components/AddToHomeButton";
+import AndroidNotificationBootstrap from "@/components/AndroidNotificationBootstrap";
 import BrandWordmark from "@/components/BrandWordmark";
 import JsonLd from "@/components/JsonLd";
 import MoodGrid from "@/components/MoodGrid";
@@ -16,6 +17,8 @@ import {
 import { createSeoMetadata } from "@/lib/seo";
 import { getWebPageJsonLd } from "@/lib/structured-data";
 import { siteDescription, siteName } from "@/lib/site";
+
+const isCapacitorExport = process.env.CAPACITOR_EXPORT === "1";
 
 const featuredMood = "Anxious";
 const featuredVerse = quranByMood[featuredMood][0];
@@ -104,7 +107,7 @@ export default function Home() {
           data-nosnippet
         >
           <div className="flex items-center gap-2">
-            <AddToHomeButton variant="inline" />
+            {isCapacitorExport ? null : <AddToHomeButton variant="inline" />}
             <ThemeToggle variant="inline" />
           </div>
 
@@ -178,6 +181,8 @@ export default function Home() {
             <SectionLinkCard key={section.href} {...section} />
           ))}
         </section>
+
+        {isCapacitorExport ? <AndroidNotificationBootstrap /> : null}
 
         <section className="surface-soft-block mt-5 rounded-[32px] p-5">
           <div className="flex items-center justify-between gap-4">

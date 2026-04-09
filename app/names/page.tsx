@@ -4,14 +4,9 @@ import { Suspense } from "react";
 import BrandWordmark from "@/components/BrandWordmark";
 import ContentCard, { type ContentCardItem } from "@/components/ContentCard";
 import JsonLd from "@/components/JsonLd";
-import { allahNames, getAllahNameById } from "@/lib/content";
+import { allahNames } from "@/lib/content";
 import { createSeoMetadata } from "@/lib/seo";
-import {
-  getBreadcrumbJsonLd,
-  getNameJsonLd,
-  getWebPageJsonLd,
-} from "@/lib/structured-data";
-import { summarizeText, withItemParam } from "@/lib/site";
+import { getBreadcrumbJsonLd, getWebPageJsonLd } from "@/lib/structured-data";
 
 const items: ContentCardItem[] = allahNames.map((entry) => ({
   id: String(entry.id),
@@ -23,35 +18,15 @@ const items: ContentCardItem[] = allahNames.map((entry) => ({
 const pageTitle = "99 Names";
 const pageDescription = "Reflect through the names of Allah, their meanings, and their mercy.";
 
-export async function generateMetadata({
-  searchParams,
-}: {
-  searchParams: Promise<{ item?: string }>;
-}): Promise<Metadata> {
-  const { item } = await searchParams;
-  const entry = item ? getAllahNameById(item) : null;
-  const path = withItemParam("/names", entry ? String(entry.id) : null);
+export const metadata: Metadata = createSeoMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: "/names",
+  imagePath: `/og/names/${allahNames[0].id}/opengraph-image`,
+  keywords: ["99 Names of Allah", "Asma ul Husna", "Islamic reflection"],
+});
 
-  return createSeoMetadata({
-    title: entry ? `${entry.transliteration} - 99 Names` : pageTitle,
-    description: entry
-      ? summarizeText(`${entry.transliteration}: ${entry.meaning}`, 155)
-      : pageDescription,
-    path,
-    imagePath: `/og/names/${entry?.id ?? allahNames[0].id}/opengraph-image`,
-    keywords: ["99 Names of Allah", "Asma ul Husna", "Islamic reflection"],
-  });
-}
-
-export default async function NamesPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ item?: string }>;
-}) {
-  const { item } = await searchParams;
-  const currentEntry = item ? getAllahNameById(item) : null;
-  const currentItemId = currentEntry ? String(currentEntry.id) : items[0]?.id;
-  const currentPath = withItemParam("/names", currentItemId);
+export default function NamesPage() {
   const structuredData = [
     getWebPageJsonLd({
       title: pageTitle,
@@ -63,17 +38,6 @@ export default async function NamesPage({
       { name: "Home", path: "/" },
       { name: "99 Names", path: "/names" },
     ]),
-    ...(currentEntry
-      ? [
-          getNameJsonLd({
-            urlPath: currentPath,
-            transliteration: currentEntry.transliteration,
-            meaning: currentEntry.meaning,
-            arabic: currentEntry.arabic,
-            parentPath: "/names",
-          }),
-        ]
-      : []),
   ];
 
   return (
@@ -103,7 +67,7 @@ export default async function NamesPage({
 
         <section className="mt-5">
           <Suspense fallback={null}>
-            <ContentCard items={items} kind="names" initialItemId={currentItemId} />
+            <ContentCard items={items} kind="names" />
           </Suspense>
         </section>
       </main>
