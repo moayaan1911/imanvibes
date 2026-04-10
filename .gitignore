@@ -40,3 +40,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 AGENTS.md
+*.apk
+android
+*.idsig
+.playwright-cli/
+output/playwright/

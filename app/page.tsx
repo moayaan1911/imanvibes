@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { FaGithub, FaMicrochip, FaMugHot } from "react-icons/fa6";
-import AddToHomeButton from "@/components/AddToHomeButton";
+import { FaAndroid, FaGithub, FaMicrochip, FaMugHot } from "react-icons/fa6";
 import BrandWordmark from "@/components/BrandWordmark";
 import JsonLd from "@/components/JsonLd";
 import MoodGrid from "@/components/MoodGrid";
@@ -104,11 +103,17 @@ export default function Home() {
           data-nosnippet
         >
           <div className="flex items-center gap-2">
-            <AddToHomeButton variant="inline" />
-            <ThemeToggle variant="inline" />
+            <Link
+              href="/app"
+              className="theme-toggle-shell flex min-h-[3.05rem] shrink-0 cursor-pointer items-center gap-2 rounded-full px-4.5 py-3 text-[1.02rem] font-semibold whitespace-nowrap"
+            >
+              <FaAndroid />
+              <span>Download app</span>
+            </Link>
           </div>
 
           <div className="flex items-center gap-2">
+            <ThemeToggle variant="inline" iconOnly />
             <Link
               href="https://github.com/moayaan1911/imanvibes"
               target="_blank"

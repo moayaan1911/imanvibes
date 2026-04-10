@@ -27,6 +27,7 @@ It is intentionally lightweight:
 ## Live
 
 - App: [https://imanvibes.vercel.app/](https://imanvibes.vercel.app/)
+- Android app page: [https://imanvibes.vercel.app/app](https://imanvibes.vercel.app/app)
 - Alif page: [https://imanvibes.vercel.app/alif](https://imanvibes.vercel.app/alif)
 - Alif on Hugging Face: [https://huggingface.co/mdayaan1911/alif-1.0](https://huggingface.co/mdayaan1911/alif-1.0)
 - GitHub: [https://github.com/moayaan1911/imanvibes](https://github.com/moayaan1911/imanvibes)
@@ -40,6 +41,10 @@ It is intentionally lightweight:
 | Hadith                                                | 99 Names                                               | Alif-1.0                                              |
 | ----------------------------------------------------- | ------------------------------------------------------ | ----------------------------------------------------- |
 | ![Hadith screen](public/screenshots/hadith-light.png) | ![99 Names screen](public/screenshots/names-light.png) | ![Alif-1.0 screen](public/screenshots/alif-light.png) |
+
+| Android App Landing                                        | iOS Install Guide                                           |
+| ---------------------------------------------------------- | ----------------------------------------------------------- |
+| ![Android app page](public/screenshots/app-android-light.png) | ![iOS install guide](public/screenshots/app-ios-guide-light.png) |
 
 ## What The App Does
 
@@ -73,6 +78,7 @@ flowchart TD
 | Route           | Purpose                                       |
 | --------------- | --------------------------------------------- |
 | `/`             | Landing page and entry point                  |
+| `/app`          | Android APK download page and iOS install guide |
 | `/alif`         | Alif-1.0 landing page                         |
 | `/quran`        | Mood picker                                   |
 | `/quran/[mood]` | Quran verses filtered by mood                 |
@@ -181,12 +187,16 @@ Open `http://localhost:3000`.
 ```text
 app/
   page.tsx
+  app/page.tsx
+  app/opengraph-image.tsx
   alif/page.tsx
   alif/opengraph-image.tsx
   quran/page.tsx
   quran/[mood]/page.tsx
   hadith/page.tsx
+  hadith/[item]/page.tsx
   names/page.tsx
+  names/[item]/page.tsx
   layout.tsx
   manifest.ts
   robots.ts

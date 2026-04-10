@@ -20,6 +20,11 @@ const previewCards = [
     href: "/alif/opengraph-image",
   },
   {
+    title: "Android App OG",
+    src: "/app/opengraph-image",
+    href: "/app/opengraph-image",
+  },
+  {
     title: "Quran Quote OG",
     src: `/og/quran/anxious/${sampleQuran.entry}/opengraph-image`,
     href: `/og/quran/anxious/${sampleQuran.entry}/opengraph-image`,

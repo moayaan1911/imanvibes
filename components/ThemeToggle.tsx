@@ -8,6 +8,7 @@ type Theme = "light" | "dark";
 type ThemeToggleProps = {
   variant?: "floating" | "inline";
   hideOnHome?: boolean;
+  iconOnly?: boolean;
 };
 
 const THEME_COLOR = {
@@ -27,6 +28,7 @@ function applyTheme(theme: Theme) {
 export default function ThemeToggle({
   variant = "floating",
   hideOnHome = false,
+  iconOnly = false,
 }: ThemeToggleProps) {
   const pathname = usePathname();
   const [theme, setTheme] = useState<Theme>("light");
@@ -56,7 +58,9 @@ export default function ThemeToggle({
   const className =
     variant === "floating"
       ? "theme-toggle-shell fixed right-4 top-[max(1rem,env(safe-area-inset-top))] z-30 flex cursor-pointer items-center gap-2 rounded-full px-4 py-3 text-sm font-semibold"
-      : "theme-toggle-shell flex shrink-0 cursor-pointer items-center gap-2 rounded-full px-3 py-2 text-xs font-semibold whitespace-nowrap";
+      : iconOnly
+        ? "theme-toggle-shell flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-full text-sm"
+        : "theme-toggle-shell flex min-h-[2.55rem] shrink-0 cursor-pointer items-center gap-1.5 rounded-full px-3.25 py-[0.55rem] text-[0.89rem] font-semibold whitespace-nowrap";
 
   return (
     <button
@@ -68,7 +72,7 @@ export default function ThemeToggle({
       data-nosnippet
     >
       {theme === "dark" ? <FaSun /> : <FaMoon />}
-      <span>{displayLabel}</span>
+      {iconOnly ? null : <span>{displayLabel}</span>}
     </button>
   );
 }
