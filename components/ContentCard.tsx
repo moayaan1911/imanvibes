@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "reac
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { FaTelegramPlane, FaWhatsapp } from "react-icons/fa";
 import { FaCopy, FaDownload, FaShareNodes, FaXTwitter } from "react-icons/fa6";
+import AudioPlayer from "@/components/AudioPlayer";
 import ShareButton from "@/components/ShareButton";
 
 export type ContentCardItem = {
@@ -359,14 +360,18 @@ export default function ContentCard({
         >
           {kindLabels[kind].next}
         </button>
-        <button
-          type="button"
-          disabled
-          aria-disabled="true"
-          className="button-secondary cursor-not-allowed rounded-full px-4 py-3 text-sm font-semibold opacity-55"
-        >
-          Coming soon
-        </button>
+        {item.arabic ? (
+          <AudioPlayer arabicText={item.arabic} />
+        ) : (
+          <button
+            type="button"
+            disabled
+            aria-disabled="true"
+            className="button-secondary cursor-not-allowed rounded-full px-4 py-3 text-sm font-semibold opacity-55"
+          >
+            Coming soon
+          </button>
+        )}
       </div>
 
       <div className="mt-3 grid grid-cols-4 gap-3" data-nosnippet>
