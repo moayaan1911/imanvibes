@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { ImageResponse } from "next/og";
 import type { ReactNode } from "react";
 
-type QuoteKind = "quran" | "hadith" | "names";
+type QuoteKind = "quran" | "hadith" | "names" | "duas";
 type SharpFactory = typeof import("sharp");
 
 type QuoteOgData = {

@@ -1,18 +1,29 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { allahNames, hadithCollection, quranByMood } from "@/lib/content";
+import { allahNames, duas, hadithCollection, quranByMood } from "@/lib/content";
 import { createSeoMetadata } from "@/lib/seo";
 
 const sampleQuran = quranByMood.Anxious[0];
 const sampleHadith = hadithCollection[0];
 const sampleName = allahNames[0];
+const sampleDua = duas[0];
 
 const previewCards = [
   {
     title: "Landing OG",
     src: "/opengraph-image",
     href: "/opengraph-image",
+  },
+  {
+    title: "Alif OG",
+    src: "/alif/opengraph-image",
+    href: "/alif/opengraph-image",
+  },
+  {
+    title: "Android App OG",
+    src: "/app/opengraph-image",
+    href: "/app/opengraph-image",
   },
   {
     title: "Quran Quote OG",
@@ -28,6 +39,11 @@ const previewCards = [
     title: "99 Names Quote OG",
     src: `/og/names/${sampleName.id}/opengraph-image`,
     href: `/og/names/${sampleName.id}/opengraph-image`,
+  },
+  {
+    title: "Duas Quote OG",
+    src: `/og/duas/${sampleDua.id}/opengraph-image`,
+    href: `/og/duas/${sampleDua.id}/opengraph-image`,
   },
 ];
 

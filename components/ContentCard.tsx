@@ -8,7 +8,8 @@ import { Share } from "@capacitor/share";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { FaTelegramPlane, FaWhatsapp } from "react-icons/fa";
-import { FaCopy, FaImage, FaShareNodes, FaXTwitter } from "react-icons/fa6";
+import { FaCopy, FaDownload, FaImage, FaShareNodes, FaXTwitter } from "react-icons/fa6";
+import AudioPlayer from "@/components/AudioPlayer";
 import ShareButton from "@/components/ShareButton";
 import { absoluteUrl, siteDomain } from "@/lib/site";
 
@@ -23,9 +24,27 @@ export type ContentCardItem = {
 
 type ContentCardProps = {
   items: ContentCardItem[];
-  kind: "quran" | "hadith" | "names";
+  kind: "quran" | "hadith" | "names" | "duas";
   initialItemId?: string;
 };
+
+function buildItemHref(
+  kind: ContentCardProps["kind"],
+  pathname: string,
+  itemId: string,
+) {
+  if (kind === "hadith") {
+    return `/hadith/${itemId}`;
+  }
+
+  if (kind === "names") {
+    return `/names/${itemId}`;
+  }
+
+  const params = new URLSearchParams();
+  params.set("item", itemId);
+  return `${pathname}?${params.toString()}`;
+}
 
 const kindLabels = {
   quran: {
@@ -43,6 +62,11 @@ const kindLabels = {
     next: "Next name",
     shareIntro: "I found this beautiful name of Allah on ImanVibes.",
   },
+  duas: {
+    badge: "Duas",
+    next: "Next dua",
+    shareIntro: "I found this beautiful dua on ImanVibes.",
+  },
 } as const;
 
 export default function ContentCard({
@@ -57,6 +81,7 @@ export default function ContentCard({
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
+  const searchParamsString = searchParams.toString();
   const requestedItem = searchParams.get("item");
   const activeItemId = requestedItem ?? initialItemId ?? null;
   const isAndroidNativeApp = useMemo(
@@ -76,6 +101,21 @@ export default function ContentCard({
   const item = items[index];
 
   useEffect(() => {
+    if (kind === "hadith" || kind === "names") {
+      if (!requestedItem) {
+        return;
+      }
+
+      const nextPath = buildItemHref(kind, pathname, item.id);
+
+      if (pathname === nextPath && !searchParamsString) {
+        return;
+      }
+
+      router.replace(nextPath, { scroll: false });
+      return;
+    }
+
     const params = new URLSearchParams(searchParams.toString());
 
     if (params.get("item") === item.id) {
@@ -84,7 +124,7 @@ export default function ContentCard({
 
     params.set("item", item.id);
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-  }, [item.id, pathname, router, searchParams]);
+  }, [item.id, kind, pathname, requestedItem, router, searchParams, searchParamsString]);
 
   const shareUrl = useMemo(() => {
     const url = new URL(absoluteUrl(pathname || "/"));
@@ -161,9 +201,7 @@ export default function ContentCard({
 
   function handleNext() {
     const nextItem = items[(index + 1) % items.length];
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("item", nextItem.id);
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    router.replace(buildItemHref(kind, pathname, nextItem.id), { scroll: false });
     setCopyLabel("Copy link");
   }
 
@@ -332,7 +370,7 @@ export default function ContentCard({
         </p>
 
         {item.transliteration ? (
-          <p className="mt-4 text-sm font-semibold uppercase tracking-[0.16em] text-[var(--sage-700)]">
+          <p className={`mt-4 text-[var(--sage-700)] ${kind === "duas" ? "text-sm italic leading-6" : "text-sm font-semibold uppercase tracking-[0.16em]"}`}>
             {item.transliteration}
           </p>
         ) : null}
@@ -360,7 +398,8 @@ export default function ContentCard({
         <button
           type="button"
           onClick={handleNext}
-          className="button-primary cursor-pointer rounded-full px-4 py-3 text-sm font-semibold"
+          disabled={items.length <= 1}
+          className={`button-primary rounded-full px-4 py-3 text-sm font-semibold ${items.length <= 1 ? "cursor-not-allowed opacity-55" : "cursor-pointer"}`}
         >
           {kindLabels[kind].next}
         </button>
@@ -370,6 +409,8 @@ export default function ContentCard({
             icon={<FaCopy />}
             onClick={handleCopy}
           />
+        ) : item.arabic ? (
+          <AudioPlayer arabicText={item.arabic} />
         ) : (
           <button
             type="button"

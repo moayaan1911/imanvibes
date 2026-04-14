@@ -1,10 +1,14 @@
 import type { MetadataRoute } from "next";
 import {
   allahNames,
+  duas,
+  duasByOccasion,
   hadithCollection,
   moodNames,
+  occasionNames,
   quranByMood,
   slugifyMood,
+  slugifyOccasion,
 } from "@/lib/content";
 import { absoluteUrl } from "@/lib/site";
 
@@ -20,6 +24,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: absoluteUrl("/app"),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: absoluteUrl("/alif"),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.88,
+    },
+    {
       url: absoluteUrl("/quran"),
       lastModified: now,
       changeFrequency: "weekly",
@@ -33,6 +49,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: absoluteUrl("/names"),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    {
+      url: absoluteUrl("/duas"),
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.85,
@@ -61,7 +83,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   for (const entry of hadithCollection) {
     entries.push({
-      url: absoluteUrl(`/hadith?item=${entry.id}`),
+      url: absoluteUrl(`/hadith/${entry.id}`),
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.65,
@@ -70,11 +92,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   for (const entry of allahNames) {
     entries.push({
-      url: absoluteUrl(`/names?item=${entry.id}`),
+      url: absoluteUrl(`/names/${entry.id}`),
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.65,
     });
+  }
+
+  for (const occasion of occasionNames) {
+    const occasionPath = `/duas/${slugifyOccasion(occasion)}`;
+
+    entries.push({
+      url: absoluteUrl(occasionPath),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    });
+
+    for (const entry of duasByOccasion[occasion]) {
+      entries.push({
+        url: absoluteUrl(`${occasionPath}?item=${entry.id}`),
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority: 0.65,
+      });
+    }
   }
 
   return entries;

@@ -1,18 +1,23 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { FaGithub, FaMugHot } from "react-icons/fa6";
+import { FaAndroid, FaGithub, FaMicrochip, FaMugHot } from "react-icons/fa6";
 import AddToHomeButton from "@/components/AddToHomeButton";
 import AndroidNotificationBootstrap from "@/components/AndroidNotificationBootstrap";
 import BrandWordmark from "@/components/BrandWordmark";
+import DailyVerseCard from "@/components/DailyVerseCard";
 import JsonLd from "@/components/JsonLd";
 import MoodGrid from "@/components/MoodGrid";
 import ThemeToggle from "@/components/ThemeToggle";
 import {
   allahNames,
+  getDailyVerse,
+  getFormattedDate,
   hadithCollection,
   moodNames,
+  occasionNames,
   quranByMood,
+  totalDuas,
 } from "@/lib/content";
 import { createSeoMetadata } from "@/lib/seo";
 import { getWebPageJsonLd } from "@/lib/structured-data";
@@ -52,6 +57,12 @@ const sectionLinks = [
     count: `${allahNames.length} names`,
     summary: "Reflect through the names, meanings, and mercy of Allah.",
   },
+  {
+    href: "/duas",
+    label: "Duas",
+    count: `${totalDuas} duas`,
+    summary: "Supplications for every occasion — eating, sleep, travel, and more.",
+  },
 ];
 
 export const metadata: Metadata = createSeoMetadata({
@@ -90,6 +101,9 @@ function SectionLinkCard({
   );
 }
 
+const dailyVerse = getDailyVerse();
+const dailyDate = getFormattedDate();
+
 export default function Home() {
   return (
     <div className="page-bg relative min-h-screen overflow-x-hidden">
@@ -109,9 +123,19 @@ export default function Home() {
           <div className="flex items-center gap-2">
             {isCapacitorExport ? null : <AddToHomeButton variant="inline" />}
             <ThemeToggle variant="inline" />
+            {!isCapacitorExport ? (
+              <Link
+                href="/app"
+                className="theme-toggle-shell flex min-h-[3.05rem] shrink-0 cursor-pointer items-center gap-2 rounded-full px-4.5 py-3 text-[1.02rem] font-semibold whitespace-nowrap"
+              >
+                <FaAndroid />
+                <span>Download app</span>
+              </Link>
+            ) : null}
           </div>
 
           <div className="flex items-center gap-2">
+            <ThemeToggle variant="inline" iconOnly />
             <Link
               href="https://github.com/moayaan1911/imanvibes"
               target="_blank"
@@ -163,15 +187,27 @@ export default function Home() {
           <div className="mt-6 grid grid-cols-2 gap-3">
             <Link
               href="/quran"
-              className="button-primary cursor-pointer rounded-full px-4 py-3 text-center text-sm font-semibold"
+              className="button-primary flex min-h-[3.5rem] cursor-pointer items-center justify-center rounded-[22px] px-4 py-2 text-center text-sm font-semibold"
             >
               Browse moods
             </Link>
             <Link
-              href="/hadith"
-              className="button-secondary cursor-pointer rounded-full px-4 py-3 text-center text-sm font-semibold"
+              href="/alif"
+              className="button-secondary relative flex min-h-[3.5rem] cursor-pointer items-center overflow-visible rounded-[22px] px-4 py-2 text-left"
             >
-              Read hadith
+              <span className="absolute left-1/2 top-0 z-10 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full border border-[var(--gold-400)] bg-[color:rgba(232,216,173,0.18)] px-2.5 py-1 text-[8px] font-semibold uppercase tracking-[0.1em] text-[var(--gold-400)] shadow-[0_8px_18px_rgba(200,169,107,0.2)] backdrop-blur">
+                Our first AI model
+              </span>
+              <span className="flex w-full items-center justify-center gap-3">
+                <span className="pill-soft inline-flex size-7 shrink-0 items-center justify-center rounded-full text-sm">
+                  <FaMicrochip />
+                </span>
+                <span className="block">
+                  <span className="block whitespace-nowrap text-base font-semibold text-[var(--ink-900)]">
+                    Alif-1.0
+                  </span>
+                </span>
+              </span>
             </Link>
           </div>
         </section>
@@ -183,6 +219,16 @@ export default function Home() {
         </section>
 
         {isCapacitorExport ? <AndroidNotificationBootstrap /> : null}
+
+        <div className="mt-5">
+          <DailyVerseCard
+            arabic={dailyVerse.arabic}
+            translation={dailyVerse.translation}
+            source={dailyVerse.source}
+            mood={dailyVerse.mood}
+            date={dailyDate}
+          />
+        </div>
 
         <section className="surface-soft-block mt-5 rounded-[32px] p-5">
           <div className="flex items-center justify-between gap-4">

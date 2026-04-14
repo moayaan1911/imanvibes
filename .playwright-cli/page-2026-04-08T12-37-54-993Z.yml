@@ -1,0 +1,164 @@
+- generic [active] [ref=e1]:
+  - button "Switch to dark mode" [ref=e2] [cursor=pointer]:
+    - img [ref=e3]
+    - generic [ref=e5]: Dark mode
+  - main [ref=e8]:
+    - generic [ref=e9]:
+      - generic [ref=e10]:
+        - img "ImanVibes icon" [ref=e11]
+        - paragraph [ref=e13]:
+          - generic [ref=e14]: إيمان
+          - generic [ref=e15]: Vibes
+      - heading "Alif-1.0" [level=1] [ref=e16]
+      - paragraph [ref=e17]: First Islamic AI Model by ImanVibes
+      - generic [ref=e18]:
+        - generic [ref=e19]:
+          - generic [ref=e20]:
+            - paragraph [ref=e21]: Coming soon
+            - img [ref=e23]
+          - paragraph [ref=e25]: Chat in ImanVibes
+        - generic [ref=e26]:
+          - generic [ref=e27]:
+            - paragraph [ref=e28]: Coming soon
+            - img [ref=e30]
+          - paragraph [ref=e32]: API Access
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - heading "About Alif-1.0" [level=2] [ref=e35]
+        - paragraph [ref=e36]: An open-source Islamic model built for calm, grounded, citation-aware answers.
+      - generic [ref=e37]:
+        - paragraph [ref=e38]: Alif-1.0 is an open-source Islamic AI model fine-tuned on top of Qwen3.5-2B by Alibaba, trained on 1,042 carefully curated instruction-response pairs covering Quran, Hadith, and Islamic history.
+        - paragraph [ref=e39]: The name Alif is the first letter of the Arabic alphabet, the first letter of Allah, and the first letter of Al-Quran.
+    - generic [ref=e40]:
+      - generic [ref=e41]:
+        - heading "How Was Alif-1.0 Built?" [level=2] [ref=e42]
+        - paragraph [ref=e43]: A compact fine-tune focused on Islamic source discipline rather than scale for the sake of scale.
+      - generic [ref=e44]:
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - paragraph [ref=e47]: 1,042
+            - img [ref=e49]
+          - paragraph [ref=e51]: instruction-response pairs
+        - generic [ref=e52]:
+          - generic [ref=e53]:
+            - paragraph [ref=e54]: "783"
+            - img [ref=e56]
+          - paragraph [ref=e58]: training steps across 3 epochs
+        - generic [ref=e59]:
+          - generic [ref=e60]:
+            - paragraph [ref=e61]: "0.30"
+            - img [ref=e63]
+          - paragraph [ref=e65]: final loss, down from 1.84
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - paragraph [ref=e68]: ~3 hrs
+            - img [ref=e70]
+          - paragraph [ref=e72]: free T4 training time
+      - generic [ref=e73]:
+        - article [ref=e74]:
+          - generic [ref=e75]:
+            - img [ref=e77]
+            - generic [ref=e79]:
+              - heading "Quran dataset (~338 pairs)" [level=3] [ref=e80]
+              - paragraph [ref=e81]: Mood-based ayah guidance, Tawheed, Salah, Sabr, hope, anxiety, death, and afterlife, using Sahih International and Pickthall translations only.
+        - article [ref=e82]:
+          - generic [ref=e83]:
+            - img [ref=e85]
+            - generic [ref=e87]:
+              - heading "Hadith dataset (~300 pairs)" [level=3] [ref=e88]
+              - paragraph [ref=e89]: Built from Sahih Bukhari, Sahih Muslim, Sunan Abu Dawud, Jami at-Tirmidhi, and more, with collection name, book number, and hadith number attached.
+        - article [ref=e90]:
+          - generic [ref=e91]:
+            - img [ref=e93]
+            - generic [ref=e95]:
+              - heading "Islamic history dataset (~400 pairs)" [level=3] [ref=e96]
+              - paragraph [ref=e97]: Drawn from Ibn Kathir, Ibn Khaldun, Al-Tabari, and other classical scholars, spanning the life of the Prophet PBUH, Sahabah, Karbala, the Crusades from the Muslim perspective, the Ottoman and Mughal empires, and modern Islamic geopolitics.
+      - generic [ref=e98]:
+        - article [ref=e99]:
+          - generic [ref=e100]:
+            - img [ref=e102]
+            - generic [ref=e104]:
+              - heading "Base model" [level=3] [ref=e105]
+              - paragraph [ref=e106]: Qwen3.5-2B by Alibaba, released under Apache 2.0.
+        - article [ref=e107]:
+          - generic [ref=e108]:
+            - img [ref=e110]
+            - generic [ref=e112]:
+              - heading "Fine-tuning method" [level=3] [ref=e113]
+              - paragraph [ref=e114]: LoRA using the Unsloth library.
+        - article [ref=e115]:
+          - generic [ref=e116]:
+            - img [ref=e118]
+            - generic [ref=e120]:
+              - heading "Training platform" [level=3] [ref=e121]
+              - paragraph [ref=e122]: Google Colab on a free T4 GPU plus Kaggle on free T4 x2 GPUs.
+        - article [ref=e123]:
+          - generic [ref=e124]:
+            - img [ref=e126]
+            - generic [ref=e128]:
+              - heading "AI assistance" [level=3] [ref=e129]
+              - paragraph [ref=e130]: Dataset research support came from Zai by Zhipu AI and Claude by Anthropic.
+    - generic [ref=e131]:
+      - generic [ref=e132]:
+        - heading "Built-in Safety" [level=2] [ref=e133]
+        - paragraph [ref=e134]: The model was tuned to stay cautious, cite responsibly, and defer when scholarship is needed.
+      - generic [ref=e135]:
+        - generic [ref=e137]:
+          - img [ref=e139]
+          - paragraph [ref=e141]: Never fabricates ayahs or hadiths.
+        - generic [ref=e143]:
+          - img [ref=e145]
+          - paragraph [ref=e147]: Built-in responses against Islamophobia and extremism.
+        - generic [ref=e149]:
+          - img [ref=e151]
+          - paragraph [ref=e153]: Cites Quran 5:32 against any violence-related questions.
+        - generic [ref=e155]:
+          - img [ref=e157]
+          - paragraph [ref=e159]: Respects all religions and does not speak negatively about other faiths.
+        - generic [ref=e161]:
+          - img [ref=e163]
+          - paragraph [ref=e165]: Every response includes a beta disclaimer.
+        - generic [ref=e167]:
+          - img [ref=e169]
+          - paragraph [ref=e171]: Directs complex fiqh questions to qualified Islamic scholars.
+    - generic [ref=e172]:
+      - generic [ref=e173]:
+        - img [ref=e175]
+        - heading "Disclaimer" [level=2] [ref=e178]
+      - paragraph [ref=e179]: Alif-1.0 is an experimental beta model fine-tuned on a small dataset of 1,042 pairs. Responses may be inaccurate or incomplete. Always verify important Islamic matters with a qualified Islamic scholar. ImanVibes and its creators accept no responsibility for any decisions made based on this model.
+    - generic [ref=e180]:
+      - generic [ref=e181]:
+        - heading "Links" [level=2] [ref=e182]
+        - paragraph [ref=e183]: The model page is live, while product integrations are still on the way.
+      - generic [ref=e184]:
+        - link "Explore on HuggingFace" [ref=e185] [cursor=pointer]:
+          - /url: https://huggingface.co/mdayaan1911/alif-1.0
+          - generic [ref=e186]:
+            - img [ref=e187]
+            - generic [ref=e189]: Explore on HuggingFace
+        - link "Developer" [ref=e190] [cursor=pointer]:
+          - /url: https://moayaan.com
+          - generic [ref=e191]:
+            - img [ref=e192]
+            - generic [ref=e194]: Developer
+        - link "Go to Home" [ref=e195] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e196]:
+            - img [ref=e197]
+            - generic [ref=e199]: Go to Home
+    - paragraph [ref=e201]: Alif-1.0 is open source under Apache 2.0 license
+  - generic [ref=e202]:
+    - text: © 2026
+    - link "♦moayaan.eth♦" [ref=e203] [cursor=pointer]:
+      - /url: https://moayaan.com
+  - navigation [ref=e204]:
+    - generic [ref=e205]:
+      - link "Home" [ref=e206] [cursor=pointer]:
+        - /url: /
+      - link "Quran" [ref=e207] [cursor=pointer]:
+        - /url: /quran
+      - link "Hadith" [ref=e208] [cursor=pointer]:
+        - /url: /hadith
+      - link "Names" [ref=e209] [cursor=pointer]:
+        - /url: /names
+  - alert [ref=e210]
