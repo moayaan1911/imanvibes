@@ -12,7 +12,7 @@ Quranic comfort for every mood.
 ![PWA](https://img.shields.io/badge/PWA-Installable-6f8f7b?style=for-the-badge)
 ![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)
 
-ImanVibes is a calm, mobile-first Islamic web app built around a simple idea: open the Quran by how you feel right now, then move through a small set of verses without noise, sign-ups, or clutter. Alongside Quran by mood, the app includes Hadith and the 99 Names of Allah in the same quiet, text-first experience.
+ImanVibes is a calm, mobile-first Islamic web app built around a simple idea: open the Quran by how you feel right now, then move through a small set of verses without noise, sign-ups, or clutter. Alongside Quran by mood, the app includes Hadith, the 99 Names of Allah, and Duas for every occasion in the same quiet, text-first experience.
 
 The project now also includes **Alif-1.0**, the first Islamic AI model by ImanVibes, with its own landing page inside the same product.
 
@@ -46,11 +46,19 @@ It is intentionally lightweight:
 | ---------------------------------------------------------- | ----------------------------------------------------------- |
 | ![Android app page](public/screenshots/app-android-light.png) | ![iOS install guide](public/screenshots/app-ios-guide-light.png) |
 
+| Duas                                                        |
+| ----------------------------------------------------------- |
+| ![Duas page](public/screenshots/duas-light.png) |
+
 ## What The App Does
 
 - Browse Quran verses grouped by mood
 - Read one item at a time in a clean, card-based flow
 - Open Hadith and the 99 Names of Allah in the same interface
+- Browse Duas grouped by occasion (before eating, before sleep, for anxiety, travel, and more)
+- Daily Verse on the homepage with share and download image
+- Search across moods, occasions, verses, and duas
+- Listen to Arabic TTS audio on any content with Arabic text
 - Explore **Alif-1.0**, the first Islamic AI model by ImanVibes
 - Share each item by link, WhatsApp, X, Telegram, share image, or download image
 - Generate dynamic Open Graph images for the homepage and quote pages
@@ -64,10 +72,13 @@ flowchart TD
   A[Home] --> B[Quran by Mood]
   A --> C[Hadith]
   A --> D[99 Names]
+  A --> Duas[Duas by Occasion]
+  A --> DV[Daily Verse]
   A --> I[Alif-1.0]
   B --> E[Item-specific link]
   C --> E
   D --> E
+  Duas --> E
   E --> F[Social preview OG image]
   E --> G[Share image / Download image]
   A --> H[Add to Home]
@@ -75,18 +86,20 @@ flowchart TD
 
 ## Routes
 
-| Route           | Purpose                                       |
-| --------------- | --------------------------------------------- |
-| `/`             | Landing page and entry point                  |
-| `/app`          | Android APK download page and iOS install guide |
-| `/alif`         | Alif-1.0 landing page                         |
-| `/quran`        | Mood picker                                   |
-| `/quran/[mood]` | Quran verses filtered by mood                 |
-| `/hadith`       | Hadith collection landing page                |
-| `/hadith/[item]`| Item-specific Hadith page                     |
-| `/names`        | 99 Names collection landing page              |
-| `/names/[item]` | Item-specific Name page                       |
-| `/temp`         | Local OG preview route for development review |
+| Route              | Purpose                                       |
+| ------------------ | --------------------------------------------- |
+| `/`                | Landing page and entry point                  |
+| `/app`             | Android APK download page and iOS install guide |
+| `/alif`            | Alif-1.0 landing page                         |
+| `/quran`           | Mood picker                                   |
+| `/quran/[mood]`    | Quran verses filtered by mood                 |
+| `/hadith`          | Hadith collection landing page                |
+| `/hadith/[item]`   | Item-specific Hadith page                     |
+| `/names`           | 99 Names collection landing page              |
+| `/names/[item]`    | Item-specific Name page                       |
+| `/duas`            | Occasion picker with search                   |
+| `/duas/[occasion]` | Duas filtered by occasion                     |
+| `/temp`            | Local OG preview route for development review |
 
 ## PWA Features
 
@@ -106,7 +119,7 @@ flowchart TD
 
 ## Sharing
 
-Each Quran, Hadith, and Name card supports:
+Each Quran, Hadith, Name, and Dua card supports:
 
 - next item navigation
 - item-specific deep links
@@ -144,7 +157,7 @@ The app includes a full metadata foundation for both traditional search and AI-d
 - `robots.txt`
 - `sitemap.xml`
 - `llms.txt`
-- JSON-LD for organization, website, collection pages, breadcrumbs, Quran quotes, Hadith, and the 99 Names
+- JSON-LD for organization, website, collection pages, breadcrumbs, Quran quotes, Hadith, Duas, and the 99 Names
 - JSON-LD for the Alif-1.0 software/application page
 - `data-nosnippet` applied to non-content UI chrome where useful
 
@@ -156,6 +169,7 @@ The app includes a full metadata foundation for both traditional search and AI-d
 - Tailwind CSS 4
 - React Icons
 - `html-to-image`
+- `node-edge-tts` (Arabic TTS)
 - Vercel Analytics
 - Static local JSON content
 
@@ -197,6 +211,9 @@ app/
   hadith/[item]/page.tsx
   names/page.tsx
   names/[item]/page.tsx
+  duas/page.tsx
+  duas/[occasion]/page.tsx
+  og/duas/[item]/opengraph-image.tsx
   layout.tsx
   manifest.ts
   robots.ts
@@ -209,9 +226,11 @@ components/
   BottomNav.tsx
   BrandWordmark.tsx
   ContentCard.tsx
+  DailyVerseCard.tsx
   Footer.tsx
   JsonLd.tsx
   MoodGrid.tsx
+  SearchableGrid.tsx
   ServiceWorkerRegistration.tsx
   ShareButton.tsx
   ThemeToggle.tsx
@@ -239,10 +258,11 @@ imanvibes_dataset.json
 All content is read from a single local file:
 
 - `imanvibes_dataset.json`
+- Contains `quranByMood`, `hadithCollection`, `allahNames`, and `duas`
 
 Rules followed by the app:
 
-- Quran and Hadith text are rendered exactly as stored
+- Quran, Hadith, and Dua text are rendered exactly as stored
 - no remote fetches
 - no content mutation
 - no user-generated data
@@ -261,7 +281,7 @@ Rules followed by the app:
 <details>
 <summary><strong>Item links and sharing</strong></summary>
 
-Quran item URLs use `?item=<id>` within each mood route, while Hadith and Names use cleaner path-based item routes like `/hadith/1` and `/names/1`. Metadata is generated with item awareness so shared URLs can produce meaningful titles, descriptions, and preview images.
+Quran and Duas item URLs use `?item=<id>` within each mood/occasion route, while Hadith and Names use cleaner path-based item routes like `/hadith/1` and `/names/1`. Metadata is generated with item awareness so shared URLs can produce meaningful titles, descriptions, and preview images.
 
 </details>
 
@@ -271,7 +291,7 @@ Quran item URLs use `?item=<id>` within each mood route, while Hadith and Names 
 There are two OG directions in the app:
 
 - landing OG: icon + wordmark + tagline + domain
-- quote OG: branded share-card style for Quran, Hadith, and Names
+- quote OG: branded share-card style for Quran, Hadith, Names, and Duas
 
 The `/temp` route exists to preview these OG outputs during development before checking them on live social platforms.
 
@@ -293,6 +313,10 @@ Ship-ready MVP with:
 - working OG image previews
 - working share actions
 - full basic SEO/GEO layer
+- Duas section (45 duas grouped by occasion)
+- Daily Verse on homepage
+- Arabic TTS audio playback
+- Search on Quran and Duas pages
 
 ## Remaining Nice-To-Haves
 
