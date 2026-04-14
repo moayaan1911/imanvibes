@@ -64,3 +64,28 @@ export function getHadithById(itemId: string) {
 export function getAllahNameById(itemId: string) {
   return allahNames.find((entry) => String(entry.id) === itemId) ?? null;
 }
+
+const allVerses: (QuranEntry & { mood: string })[] = [];
+
+for (const mood of moodNames) {
+  for (const verse of quranByMood[mood]) {
+    allVerses.push({ ...verse, mood });
+  }
+}
+
+export function getDailyVerse() {
+  const today = new Date();
+  const start = new Date(today.getFullYear(), 0, 0);
+  const diff = today.getTime() - start.getTime();
+  const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const index = dayOfYear % allVerses.length;
+  return allVerses[index];
+}
+
+export function getFormattedDate() {
+  const today = new Date();
+  const dd = String(today.getDate()).padStart(2, "0");
+  const mm = String(today.getMonth() + 1).padStart(2, "0");
+  const yyyy = today.getFullYear();
+  return `${dd}/${mm}/${yyyy}`;
+}

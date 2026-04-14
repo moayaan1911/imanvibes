@@ -3,11 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaAndroid, FaGithub, FaMicrochip, FaMugHot } from "react-icons/fa6";
 import BrandWordmark from "@/components/BrandWordmark";
+import DailyVerseCard from "@/components/DailyVerseCard";
 import JsonLd from "@/components/JsonLd";
 import MoodGrid from "@/components/MoodGrid";
 import ThemeToggle from "@/components/ThemeToggle";
 import {
   allahNames,
+  getDailyVerse,
+  getFormattedDate,
   hadithCollection,
   moodNames,
   quranByMood,
@@ -85,6 +88,9 @@ function SectionLinkCard({
     </Link>
   );
 }
+
+const dailyVerse = getDailyVerse();
+const dailyDate = getFormattedDate();
 
 export default function Home() {
   return (
@@ -195,6 +201,16 @@ export default function Home() {
             <SectionLinkCard key={section.href} {...section} />
           ))}
         </section>
+
+        <div className="mt-5">
+          <DailyVerseCard
+            arabic={dailyVerse.arabic}
+            translation={dailyVerse.translation}
+            source={dailyVerse.source}
+            mood={dailyVerse.mood}
+            date={dailyDate}
+          />
+        </div>
 
         <section className="surface-soft-block mt-5 rounded-[32px] p-5">
           <div className="flex items-center justify-between gap-4">
