@@ -13,7 +13,9 @@ import {
   getFormattedDate,
   hadithCollection,
   moodNames,
+  occasionNames,
   quranByMood,
+  totalDuas,
 } from "@/lib/content";
 import { createSeoMetadata } from "@/lib/seo";
 import { getWebPageJsonLd } from "@/lib/structured-data";
@@ -50,6 +52,12 @@ const sectionLinks = [
     label: "99 Names",
     count: `${allahNames.length} names`,
     summary: "Reflect through the names, meanings, and mercy of Allah.",
+  },
+  {
+    href: "/duas",
+    label: "Duas",
+    count: `${totalDuas} duas`,
+    summary: "Supplications for every occasion — eating, sleep, travel, and more.",
   },
 ];
 

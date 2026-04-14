@@ -8,6 +8,7 @@ const items = [
   { href: "/quran", label: "Quran" },
   { href: "/hadith", label: "Hadith" },
   { href: "/names", label: "Names" },
+  { href: "/duas", label: "Duas" },
 ];
 
 export default function BottomNav() {

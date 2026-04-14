@@ -21,10 +21,20 @@ export type AllahName = {
   meaning: string;
 };
 
+export type DuaEntry = {
+  id: number;
+  arabic: string;
+  transliteration: string;
+  translation: string;
+  source: string;
+  occasion: string;
+};
+
 type ContentDataset = {
   quranByMood: Record<string, QuranEntry[]>;
   hadithCollection: HadithEntry[];
   allahNames: AllahName[];
+  duas: DuaEntry[];
 };
 
 const content = dataset as ContentDataset;
@@ -32,6 +42,7 @@ const content = dataset as ContentDataset;
 export const quranByMood = content.quranByMood;
 export const hadithCollection = content.hadithCollection;
 export const allahNames = content.allahNames;
+export const duas = content.duas;
 export const moodNames = Object.keys(quranByMood);
 export const totalVerses = moodNames.reduce(
   (count, mood) => count + quranByMood[mood].length,
@@ -63,6 +74,42 @@ export function getHadithById(itemId: string) {
 
 export function getAllahNameById(itemId: string) {
   return allahNames.find((entry) => String(entry.id) === itemId) ?? null;
+}
+
+export function getDuaById(itemId: string) {
+  return duas.find((entry) => String(entry.id) === itemId) ?? null;
+}
+
+const occasionSet = new Set<string>();
+export const duasByOccasion: Record<string, DuaEntry[]> = {};
+
+for (const dua of duas) {
+  occasionSet.add(dua.occasion);
+  (duasByOccasion[dua.occasion] ??= []).push(dua);
+}
+
+export const occasionNames = Array.from(occasionSet).sort(
+  (a, b) => (duasByOccasion[b]?.length ?? 0) - (duasByOccasion[a]?.length ?? 0),
+);
+export const totalDuas = duas.length;
+
+export function slugifyOccasion(occasion: string) {
+  return occasion
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+export function getOccasionHref(occasion: string) {
+  return `/duas/${slugifyOccasion(occasion)}`;
+}
+
+export function getOccasionFromSlug(slug: string) {
+  return occasionNames.find((occasion) => slugifyOccasion(occasion) === slug) ?? null;
+}
+
+export function getDuaByOccasionAndId(occasion: string, itemId: string) {
+  return duasByOccasion[occasion]?.find((entry) => String(entry.id) === itemId) ?? null;
 }
 
 const allVerses: (QuranEntry & { mood: string })[] = [];

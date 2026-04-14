@@ -1,10 +1,14 @@
 import type { MetadataRoute } from "next";
 import {
   allahNames,
+  duas,
+  duasByOccasion,
   hadithCollection,
   moodNames,
+  occasionNames,
   quranByMood,
   slugifyMood,
+  slugifyOccasion,
 } from "@/lib/content";
 import { absoluteUrl } from "@/lib/site";
 
@@ -47,6 +51,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.85,
     },
+    {
+      url: absoluteUrl("/duas"),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
   ];
 
   for (const mood of moodNames) {
@@ -85,6 +95,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.65,
     });
+  }
+
+  for (const occasion of occasionNames) {
+    const occasionPath = `/duas/${slugifyOccasion(occasion)}`;
+
+    entries.push({
+      url: absoluteUrl(occasionPath),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    });
+
+    for (const entry of duasByOccasion[occasion]) {
+      entries.push({
+        url: absoluteUrl(`${occasionPath}?item=${entry.id}`),
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority: 0.65,
+      });
+    }
   }
 
   return entries;

@@ -19,7 +19,7 @@ export type ContentCardItem = {
 
 type ContentCardProps = {
   items: ContentCardItem[];
-  kind: "quran" | "hadith" | "names";
+  kind: "quran" | "hadith" | "names" | "duas";
   initialItemId?: string;
 };
 
@@ -56,6 +56,11 @@ const kindLabels = {
     badge: "99 Names",
     next: "Next name",
     shareIntro: "I found this beautiful name of Allah on ImanVibes.",
+  },
+  duas: {
+    badge: "Duas",
+    next: "Next dua",
+    shareIntro: "I found this beautiful dua on ImanVibes.",
   },
 } as const;
 
@@ -328,7 +333,7 @@ export default function ContentCard({
         </p>
 
         {item.transliteration ? (
-          <p className="mt-4 text-sm font-semibold uppercase tracking-[0.16em] text-[var(--sage-700)]">
+          <p className={`mt-4 text-[var(--sage-700)] ${kind === "duas" ? "text-sm italic leading-6" : "text-sm font-semibold uppercase tracking-[0.16em]"}`}>
             {item.transliteration}
           </p>
         ) : null}
@@ -356,7 +361,8 @@ export default function ContentCard({
         <button
           type="button"
           onClick={handleNext}
-          className="button-primary cursor-pointer rounded-full px-4 py-3 text-sm font-semibold"
+          disabled={items.length <= 1}
+          className={`button-primary rounded-full px-4 py-3 text-sm font-semibold ${items.length <= 1 ? "cursor-not-allowed opacity-55" : "cursor-pointer"}`}
         >
           {kindLabels[kind].next}
         </button>
