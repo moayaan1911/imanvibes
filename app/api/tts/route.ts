@@ -5,7 +5,7 @@ import { join } from "path";
 import { readFileSync, unlinkSync } from "fs";
 
 export const runtime = "nodejs";
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
 export async function GET(request: NextRequest) {
   const text = request.nextUrl.searchParams.get("text");

@@ -12,13 +12,14 @@ type ThemeToggleProps = {
 };
 
 const THEME_COLOR = {
-  light: "#f7f1e8",
+  light: "#fff9ef",
   dark: "#0f1512",
 } as const;
 
 function applyTheme(theme: Theme) {
   document.documentElement.dataset.theme = theme;
   document.documentElement.style.colorScheme = theme;
+  document.documentElement.classList.toggle("dark", theme === "dark");
   localStorage.setItem("theme", theme);
 
   const meta = document.querySelector('meta[name="theme-color"]');

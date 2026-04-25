@@ -1,9 +1,13 @@
 "use client";
 
 import { toBlob } from "html-to-image";
-import { useRef, useState, useSyncExternalStore } from "react";
+import { Capacitor } from "@capacitor/core";
+import { Directory, Filesystem } from "@capacitor/filesystem";
+import { Share } from "@capacitor/share";
+import { useMemo, useRef, useState } from "react";
 import { FaDownload, FaShareNodes } from "react-icons/fa6";
 import ShareButton from "@/components/ShareButton";
+import { siteDomain } from "@/lib/site";
 
 type DailyVerseCardProps = {
   arabic: string;
@@ -23,15 +27,10 @@ export default function DailyVerseCard({
   const [shareImageLabel, setShareImageLabel] = useState("Share image");
   const [downloadImageLabel, setDownloadImageLabel] = useState("Download image");
   const shareCardRef = useRef<HTMLDivElement>(null);
-  const runtimeOrigin = useSyncExternalStore(
-    () => () => {},
-    () => window.location.origin,
-    () => "",
+  const isAndroidNativeApp = useMemo(
+    () => Capacitor.isNativePlatform() && Capacitor.getPlatform() === "android",
+    [],
   );
-
-  const shareHomeUrl = runtimeOrigin
-    ? runtimeOrigin.replace(/^https?:\/\//, "")
-    : "";
 
   async function createImageAsset() {
     if (!shareCardRef.current) {
@@ -55,6 +54,22 @@ export default function DailyVerseCard({
     };
   }
 
+  async function blobToBase64(blob: Blob) {
+    return new Promise<string>((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        if (typeof reader.result !== "string") {
+          reject(new Error("Could not convert image"));
+          return;
+        }
+        const [, base64 = ""] = reader.result.split(",");
+        resolve(base64);
+      };
+      reader.onerror = () => reject(reader.error ?? new Error("Could not convert image"));
+      reader.readAsDataURL(blob);
+    });
+  }
+
   function downloadImage(blob: Blob, filename: string) {
     const blobUrl = URL.createObjectURL(blob);
     const link = document.createElement("a");
@@ -70,11 +85,29 @@ export default function DailyVerseCard({
     try {
       const { blob, file } = await createImageAsset();
 
+      if (isAndroidNativeApp) {
+        const base64Data = await blobToBase64(blob);
+        const path = `shares/daily-verse-${date}.png`;
+        const saved = await Filesystem.writeFile({
+          path,
+          data: base64Data,
+          directory: Directory.Cache,
+          recursive: true,
+        });
+
+        await Share.share({
+          files: [saved.uri],
+          dialogTitle: "Share image from ImanVibes",
+        });
+
+        setShareImageLabel("Shared");
+        window.setTimeout(() => setShareImageLabel("Share image"), 1400);
+        return;
+      }
+
       if (navigator.canShare?.({ files: [file] })) {
         await navigator.share({
           files: [file],
-          title: "ImanVibes",
-          text: "Today's verse from ImanVibes",
         });
 
         setShareImageLabel("Shared");
@@ -101,6 +134,29 @@ export default function DailyVerseCard({
 
     try {
       const { blob, file } = await createImageAsset();
+
+      if (isAndroidNativeApp) {
+        const base64Data = await blobToBase64(blob);
+        const path = `shares/daily-verse-${date}.png`;
+        const saved = await Filesystem.writeFile({
+          path,
+          data: base64Data,
+          directory: Directory.Cache,
+          recursive: true,
+        });
+
+        await Share.share({
+          title: "ImanVibes",
+          text: "Daily Verse from ImanVibes",
+          files: [saved.uri],
+          dialogTitle: "Save image from ImanVibes",
+        });
+
+        setDownloadImageLabel("Saved");
+        window.setTimeout(() => setDownloadImageLabel("Download image"), 1400);
+        return;
+      }
+
       downloadImage(blob, file.name);
       setDownloadImageLabel("Downloaded");
       window.setTimeout(() => setDownloadImageLabel("Download image"), 1400);
@@ -187,7 +243,7 @@ export default function DailyVerseCard({
 
           <div className="mt-6 flex justify-end">
             <p className="text-right text-xs leading-5 text-[#566056]">
-              {shareHomeUrl}
+              {siteDomain}
             </p>
           </div>
         </div>

@@ -1,19 +1,22 @@
 "use client";
 
+import { absoluteUrl } from "@/lib/site";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { FaPlay, FaPause, FaVolumeHigh } from "react-icons/fa6";
 
 interface AudioPlayerProps {
   arabicText: string;
+  variant?: "default" | "icon";
 }
 
 type PlaybackState = "idle" | "loading" | "playing" | "paused" | "error";
 
-export default function AudioPlayer({ arabicText }: AudioPlayerProps) {
+export default function AudioPlayer({
+  arabicText,
+  variant = "default",
+}: AudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const audioUrlRef = useRef<string | null>(null);
   const speechEndTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const speechDurationRef = useRef<number | null>(null);
   const [state, setState] = useState<PlaybackState>("idle");
   const [progress, setProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
@@ -54,63 +57,45 @@ export default function AudioPlayer({ arabicText }: AudioPlayerProps) {
       audioRef.current.src = "";
       audioRef.current = null;
     }
-    if (audioUrlRef.current) {
-      URL.revokeObjectURL(audioUrlRef.current);
-      audioUrlRef.current = null;
-    }
-    speechDurationRef.current = null;
   }, []);
 
-  const playWithWebSpeech = useCallback(() => {
-    if (!("speechSynthesis" in window)) {
-      setErrorMsg("Not supported");
-      setState("error");
-      return;
-    }
+  const playRemoteAudio = useCallback(async () => {
+    cleanupAudio();
 
-    window.speechSynthesis.cancel();
-
-    const utterance = new SpeechSynthesisUtterance(arabicText);
-    utterance.lang = "ar-SA";
-    utterance.rate = 0.85;
-
-    const voices = speechSynthesis.getVoices();
-    const arabicVoice = voices.find(
-      (v) =>
-        v.lang.startsWith("ar") &&
-        (v.name.includes("Naayf") ||
-          v.name.includes("Maged") ||
-          v.name.includes("Tarik") ||
-          v.name.includes("Google")),
+    const audio = new Audio(
+      absoluteUrl(`/api/tts?text=${encodeURIComponent(arabicText)}`),
     );
-    if (arabicVoice) {
-      utterance.voice = arabicVoice;
-    }
+    audio.preload = "auto";
+    audioRef.current = audio;
 
-    setState("playing");
-    setProgress(0);
-    setCurrentTime(0);
-
-    utterance.onend = () => {
-      setState("idle");
-      setProgress(0);
-      setCurrentTime(0);
+    audio.onloadedmetadata = () => {
+      setDuration(Number.isFinite(audio.duration) ? audio.duration : 0);
     };
 
-    utterance.onerror = () => {
+    audio.ontimeupdate = () => {
+      const effectiveDuration = audio.duration;
+      setCurrentTime(audio.currentTime);
+      setProgress((audio.currentTime / effectiveDuration) * 100 || 0);
+    };
+
+    audio.onended = () => {
+      stopPlayback();
+    };
+
+    audio.onerror = () => {
+      cleanupAudio();
       setErrorMsg("Playback failed");
       setState("error");
     };
 
-    window.speechSynthesis.speak(utterance);
-  }, [arabicText]);
+    await audio.play();
+    setState("playing");
+  }, [arabicText, cleanupAudio, stopPlayback]);
 
   const togglePlay = useCallback(async () => {
     if (state === "playing") {
       if (audioRef.current) {
         audioRef.current.pause();
-      } else if ("speechSynthesis" in window && speechSynthesis.speaking) {
-        speechSynthesis.cancel();
       }
       setState("paused");
       return;
@@ -120,7 +105,7 @@ export default function AudioPlayer({ arabicText }: AudioPlayerProps) {
       audioRef.current.play();
       setState("playing");
 
-      const remaining = (speechDurationRef.current || audioRef.current.duration) - audioRef.current.currentTime;
+      const remaining = audioRef.current.duration - audioRef.current.currentTime;
       if (speechEndTimerRef.current) {
         clearTimeout(speechEndTimerRef.current);
       }
@@ -130,78 +115,20 @@ export default function AudioPlayer({ arabicText }: AudioPlayerProps) {
 
     setState("loading");
     setErrorMsg(null);
+    setDuration(0);
 
     try {
-      const response = await fetch(
-        `/api/tts?text=${encodeURIComponent(arabicText)}`,
-      );
-
-      if (!response.ok) {
-        throw new Error("TTS fetch failed");
-      }
-
-      const speechDurationHeader = response.headers.get("X-Speech-Duration");
-      if (speechDurationHeader) {
-        speechDurationRef.current = parseFloat(speechDurationHeader);
-      }
-
-      const blob = await response.blob();
-      const url = URL.createObjectURL(blob);
-
-      cleanupAudio();
-
-      audioUrlRef.current = url;
-      const audio = new Audio(url);
-      audioRef.current = audio;
-
-      audio.onloadedmetadata = () => {
-        const totalDuration = audio.duration;
-        setDuration(speechDurationRef.current || totalDuration);
-      };
-
-      audio.ontimeupdate = () => {
-        const effectiveDuration = speechDurationRef.current || audio.duration;
-        setCurrentTime(audio.currentTime);
-        setProgress((audio.currentTime / effectiveDuration) * 100 || 0);
-
-        if (
-          speechDurationRef.current &&
-          audio.currentTime >= speechDurationRef.current
-        ) {
-          stopPlayback();
-        }
-      };
-
-      audio.onended = () => {
-        stopPlayback();
-      };
-
-      audio.onerror = () => {
-        cleanupAudio();
-        playWithWebSpeech();
-      };
-
-      await audio.play();
-      setState("playing");
-
-      if (speechDurationRef.current) {
-        speechEndTimerRef.current = setTimeout(
-          stopPlayback,
-          speechDurationRef.current * 1000 + 300,
-        );
-      }
+      await playRemoteAudio();
     } catch {
       cleanupAudio();
-      playWithWebSpeech();
+      setErrorMsg("Playback failed");
+      setState("error");
     }
-  }, [state, arabicText, cleanupAudio, playWithWebSpeech, stopPlayback]);
+  }, [state, arabicText, cleanupAudio, playRemoteAudio, stopPlayback]);
 
   useEffect(() => {
     return () => {
       cleanupAudio();
-      if ("speechSynthesis" in window) {
-        speechSynthesis.cancel();
-      }
     };
   }, [cleanupAudio]);
 
@@ -218,7 +145,27 @@ export default function AudioPlayer({ arabicText }: AudioPlayerProps) {
     setProgress(clickPosition * 100);
   };
 
-  const isDisabled = state === "loading" || state === "error";
+  const isDisabled = state === "loading";
+
+  if (variant === "icon") {
+    return (
+      <button
+        type="button"
+        onClick={() => void togglePlay()}
+        disabled={isDisabled}
+        className="flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-[var(--sage-200)] text-[var(--sage-700)] shadow-[0_8px_30px_rgba(92,124,104,0.2)] transition-colors hover:bg-[var(--sage-100)] disabled:opacity-50"
+        aria-label={state === "playing" ? "Pause" : "Listen"}
+      >
+        {state === "loading" ? (
+          <span className="h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent" />
+        ) : state === "playing" ? (
+          <FaPause className="h-5 w-5" />
+        ) : (
+          <FaPlay className="ml-0.5 h-5 w-5" />
+        )}
+      </button>
+    );
+  }
 
   return (
     <div className="flex items-center gap-3 rounded-full bg-[var(--sage-100)] px-3 py-2 cursor-pointer">

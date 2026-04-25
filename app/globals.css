@@ -1,9 +1,10 @@
 @import "tailwindcss";
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 :root {
-  --background: #f7f1e8;
+  --background: #fff9ef;
   --foreground: #2f342f;
-  --sand-50: #f7f1e8;
+  --sand-50: #fff9ef;
   --sand-100: #efe6d8;
   --sand-200: #e5d8c2;
   --sage-100: #e6f0e8;
@@ -15,17 +16,7 @@
   --gold-400: #c6aa6b;
   --ink-700: #566056;
   --ink-900: #2f342f;
-  --page-bg: radial-gradient(
-      circle at top,
-      rgba(255, 255, 255, 0.72),
-      transparent 32%
-    ),
-    linear-gradient(
-      180deg,
-      var(--sand-50) 0%,
-      var(--sand-100) 52%,
-      var(--sage-100) 100%
-    );
+  --page-bg: #fff9ef;
   --surface-strong: rgba(255, 255, 255, 0.82);
   --surface-soft: rgba(255, 255, 255, 0.7);
   --surface-card: rgba(255, 253, 248, 0.95);
@@ -39,7 +30,7 @@
   --shadow-item: 0 10px 24px rgba(111, 143, 123, 0.06);
   --shadow-button: 0 10px 24px rgba(111, 143, 123, 0.24);
   --shadow-card-inset: inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  --nav-bg: rgba(255, 253, 248, 0.96);
+  --nav-bg: rgba(255, 249, 239, 0.96);
   --button-secondary-bg: #ffffff;
   --button-secondary-border: var(--sage-200);
   --button-secondary-text: var(--sage-700);
@@ -50,8 +41,8 @@
   --footer-text: rgba(255, 255, 255, 0.58);
   --footer-link: #7f80ff;
   --footer-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
-  --theme-toggle-bg: rgba(255, 253, 248, 0.92);
-  --theme-toggle-border: rgba(111, 143, 123, 0.16);
+  --theme-toggle-bg: rgba(255, 249, 239, 0.94);
+  --theme-toggle-border: rgba(111, 143, 123, 0.22);
   --theme-toggle-text: var(--sage-700);
 }
 
@@ -114,7 +105,7 @@ html[data-theme="light"] {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-manrope);
-  --font-display: var(--font-cormorant-garamond);
+  --font-display: var(--font-newsreader);
   --font-brand-arabic: var(--font-amiri);
   --font-arabic: var(--font-naskh-arabic);
 }

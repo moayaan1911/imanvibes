@@ -21,6 +21,20 @@ async function cacheResponse(cacheName, request, response) {
   return response;
 }
 
+function shouldBypass(request, url) {
+  const accept = request.headers.get("accept") || "";
+
+  return (
+    url.pathname.startsWith("/api/") ||
+    url.pathname.startsWith("/_vercel/") ||
+    url.pathname.startsWith("/_next/webpack-hmr") ||
+    url.searchParams.has("_rsc") ||
+    request.headers.has("RSC") ||
+    request.headers.has("Next-Router-State-Tree") ||
+    accept.includes("text/x-component")
+  );
+}
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches
@@ -55,6 +69,10 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(request.url);
 
   if (url.origin !== self.location.origin) {
+    return;
+  }
+
+  if (shouldBypass(request, url)) {
     return;
   }
 

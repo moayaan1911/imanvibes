@@ -1,6 +1,6 @@
 {
   "name": "imanvibes",
-  "version": "0.1.0",
+  "version": "0.0.12",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,7 +10,8 @@
     "lint": "eslint",
     "android:sync": "./scripts/android-sync.sh",
     "android:open": "npx cap open android",
-    "android:apk:debug": "./scripts/android-build-debug.sh"
+    "android:apk:debug": "./scripts/android-build-debug.sh",
+    "android:apk:release": "./scripts/android-build-release.sh"
   },
   "dependencies": {
     "@capacitor/android": "^8.3.0",
@@ -18,9 +19,11 @@
     "@capacitor/clipboard": "^8.0.1",
     "@capacitor/core": "^8.3.0",
     "@capacitor/filesystem": "^8.1.2",
+    "@capacitor/geolocation": "^8.2.0",
     "@capacitor/local-notifications": "^8.0.2",
     "@capacitor/share": "^8.0.1",
     "@vercel/analytics": "^2.0.1",
+    "@xeyqe/capacitor-tts": "^0.0.7",
     "html-to-image": "^1.11.13",
     "next": "16.2.2",
     "node-edge-tts": "^1.2.10",

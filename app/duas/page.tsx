@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import BrandWordmark from "@/components/BrandWordmark";
+import AppBrandRow from "@/components/AppBrandRow";
 import JsonLd from "@/components/JsonLd";
 import SearchableGrid from "@/components/SearchableGrid";
 import {
@@ -9,7 +8,6 @@ import {
   getOccasionHref,
   occasionNames,
   slugifyOccasion,
-  totalDuas,
 } from "@/lib/content";
 import { createSeoMetadata } from "@/lib/seo";
 import { getBreadcrumbJsonLd, getWebPageJsonLd } from "@/lib/structured-data";
@@ -60,52 +58,23 @@ export default function DuasPage() {
     <div className="page-bg min-h-screen">
       <main className="mx-auto flex min-h-screen w-full max-w-md flex-col px-4 pt-5">
         <JsonLd data={structuredData} />
-        <section className="surface-panel rounded-[32px] p-5">
-          <div className="flex items-center gap-4">
-            <Image
-              src="/icon2Circular.png"
-              alt="ImanVibes icon"
-              width={64}
-              height={64}
-              priority
-              className="icon-ring rounded-full border"
-            />
-            <BrandWordmark wordmarkClassName="text-[1.45rem]" />
-          </div>
+        <AppBrandRow showBackButton />
 
-          <h1 className="mt-5 text-[2rem] font-semibold leading-[1.05] tracking-[-0.03em] text-[var(--ink-900)]">
-            Duas
+        <section className="mx-auto mt-8 w-full max-w-2xl text-center">
+          <h1 className="text-[2.85rem] leading-[0.98] tracking-[-0.05em] text-[var(--sage-700)] [font-family:var(--font-display)]">
+            Supplications
           </h1>
-          <p className="mt-3 text-xs leading-6 text-[var(--ink-700)]">
-            Supplications for every occasion.
+          <p className="mt-3 text-[15px] leading-7 text-[var(--ink-700)]">
+            Find solace and strength in daily prayers and remembrance.
           </p>
 
-          <div className="mt-5 grid grid-cols-2 gap-3">
-            <div className="stat-sage rounded-[24px] p-4">
-              <p className="text-2xl font-semibold text-[var(--ink-900)]">
-                {occasionNames.length}
-              </p>
-              <p className="mt-1 text-sm text-[var(--ink-700)]">Occasions</p>
-            </div>
-            <div className="stat-sand rounded-[24px] p-4">
-              <p className="text-2xl font-semibold text-[var(--ink-900)]">
-                {totalDuas}
-              </p>
-              <p className="mt-1 text-sm text-[var(--ink-700)]">Total duas</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="surface-section mt-5 rounded-[32px] p-5">
-          <h2 className="text-lg font-semibold text-[var(--ink-900)]">
-            Pick an occasion
-          </h2>
           <SearchableGrid
             categories={categories}
             items={searchableItems}
             categoryLabel="Occasions"
             itemLabel="duas"
-            placeholder="Search occasions or duas (e.g. Bukhari, sleep)..."
+            placeholder="Search categories..."
+            categoryStyle="dua-grid"
           />
         </section>
       </main>

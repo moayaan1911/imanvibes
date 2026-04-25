@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import ContentCard, { type ContentCardItem } from "@/components/ContentCard";
+import DetailBrandRow from "@/components/DetailBrandRow";
 import JsonLd from "@/components/JsonLd";
 import {
   duasByOccasion,
-  getDuaByOccasionAndId,
   getOccasionFromSlug,
   occasionNames,
   slugifyOccasion,
@@ -14,10 +13,8 @@ import {
 import { createSeoMetadata } from "@/lib/seo";
 import {
   getBreadcrumbJsonLd,
-  getQuoteJsonLd,
   getWebPageJsonLd,
 } from "@/lib/structured-data";
-import { summarizeText, withItemParam } from "@/lib/site";
 
 export function generateStaticParams() {
   return occasionNames.map((occasion) => ({
@@ -27,13 +24,10 @@ export function generateStaticParams() {
 
 export async function generateMetadata({
   params,
-  searchParams,
 }: {
   params: Promise<{ occasion: string }>;
-  searchParams: Promise<{ item?: string }>;
 }): Promise<Metadata> {
   const { occasion: occasionSlug } = await params;
-  const { item } = await searchParams;
   const occasion = getOccasionFromSlug(occasionSlug);
 
   if (!occasion) {
@@ -44,32 +38,23 @@ export async function generateMetadata({
     });
   }
 
-  const entry = item ? getDuaByOccasionAndId(occasion, item) : null;
   const basePath = `/duas/${occasionSlug}`;
-  const path = withItemParam(basePath, entry ? String(entry.id) : null);
 
   return createSeoMetadata({
-    title: entry?.source
-      ? `${occasion} - ${entry.source}`
-      : `Duas for ${occasion}`,
-    description: entry
-      ? `${summarizeText(entry.translation, 150)}${entry.source ? ` Source: ${entry.source}.` : ""}`
-      : `Browse ${duasByOccasion[occasion].length} duas for ${occasion.toLowerCase()}.`,
-    path,
-    imagePath: `/og/duas/${entry?.id ?? duasByOccasion[occasion][0].id}/opengraph-image`,
+    title: `Duas for ${occasion}`,
+    description: `Browse ${duasByOccasion[occasion].length} duas for ${occasion.toLowerCase()}.`,
+    path: basePath,
+    imagePath: `/og/duas/${duasByOccasion[occasion][0].id}/opengraph-image`,
     keywords: ["Duas", "Islamic supplications", occasion],
   });
 }
 
 export default async function DuasOccasionPage({
   params,
-  searchParams,
 }: {
   params: Promise<{ occasion: string }>;
-  searchParams: Promise<{ item?: string }>;
 }) {
   const { occasion: occasionSlug } = await params;
-  const { item } = await searchParams;
   const occasion = getOccasionFromSlug(occasionSlug);
 
   if (!occasion) {
@@ -83,11 +68,7 @@ export default async function DuasOccasionPage({
     translation: entry.translation,
     source: entry.source,
   }));
-  const currentEntry = item ? getDuaByOccasionAndId(occasion, item) : null;
-  const currentItemId = currentEntry
-    ? String(currentEntry.id)
-    : items[0]?.id;
-  const currentPath = withItemParam(`/duas/${occasionSlug}`, currentItemId);
+  const currentItemId = items[0]?.id;
   const structuredData = [
     getWebPageJsonLd({
       title: `Duas for ${occasion}`,
@@ -100,19 +81,6 @@ export default async function DuasOccasionPage({
       { name: "Duas", path: "/duas" },
       { name: occasion, path: `/duas/${occasionSlug}` },
     ]),
-    ...(currentEntry
-      ? [
-          getQuoteJsonLd({
-            urlPath: currentPath,
-            title: currentEntry.source || `Dua for ${occasion}`,
-            text: currentEntry.translation,
-            source: currentEntry.source,
-            arabic: currentEntry.arabic,
-            parentPath: `/duas/${occasionSlug}`,
-            genre: "Dua",
-          }),
-        ]
-      : []),
   ];
 
   const relatedOccasions = occasionNames
@@ -123,52 +91,21 @@ export default async function DuasOccasionPage({
     <div className="page-bg min-h-screen">
       <main className="mx-auto flex min-h-screen w-full max-w-md flex-col px-4 pt-5">
         <JsonLd data={structuredData} />
-        <section className="surface-panel rounded-[32px] p-5">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--sage-700)]">
-            Duas
-          </p>
-          <h1 className="mt-3 text-[2rem] font-semibold leading-[1.05] tracking-[-0.03em] text-[var(--ink-900)]">
-            {occasion}
-          </h1>
-          <p className="mt-4 text-sm leading-6 text-[var(--ink-700)]">
-            Browse {duasByOccasion[occasion].length} duas for this occasion.
-          </p>
-        </section>
-
-        <section className="mt-5">
+        <DetailBrandRow />
+        <section className="mt-7">
           <Suspense fallback={null}>
             <ContentCard
               items={items}
               kind="duas"
               initialItemId={currentItemId}
+              duaOccasion={occasion}
+              relatedOccasionLinks={relatedOccasions.map((relatedOccasion) => ({
+                label: relatedOccasion,
+                href: `/duas/${slugifyOccasion(relatedOccasion)}`,
+              }))}
             />
           </Suspense>
         </section>
-
-        {relatedOccasions.length > 0 ? (
-          <section className="surface-section mt-5 rounded-[32px] p-5">
-            <h2 className="text-lg font-semibold text-[var(--ink-900)]">
-              More occasions
-            </h2>
-            <div className="mt-4 grid grid-cols-2 gap-3">
-              {relatedOccasions.map((o) => (
-                <Link
-                  key={o}
-                  href={`/duas/${slugifyOccasion(o)}`}
-                  className="surface-item cursor-pointer rounded-[24px] px-4 py-4"
-                >
-                  <p className="text-sm font-semibold text-[var(--ink-900)]">
-                    {o}
-                  </p>
-                  <p className="mt-1 text-xs leading-5 text-[var(--ink-700)]">
-                    {duasByOccasion[o].length} dua
-                    {duasByOccasion[o].length === 1 ? "" : "s"}
-                  </p>
-                </Link>
-              ))}
-            </div>
-          </section>
-        ) : null}
       </main>
     </div>
   );

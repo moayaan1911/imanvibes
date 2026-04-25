@@ -1,16 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import Footer from "@/components/Footer";
+import AndroidBackHandler from "@/components/AndroidBackHandler";
+import AndroidNotificationBootstrap from "@/components/AndroidNotificationBootstrap";
 import JsonLd from "@/components/JsonLd";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import {
   Amiri,
-  Cormorant_Garamond,
   Manrope,
+  Newsreader,
   Noto_Naskh_Arabic,
 } from "next/font/google";
 import BottomNav from "@/components/BottomNav";
-import ThemeToggle from "@/components/ThemeToggle";
 import { createSeoMetadata } from "@/lib/seo";
 import { getOrganizationJsonLd, getWebsiteJsonLd } from "@/lib/structured-data";
 import { getSiteUrl, siteDescription, siteName } from "@/lib/site";
@@ -23,10 +23,10 @@ const manrope = Manrope({
   subsets: ["latin"],
 });
 
-const cormorantGaramond = Cormorant_Garamond({
-  variable: "--font-cormorant-garamond",
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
 });
 
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f7f1e8" },
+    { media: "(prefers-color-scheme: light)", color: "#fff9ef" },
     { media: "(prefers-color-scheme: dark)", color: "#0f1512" },
   ],
 };
@@ -81,21 +81,18 @@ const themeInitScript = `
 (() => {
   try {
     const stored = localStorage.getItem("theme");
-    const theme =
-      stored === "dark" || stored === "light"
-        ? stored
-        : window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light";
+    const theme = stored === "dark" || stored === "light" ? stored : "light";
     document.documentElement.dataset.theme = theme;
     document.documentElement.style.colorScheme = theme;
+    document.documentElement.classList.toggle("dark", theme === "dark");
     const meta = document.querySelector('meta[name="theme-color"]');
     if (meta) {
-      meta.setAttribute("content", theme === "dark" ? "#0f1512" : "#f7f1e8");
+      meta.setAttribute("content", theme === "dark" ? "#0f1512" : "#fff9ef");
     }
   } catch {
     document.documentElement.dataset.theme = "light";
     document.documentElement.style.colorScheme = "light";
+    document.documentElement.classList.remove("dark");
   }
 })();
 `;
@@ -108,18 +105,18 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${cormorantGaramond.variable} ${amiri.variable} ${notoNaskhArabic.variable} h-full antialiased`}
+      className={`${manrope.variable} ${newsreader.variable} ${amiri.variable} ${notoNaskhArabic.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body className="min-h-full flex flex-col pb-[11.5rem]">
+      <body className="min-h-full flex flex-col pb-[7.25rem]">
         {isCapacitorExport ? null : <ServiceWorkerRegistration />}
         <JsonLd data={[getOrganizationJsonLd(), getWebsiteJsonLd()]} />
-        <ThemeToggle hideOnHome />
+        {isCapacitorExport ? <AndroidNotificationBootstrap /> : null}
         <div className="flex-1">{children}</div>
-        <Footer />
+        {isCapacitorExport ? <AndroidBackHandler /> : null}
         <BottomNav />
         {isCapacitorExport ? null : <Analytics />}
       </body>

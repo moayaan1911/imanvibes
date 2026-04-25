@@ -18,7 +18,7 @@ import {
 import BrandWordmark from "@/components/BrandWordmark";
 import JsonLd from "@/components/JsonLd";
 import { createSeoMetadata } from "@/lib/seo";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, appVersion, githubRepoUrl } from "@/lib/site";
 import { getBreadcrumbJsonLd, getWebPageJsonLd } from "@/lib/structured-data";
 
 const pageTitle = "Android App";
@@ -88,14 +88,14 @@ const softwareApplicationJsonLd = {
   downloadUrl: apkUrl,
   installUrl: apkUrl,
   releaseNotes: releaseUrl,
-  softwareVersion: "1.0",
+  softwareVersion: appVersion,
   isAccessibleForFree: true,
   fileSize: "6.34 MB",
   description: pageDescription,
   publisher: {
     "@id": `${absoluteUrl("/")}#organization`,
   },
-  codeRepository: "https://github.com/moayaan1911/imanvibes/tree/android",
+  codeRepository: githubRepoUrl,
 };
 
 export const metadata: Metadata = createSeoMetadata({
