@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ImanVibes Prayer Companion</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="brand-row">
+        <img class="brand-icon" src="assets/icon.png" alt="ImanVibes icon" />
+        <div>
+          <p class="brand-title">
+            <span class="brand-arabic">إيمان</span>
+            <span class="brand-vibes">Vibes</span>
+          </p>
+          <p class="brand-tagline">Quranic comfort for every mood</p>
+        </div>
+      </header>
+
+      <section class="timing-card">
+        <div class="timing-top">
+          <div>
+            <p class="eyebrow" id="timingEyebrow">Prayer Times</p>
+            <h1 id="nextPrayerName">Disabled</h1>
+          </div>
+          <div class="timing-actions">
+            <span class="time-pill" id="nextPrayerTime" hidden></span>
+            <button class="round-button" id="searchButton" type="button" aria-label="Search city">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M10.8 18a7.2 7.2 0 1 1 5.1-12.3A7.2 7.2 0 0 1 10.8 18Zm0-2a5.2 5.2 0 1 0 0-10.4 5.2 5.2 0 0 0 0 10.4Zm10 5-5.1-5.1 1.4-1.4 5.1 5.1-1.4 1.4Z" />
+              </svg>
+            </button>
+            <button class="round-button primary" id="locationButton" type="button" aria-label="Fetch location">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2.3 4.1 20.8l8.2-3.5 7.6 3.5L12 2.3Zm0 5.2 3.9 9.1-3.7-1.7-4 1.7L12 7.5Z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <form class="search-panel" id="searchForm" hidden>
+          <input id="cityInput" type="search" autocomplete="off" placeholder="Search city, e.g. Lucknow" />
+          <div class="suggestions" id="suggestions"></div>
+        </form>
+
+        <div class="remaining-card" id="remainingCard">
+          <div>
+            <p id="remainingLabel">Enable Location access to See timings</p>
+            <strong id="remainingTime">Tap the location icon or search your city.</strong>
+          </div>
+          <div class="hourglass" aria-hidden="true"></div>
+        </div>
+
+        <p class="card-link">Go To Prayer <span aria-hidden="true">-></span></p>
+      </section>
+
+      <section class="location-heading">
+        <p id="hijriDate">Location needed</p>
+        <div class="location-line">
+          <h2 id="locationLabel">Tap to fetch location</h2>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2.3 4.1 20.8l8.2-3.5 7.6 3.5L12 2.3Zm0 5.2 3.9 9.1-3.7-1.7-4 1.7L12 7.5Z" />
+          </svg>
+        </div>
+        <p>Saved location is used for prayer times.</p>
+      </section>
+
+      <section class="countdown-card">
+        <span id="countdownLabel">Loading prayer times</span>
+        <h2 id="countdownValue">--:--:--</h2>
+      </section>
+
+      <section class="tracker-card">
+        <div class="section-head">
+          <h3>Daily Tracker</h3>
+          <span id="completedCount">0/5 Completed</span>
+        </div>
+        <div class="tracker-row" id="trackerRow"></div>
+      </section>
+
+      <section class="schedule-section">
+        <h3>Schedule</h3>
+        <div class="schedule-list" id="scheduleList"></div>
+      </section>
+
+      <p class="status-line" id="statusLine" role="status"></p>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
