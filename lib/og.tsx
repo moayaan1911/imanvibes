@@ -209,9 +209,100 @@ function createFrame(
   );
 }
 
+function getQuoteTextLayout(data: QuoteOgData, arabicHeight: number) {
+  const transliterationLength = data.transliteration?.length ?? 0;
+  const bodyLength = (data.translation ?? data.meaning ?? "").length;
+  const dense =
+    transliterationLength > 90 || bodyLength > 150 || arabicHeight > 155;
+  const veryDense =
+    transliterationLength > 135 || bodyLength > 230 || arabicHeight > 205;
+
+  return {
+    headerGap: dense ? 18 : 26,
+    cardPadding: veryDense ? "24px 34px" : dense ? "28px 36px" : "34px 40px",
+    arabicMaxHeight: veryDense ? 118 : dense ? 138 : 170,
+    arabicGap: data.kind === "names" ? 12 : dense ? 14 : 24,
+    transliterationFontSize:
+      transliterationLength > 150
+        ? 16
+        : transliterationLength > 115
+          ? 18
+          : transliterationLength > 80
+            ? 20
+            : 24,
+    transliterationLineHeight: transliterationLength > 100 ? 1.25 : 1.32,
+    transliterationTracking:
+      transliterationLength > 110
+        ? "0.06em"
+        : transliterationLength > 80
+          ? "0.1em"
+          : "0.16em",
+    transliterationGap: veryDense ? 10 : dense ? 12 : 18,
+    bodyFontSize: bodyLength > 230 ? 19 : bodyLength > 155 ? 21 : 26,
+    bodyLineHeight: bodyLength > 155 ? 1.32 : 1.45,
+    bodyGap: veryDense ? 10 : dense ? 12 : 22,
+    sourceFontSize: dense ? 18 : 21,
+    sourcePaddingTop: dense ? 10 : 18,
+    footerGap: dense ? 14 : 22,
+  };
+}
+
 export async function createLandingOgImage() {
   const iconDataUri = await getIconDataUri();
   const fonts = await getOgFonts();
+  const availabilityPills: { label: string; icon: ReactNode }[] = [
+    {
+      label: "Web",
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9" stroke="#4d6556" strokeWidth="2" />
+          <path
+            d="M3.5 12h17M12 3c2.4 2.5 3.7 5.5 3.7 9S14.4 18.5 12 21M12 3c-2.4 2.5-3.7 5.5-3.7 9S9.6 18.5 12 21"
+            stroke="#4d6556"
+            strokeLinecap="round"
+            strokeWidth="1.6"
+          />
+        </svg>
+      ),
+    },
+    {
+      label: "Play Store",
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M6 4.2v15.6L18.4 12 6 4.2Z" fill="#4d6556" />
+          <path
+            d="m6 4.2 7.2 7.8L6 19.8"
+            stroke="#fff9ef"
+            strokeLinecap="round"
+            strokeWidth="1.4"
+          />
+        </svg>
+      ),
+    },
+    {
+      label: "Chrome",
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9" fill="#4d6556" />
+          <path
+            d="M12 3h7.8M4.2 7.5l4 6.9M16 14.4 12 21"
+            stroke="#fff9ef"
+            strokeLinecap="round"
+            strokeWidth="1.5"
+          />
+          <circle cx="12" cy="12" r="4" fill="#fff9ef" />
+          <circle cx="12" cy="12" r="2.2" fill="#4d6556" />
+        </svg>
+      ),
+    },
+  ];
+  const featureBullets = [
+    "Quran by Mood",
+    "Hadith",
+    "Duas",
+    "99 Names",
+    "Salah Timings",
+  ];
 
   return new ImageResponse(
     createFrame(
@@ -253,33 +344,6 @@ export async function createLandingOgImage() {
         >
           <div
             style={{
-              width: 196,
-              height: 196,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              borderRadius: 999,
-              border: "1px solid rgba(111,143,123,0.18)",
-              background: "rgba(255,253,248,0.82)",
-              flexShrink: 0,
-              overflow: "hidden",
-              marginBottom: 28,
-            }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={iconDataUri}
-              alt=""
-              width={178}
-              height={178}
-              style={{
-                objectFit: "contain",
-              }}
-            />
-          </div>
-
-          <div
-            style={{
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -289,28 +353,110 @@ export async function createLandingOgImage() {
           >
             <div
               style={{
-                fontSize: 86,
-                lineHeight: 0.95,
-                color: "#4d6556",
-                fontFamily: "Manrope",
-                fontWeight: 700,
-                letterSpacing: "-0.04em",
-                marginBottom: 18,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 26,
+                marginBottom: 24,
               }}
             >
-              ImanVibes
+              <div
+                style={{
+                  width: 150,
+                  height: 150,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: 999,
+                  border: "1px solid rgba(111,143,123,0.18)",
+                  background: "rgba(255,253,248,0.82)",
+                  flexShrink: 0,
+                  overflow: "hidden",
+                }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={iconDataUri}
+                  alt=""
+                  width={136}
+                  height={136}
+                  style={{
+                    objectFit: "contain",
+                  }}
+                />
+              </div>
+              <div
+                style={{
+                  fontSize: 86,
+                  lineHeight: 0.95,
+                  color: "#4d6556",
+                  fontFamily: "Manrope",
+                  fontWeight: 700,
+                  letterSpacing: "-0.04em",
+                }}
+              >
+                ImanVibes
+              </div>
             </div>
             <div
               style={{
-                fontSize: 34,
-                lineHeight: 1.35,
-                color: "#566056",
-                fontFamily: "Manrope",
-                marginBottom: 28,
-                maxWidth: 760,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 12,
+                marginBottom: 14,
               }}
             >
-              Quranic comfort for every mood
+              {availabilityPills.map((pill) => (
+                <div
+                  key={pill.label}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 9,
+                    borderRadius: 999,
+                    border: "1px solid rgba(111,143,123,0.18)",
+                    background: "rgba(255,253,248,0.76)",
+                    padding: "9px 16px",
+                    fontSize: 18,
+                    fontFamily: "Manrope",
+                    fontWeight: 700,
+                    color: "#4d6556",
+                    boxShadow: "0 10px 24px rgba(77,101,86,0.08)",
+                  }}
+                >
+                  {pill.icon}
+                  <span>{pill.label}</span>
+                </div>
+              ))}
+            </div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 12,
+                marginBottom: 20,
+                color: "#4d6556",
+                fontFamily: "Manrope",
+                fontSize: 20,
+                fontWeight: 700,
+                letterSpacing: "0.02em",
+              }}
+            >
+              {featureBullets.map((feature, index) => (
+                <div
+                  key={feature}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 12,
+                  }}
+                >
+                  {index > 0 ? <span style={{ color: "#c6aa6b" }}>•</span> : null}
+                  <span>{feature}</span>
+                </div>
+              ))}
             </div>
             <div
               style={{
@@ -338,6 +484,13 @@ export async function createLandingOgImage() {
 export async function createQuoteOgImage(data: QuoteOgData) {
   const fonts = await getOgFonts();
   const arabicImage = await createArabicTextImage(data.arabic, data.kind);
+  const layout = getQuoteTextLayout(data, arabicImage.height);
+  const arabicScale = Math.min(
+    1,
+    layout.arabicMaxHeight / Math.max(arabicImage.height, 1),
+  );
+  const displayedArabicWidth = Math.round(arabicImage.width * arabicScale);
+  const displayedArabicHeight = Math.round(arabicImage.height * arabicScale);
 
   return new ImageResponse(
     createFrame(
@@ -353,7 +506,7 @@ export async function createQuoteOgImage(data: QuoteOgData) {
           style={{
             display: "flex",
             flexDirection: "column",
-            marginBottom: 26,
+            marginBottom: layout.headerGap,
           }}
         >
           <div
@@ -390,7 +543,8 @@ export async function createQuoteOgImage(data: QuoteOgData) {
             border: "1px solid rgba(111,143,123,0.12)",
             background: "#ffffff",
             boxShadow: "0 10px 24px rgba(111,143,123,0.06)",
-            padding: "34px 40px",
+            padding: layout.cardPadding,
+            overflow: "hidden",
           }}
         >
           <div
@@ -398,15 +552,16 @@ export async function createQuoteOgImage(data: QuoteOgData) {
               width: "100%",
               display: "flex",
               justifyContent: "flex-end",
-              marginBottom: data.kind === "names" ? 14 : 24,
+              marginBottom: layout.arabicGap,
+              flexShrink: 0,
             }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={arabicImage.dataUri}
               alt=""
-              width={arabicImage.width}
-              height={arabicImage.height}
+              width={displayedArabicWidth}
+              height={displayedArabicHeight}
               style={{
                 objectFit: "contain",
               }}
@@ -416,13 +571,15 @@ export async function createQuoteOgImage(data: QuoteOgData) {
           {data.transliteration ? (
             <div
               style={{
-                fontSize: 28,
+                fontSize: layout.transliterationFontSize,
+                lineHeight: layout.transliterationLineHeight,
                 fontWeight: 700,
                 fontFamily: "Manrope",
-                letterSpacing: "0.18em",
+                letterSpacing: layout.transliterationTracking,
                 textTransform: "uppercase",
                 color: "#6f8f7b",
-                marginBottom: 20,
+                marginBottom: layout.transliterationGap,
+                flexShrink: 0,
               }}
             >
               {data.transliteration}
@@ -432,11 +589,12 @@ export async function createQuoteOgImage(data: QuoteOgData) {
           {data.translation ? (
             <div
               style={{
-                fontSize: 28,
-                lineHeight: 1.5,
+                fontSize: layout.bodyFontSize,
+                lineHeight: layout.bodyLineHeight,
                 color: "#2f342f",
                 fontFamily: "Manrope",
-                marginBottom: data.source ? 26 : 0,
+                marginBottom: data.source ? layout.bodyGap : 0,
+                flexShrink: 1,
               }}
             >
               {data.translation}
@@ -446,11 +604,12 @@ export async function createQuoteOgImage(data: QuoteOgData) {
           {data.meaning ? (
             <div
               style={{
-                fontSize: 28,
-                lineHeight: 1.5,
+                fontSize: layout.bodyFontSize,
+                lineHeight: layout.bodyLineHeight,
                 color: "#2f342f",
                 fontFamily: "Manrope",
-                marginBottom: data.source ? 26 : 0,
+                marginBottom: data.source ? layout.bodyGap : 0,
+                flexShrink: 1,
               }}
             >
               {data.meaning}
@@ -460,11 +619,12 @@ export async function createQuoteOgImage(data: QuoteOgData) {
           {data.source ? (
             <div
               style={{
-                fontSize: 22,
+                fontSize: layout.sourceFontSize,
                 fontWeight: 600,
                 color: "#6f8f7b",
                 fontFamily: "Manrope",
-                paddingTop: 22,
+                paddingTop: layout.sourcePaddingTop,
+                flexShrink: 0,
               }}
             >
               {data.source}
@@ -477,7 +637,7 @@ export async function createQuoteOgImage(data: QuoteOgData) {
             width: "100%",
             display: "flex",
             justifyContent: "flex-end",
-            marginTop: 22,
+            marginTop: layout.footerGap,
           }}
         >
           <div

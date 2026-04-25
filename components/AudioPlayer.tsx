@@ -5,11 +5,15 @@ import { FaPlay, FaPause, FaVolumeHigh } from "react-icons/fa6";
 
 interface AudioPlayerProps {
   arabicText: string;
+  variant?: "full" | "icon";
 }
 
 type PlaybackState = "idle" | "loading" | "playing" | "paused" | "error";
 
-export default function AudioPlayer({ arabicText }: AudioPlayerProps) {
+export default function AudioPlayer({
+  arabicText,
+  variant = "full",
+}: AudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const audioUrlRef = useRef<string | null>(null);
   const speechEndTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -220,13 +224,33 @@ export default function AudioPlayer({ arabicText }: AudioPlayerProps) {
 
   const isDisabled = state === "loading" || state === "error";
 
+  if (variant === "icon") {
+    return (
+      <button
+        type="button"
+        onClick={togglePlay}
+        disabled={isDisabled}
+        className="flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-[var(--sage-200)] text-[var(--sage-700)] shadow-[0_8px_30px_rgba(92,124,104,0.2)] transition-colors hover:bg-[var(--sage-100)] disabled:opacity-50"
+        aria-label={state === "playing" ? "Pause" : "Listen"}
+      >
+        {state === "loading" ? (
+          <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+        ) : state === "playing" ? (
+          <FaPause className="h-4 w-4" />
+        ) : (
+          <FaPlay className="ml-0.5 h-4 w-4" />
+        )}
+      </button>
+    );
+  }
+
   return (
     <div className="flex items-center gap-3 rounded-full bg-[var(--sage-100)] px-3 py-2 cursor-pointer">
       <button
         type="button"
         onClick={togglePlay}
         disabled={isDisabled}
-        className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#2f342f] text-white transition-colors hover:bg-[#1a1d1a] disabled:opacity-50 dark:bg-[var(--sage-600)] dark:hover:bg-[var(--sage-600)]"
+        className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#2f342f] text-white transition-colors hover:bg-[#1a1d1a] disabled:opacity-50 dark:bg-[var(--sage-500)] dark:hover:bg-[var(--sage-500)]"
         aria-label={
           state === "playing" ? "Pause" : "Listen"
         }
@@ -242,7 +266,7 @@ export default function AudioPlayer({ arabicText }: AudioPlayerProps) {
 
       <div className="flex flex-1 flex-col gap-1 min-w-0">
         <div
-          className="h-2 w-full cursor-pointer rounded-full bg-[var(--ink-300)] dark:bg-[var(--ink-600)]"
+          className="h-2 w-full cursor-pointer rounded-full bg-[rgba(86,96,86,0.16)] dark:bg-[rgba(255,255,255,0.12)]"
           onClick={handleProgressClick}
           role="progressbar"
           aria-valuenow={Math.round(progress)}
@@ -255,14 +279,14 @@ export default function AudioPlayer({ arabicText }: AudioPlayerProps) {
           />
         </div>
 
-        <div className="flex items-center justify-between text-xs font-medium text-[var(--ink-800)] dark:text-[var(--ink-300)]">
+        <div className="flex items-center justify-between text-xs font-medium text-[var(--ink-700)]">
           <span>{errorMsg || formatTime(currentTime)}</span>
           <span>/</span>
           <span>{formatTime(duration)}</span>
         </div>
       </div>
 
-      <FaVolumeHigh className="h-4 w-4 text-[var(--ink-700)] dark:text-[var(--sage-600)]" />
+      <FaVolumeHigh className="h-4 w-4 text-[var(--ink-700)] dark:text-[var(--sage-500)]" />
     </div>
   );
 }

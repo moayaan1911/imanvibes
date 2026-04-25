@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  FaBell,
   FaChartSimple,
   FaGithub,
   FaGlobe,
-  FaLocationDot,
   FaMoon,
   FaShieldHalved,
   FaTrashCan,
 } from "react-icons/fa6";
-import BrandWordmark from "@/components/BrandWordmark";
+import AppHeader from "@/components/AppHeader";
 import JsonLd from "@/components/JsonLd";
 import { createSeoMetadata } from "@/lib/seo";
 import { siteName, siteTagline } from "@/lib/site";
@@ -18,7 +16,7 @@ import { getBreadcrumbJsonLd, getWebPageJsonLd } from "@/lib/structured-data";
 
 const pageTitle = "Privacy Policy";
 const pageDescription =
-  "Privacy policy for the ImanVibes website, Android app, and Salah Companion browser extension.";
+  "Privacy policy for the ImanVibes website, Android app, and browser extension.";
 const githubRepoUrl = "https://github.com/moayaan1911/imanvibes";
 const developerWebsiteUrl = "https://moayaan.com";
 
@@ -29,11 +27,11 @@ const productScope = [
   },
   {
     label: "Android app",
-    body: "The ImanVibes Android app brings the same Islamic content into an installable app experience and may use local device permissions such as notifications only when needed for app features.",
+    body: "The ImanVibes Android app brings the same Islamic content into an installable app experience.",
   },
   {
     label: "Browser extension",
-    body: "The ImanVibes Salah Companion browser extension focuses on Salah timings, city search, prayer tracking, theme preferences, and optional prayer reminders in Chrome.",
+    body: "The ImanVibes browser extension is planned as a lightweight companion for quick access and local preferences in Chrome.",
   },
 ] as const;
 
@@ -42,43 +40,25 @@ const policySections = [
     title: "Information we do not collect",
     icon: FaShieldHalved,
     body: [
-      "ImanVibes does not require an account, password, profile, payment method, or sign-in to use the website, Android app, or Salah Companion extension.",
+      "ImanVibes does not require an account, password, profile, payment method, or sign-in to use the website, Android app, or browser extension.",
       "ImanVibes does not collect browsing history, personal communications, website content, financial information, health information, or authentication information.",
-    ],
-  },
-  {
-    title: "Location and city data",
-    icon: FaLocationDot,
-    body: [
-      "The Salah Companion extension may use your browser location only when you choose to fetch your current location for local Salah timings. Future app prayer-time features may similarly ask for location only to calculate local Salah timings.",
-      "You can avoid browser geolocation by searching for a city manually where city search is available. City search is used only to find prayer time coordinates.",
-      "Location or city data is used only for prayer timings and is not sold, used for advertising, or used for unrelated purposes.",
     ],
   },
   {
     title: "Local storage and preferences",
     icon: FaMoon,
     body: [
-      "The extension stores your selected location, daily prayer tracker state, notification preferences, and light or dark theme preference locally in your browser.",
-      "The website and Android app may also store simple local preferences such as theme, saved settings, or app state so the experience feels consistent between sessions.",
+      "The website may store simple local preferences such as theme so the experience feels consistent between sessions.",
+      "The Android app and browser extension may also store simple local preferences on your device.",
       "Local data can be cleared by removing the extension, clearing browser storage, clearing site data, or uninstalling the app.",
-    ],
-  },
-  {
-    title: "Notifications and alarms",
-    icon: FaBell,
-    body: [
-      "If you enable reminders, the extension uses Chrome notifications and alarms to send optional Salah reminders for selected prayers.",
-      "The Android app may also use local notifications for reminders if you allow notification permission.",
-      "Prayer reminder preferences are controlled by you and are used only for Islamic reminders such as Fajr, Dhuhr, Asr, Maghrib, and Isha.",
     ],
   },
   {
     title: "External services used",
     icon: FaGlobe,
     body: [
-      "The extension uses AlAdhan to fetch prayer timings and Open-Meteo Geocoding to search for cities. Future app prayer-time features may use similar prayer-time or geocoding services.",
       "The website may use Vercel Analytics to understand basic site performance and usage. ImanVibes does not require user accounts or collect payment information.",
+      "Arabic audio is generated on demand through the app's text-to-speech route when you press Listen.",
     ],
   },
   {
@@ -98,7 +78,6 @@ export const metadata: Metadata = createSeoMetadata({
   imagePath: "/opengraph-image",
   keywords: [
     "ImanVibes privacy policy",
-    "Salah Companion privacy",
     "Chrome extension privacy policy",
   ],
 });
@@ -106,7 +85,7 @@ export const metadata: Metadata = createSeoMetadata({
 export default function PrivacyPage() {
   return (
     <div className="page-bg min-h-screen">
-      <main className="mx-auto flex min-h-screen w-full max-w-md flex-col px-4 pt-5">
+      <main className="app-shell">
         <JsonLd
           data={[
             getWebPageJsonLd({
@@ -121,31 +100,25 @@ export default function PrivacyPage() {
           ]}
         />
 
-        <section className="surface-panel rounded-[32px] p-5">
-          <div className="flex items-center justify-between gap-3">
-            <BrandWordmark showTagline wordmarkClassName="text-[1.45rem]" />
-            <span className="pill-soft inline-flex shrink-0 items-center rounded-full px-3 py-1 text-[11px] font-semibold text-[var(--sage-700)]">
-              Privacy
-            </span>
-          </div>
+        <AppHeader />
 
-          <p className="mt-6 text-xs font-bold uppercase tracking-[0.24em] text-[var(--sage-700)]">
+        <section className="app-hero-card rounded-[30px] p-5">
+          <p className="text-xs font-bold uppercase text-[var(--sage-700)]">
             Effective date: April 25, 2026
           </p>
-          <h1 className="mt-3 text-[2.2rem] font-semibold leading-[1.02] tracking-[-0.04em] text-[var(--ink-900)]">
+          <h1 className="mt-3 text-[2.2rem] font-semibold leading-[1.02] text-[var(--ink-900)]">
             Privacy Policy
           </h1>
           <p className="mt-4 text-sm leading-6 text-[var(--ink-700)]">
             This policy explains how {siteName} handles data across the
-            website, Android app, and ImanVibes Salah Companion browser
-            extension. The goal is simple: provide Quranic comfort, Islamic
-            content, Salah timings, prayer tracking, and reminders without
-            unnecessary data collection.
+            website, Android app, and browser extension. The goal is simple:
+            provide Quranic comfort and Islamic content without unnecessary
+            data collection.
           </p>
         </section>
 
         <section className="surface-section mt-5 rounded-[28px] p-4">
-          <h2 className="text-base font-semibold tracking-[-0.02em] text-[var(--ink-900)]">
+          <h2 className="text-base font-semibold text-[var(--ink-900)]">
             What this policy covers
           </h2>
           <div className="mt-3 space-y-3">
@@ -171,7 +144,7 @@ export default function PrivacyPage() {
                     <Icon />
                   </span>
                   <div>
-                    <h2 className="text-base font-semibold tracking-[-0.02em] text-[var(--ink-900)]">
+                    <h2 className="text-base font-semibold text-[var(--ink-900)]">
                       {section.title}
                     </h2>
                     <div className="mt-2 space-y-2">
@@ -194,7 +167,7 @@ export default function PrivacyPage() {
               <FaChartSimple />
             </span>
             <div>
-              <h2 className="text-lg font-semibold tracking-[-0.03em] text-[var(--ink-900)]">
+              <h2 className="text-lg font-semibold text-[var(--ink-900)]">
                 Contact and links
               </h2>
               <p className="mt-2 text-sm leading-6 text-[var(--ink-700)]">
@@ -234,7 +207,7 @@ export default function PrivacyPage() {
         <p className="mx-auto mt-5 max-w-sm text-center text-xs leading-5 text-[var(--ink-700)]">
           {siteTagline}. This policy may be updated as ImanVibes grows, but the
           website, Android app, and browser extension will remain focused on
-          their Islamic content and prayer-support purposes.
+          their Islamic content.
         </p>
       </main>
     </div>

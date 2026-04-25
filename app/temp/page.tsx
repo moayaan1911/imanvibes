@@ -16,16 +16,6 @@ const previewCards = [
     href: "/opengraph-image",
   },
   {
-    title: "Alif OG",
-    src: "/alif/opengraph-image",
-    href: "/alif/opengraph-image",
-  },
-  {
-    title: "Android App OG",
-    src: "/app/opengraph-image",
-    href: "/app/opengraph-image",
-  },
-  {
     title: "Quran Quote OG",
     src: `/og/quran/anxious/${sampleQuran.entry}/opengraph-image`,
     href: `/og/quran/anxious/${sampleQuran.entry}/opengraph-image`,
@@ -60,10 +50,10 @@ export default function TempPage() {
     <div className="page-bg min-h-screen">
       <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 py-6">
         <section className="surface-panel rounded-[32px] p-6">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--sage-700)]">
+          <p className="text-sm font-semibold uppercase text-[var(--sage-700)]">
             Temp Preview
           </p>
-          <h1 className="mt-3 text-[2rem] font-semibold tracking-[-0.03em] text-[var(--ink-900)]">
+          <h1 className="mt-3 text-[2rem] font-semibold text-[var(--ink-900)]">
             Open Graph previews
           </h1>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--ink-700)]">

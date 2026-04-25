@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
+import AppHeader from "@/components/AppHeader";
 import ContentCard, { type ContentCardItem } from "@/components/ContentCard";
 import JsonLd from "@/components/JsonLd";
-import MoodGrid from "@/components/MoodGrid";
 import {
+  getMoodHref,
   getMoodFromSlug,
   getQuranEntryByMoodAndId,
   moodNames,
@@ -77,6 +78,7 @@ export default async function QuranMoodPage({
   const items: ContentCardItem[] = quranByMood[mood].map((entry) => ({
     id: String(entry.entry),
     arabic: entry.arabic,
+    transliteration: entry.transliteration,
     translation: entry.translation,
     source: entry.source,
   }));
@@ -110,36 +112,30 @@ export default async function QuranMoodPage({
       : []),
   ];
 
-  const relatedMoods = moodNames.filter((item) => item !== mood).slice(0, 6);
+  const relatedMoodLinks = moodNames
+    .filter((item) => item !== mood)
+    .slice(0, 6)
+    .map((item) => ({
+      href: getMoodHref(item),
+      label: item,
+    }));
 
   return (
     <div className="page-bg min-h-screen">
-      <main className="mx-auto flex min-h-screen w-full max-w-md flex-col px-4 pt-5">
+      <main className="app-shell">
         <JsonLd data={structuredData} />
-        <section className="surface-panel rounded-[32px] p-5">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--sage-700)]">
-            Quran by Mood
-          </p>
-          <h1 className="mt-3 text-[2rem] font-semibold leading-[1.05] tracking-[-0.03em] text-[var(--ink-900)]">
-            {mood}
-          </h1>
-          <p className="mt-4 text-sm leading-6 text-[var(--ink-700)]">
-            Browse {quranByMood[mood].length} verses selected for this feeling.
-            Use the next button to move through them one by one.
-          </p>
-        </section>
+        <AppHeader showBackButton />
 
-        <section className="mt-5">
+        <section className="mt-7">
           <Suspense fallback={null}>
-            <ContentCard items={items} kind="quran" initialItemId={currentItemId} />
+            <ContentCard
+              items={items}
+              kind="quran"
+              initialItemId={currentItemId}
+              quranMood={mood}
+              relatedMoodLinks={relatedMoodLinks}
+            />
           </Suspense>
-        </section>
-
-        <section className="surface-section mt-5 rounded-[32px] p-5">
-          <h2 className="text-lg font-semibold text-[var(--ink-900)]">
-            Explore more moods
-          </h2>
-          <MoodGrid moods={relatedMoods} className="mt-4" />
         </section>
       </main>
     </div>

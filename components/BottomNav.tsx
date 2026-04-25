@@ -2,13 +2,20 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { FaRegHand } from "react-icons/fa6";
+import {
+  MdAutoStories,
+  MdDiamond,
+  MdHome,
+  MdMenuBook,
+} from "react-icons/md";
 
 const items = [
-  { href: "/", label: "Home" },
-  { href: "/quran", label: "Quran" },
-  { href: "/hadith", label: "Hadith" },
-  { href: "/names", label: "Names" },
-  { href: "/duas", label: "Duas" },
+  { href: "/", label: "Home", icon: MdHome },
+  { href: "/quran", label: "Quran", icon: MdMenuBook },
+  { href: "/hadith", label: "Hadith", icon: MdAutoStories },
+  { href: "/names", label: "Names", icon: MdDiamond },
+  { href: "/duas", label: "Duas", icon: FaRegHand },
 ];
 
 export default function BottomNav() {
@@ -19,8 +26,9 @@ export default function BottomNav() {
       className="nav-shell fixed inset-x-0 bottom-0 z-20 px-4 pb-[calc(0.9rem+env(safe-area-inset-bottom))] pt-3 backdrop-blur"
       data-nosnippet
     >
-      <div className="mx-auto flex w-full max-w-md items-center justify-between gap-2">
+      <div className="mx-auto grid w-full max-w-md grid-cols-5 items-center gap-1">
         {items.map((item) => {
+          const Icon = item.icon;
           const active =
             item.href === "/"
               ? pathname === item.href
@@ -30,13 +38,24 @@ export default function BottomNav() {
             <Link
               key={item.href}
               href={item.href}
-              className={`cursor-pointer flex-1 rounded-full px-3 py-2 text-center text-sm font-semibold ${
-                active
-                  ? "button-primary"
-                  : "text-[var(--sage-700)]"
-              }`}
+              className="flex min-w-0 flex-col items-center gap-2 px-1 py-1 text-center"
             >
-              {item.label}
+              <span
+                className={`flex h-11 min-w-[3.7rem] items-center justify-center rounded-[1.25rem] px-3 transition-all ${
+                  active
+                    ? "bg-[var(--sage-100)] text-[var(--sage-500)] shadow-[var(--shadow-item)]"
+                    : "text-[var(--sage-700)]/95"
+                }`}
+              >
+                <Icon className={item.label === "Duas" ? "text-[1.2rem]" : "text-[1.45rem]"} />
+              </span>
+              <span
+                className={`min-w-0 text-[0.72rem] font-semibold uppercase tracking-[0.14em] ${
+                  active ? "text-[var(--sage-500)]" : "text-[var(--ink-700)]"
+                }`}
+              >
+                {item.label}
+              </span>
             </Link>
           );
         })}

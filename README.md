@@ -1,210 +1,268 @@
-# ImanVibes
-
-Quranic comfort for every mood.
+# 👨‍💻 About the Developer
 
 <p align="center">
-  <img src="public/icon2Circular.png" alt="ImanVibes icon" width="112" />
+  <img src="https://emerald-dizzy-stoat-639.mypinata.cloud/ipfs/bafkreiblp6uoh274nzffbcos6d4cxql3zj7lu7z6xvkdhytbd3aqotjsh4?pinataGatewayToken=DFsUmTMRXBF_0KmYgSHbz1ipOKWFjv_rjyvxjq_vHNcdnP0KeJ64G8QQlgmhZyo8" alt="Mohammad Ayaan Siddiqui" width="200" />
 </p>
 
-[![Live Site](https://img.shields.io/badge/Live-imanvibes.vercel.app-6f8f7b?style=for-the-badge)](https://imanvibes.vercel.app/)
-![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=nextdotjs)
-![React](https://img.shields.io/badge/React-19-20232a?style=for-the-badge&logo=react)
-![PWA](https://img.shields.io/badge/PWA-Installable-6f8f7b?style=for-the-badge)
-![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)
+Assalamualaikum guys! 🙌 This is Mohammad Ayaan Siddiqui (♦moayaan.eth♦). I’m a **Full Stack Blockchain Developer** , **Crypto Investor** and **MBA in Blockchain Management** with **2 years of experience** rocking the Web3 world! 🚀 I’ve worn many hats:
 
-ImanVibes is a calm, mobile-first Islamic web app built around a simple idea: open the Quran by how you feel right now, then move through a small set of verses without noise, sign-ups, or clutter. Alongside Quran by mood, the app includes Hadith, the 99 Names of Allah, and Duas for every occasion in the same quiet, text-first experience.
+- Research Intern at a Hong Kong-based firm 🇭🇰
+- Founding Engineer at a Netherlands-based firm 🇳🇱
+- Full Stack Intern at a Singapore-based crypto hardware wallet firm 🇸🇬
+- Blockchain Developer at a US-based Bitcoin DeFi project 🇺🇸
+- PG Diploma in Blockchain Management from Cambridge International Qualifications (CIQ) 🇬🇧
+- MBA in Blockchain Management from University of Studies Guglielmo Marconi, Italy 🇮🇹
 
-The project now also includes **Alif-1.0**, the first Islamic AI model by ImanVibes, with its own landing page inside the same product.
+Let’s connect and build something epic! Find me at [moayaan.com](https://moayaan.com) 🌐 or on [X @moayaan1911](https://x.com/moayaan1911)
 
-It is intentionally lightweight:
+---
 
-- no auth
-- no backend
-- no external APIs
-- local read-only JSON data
-- installable as a Progressive Web App
+# <p align="center">🌙 ImanVibes</p>
 
-## Live
+<p align="center">
+  <img src="public/icon2Circular.png" alt="ImanVibes icon" width="116" />
+</p>
 
-- App: [https://imanvibes.vercel.app/](https://imanvibes.vercel.app/)
-- Android app page: [https://imanvibes.vercel.app/app](https://imanvibes.vercel.app/app)
-- Alif page: [https://imanvibes.vercel.app/alif](https://imanvibes.vercel.app/alif)
-- Alif on Hugging Face: [https://huggingface.co/mdayaan1911/alif-1.0](https://huggingface.co/mdayaan1911/alif-1.0)
-- GitHub: [https://github.com/moayaan1911/imanvibes](https://github.com/moayaan1911/imanvibes)
+<p align="center">
+  <strong>Quranic comfort for every mood.</strong><br />
+  A calm Islamic product family for Quran, Hadith, Duas, 99 Names, and Salah reminders.
+</p>
 
-## Preview
+<p align="center">
+  <a href="https://imanvibes.vercel.app/">
+    <img alt="Live Website" src="https://img.shields.io/badge/Website-Live-6f8f7b?style=for-the-badge&logo=vercel&logoColor=white" />
+  </a>
+  <a href="https://chromewebstore.google.com/detail/mdgclabcabbbikdgmihabnaeplkfnnkb?utm_source=item-share-cb">
+    <img alt="Chrome Extension" src="https://img.shields.io/badge/Chrome%20Extension-Published-4d6556?style=for-the-badge&logo=googlechrome&logoColor=white" />
+  </a>
+  <img alt="Android App" src="https://img.shields.io/badge/Android-Coming%20Soon-8ca88e?style=for-the-badge&logo=googleplay&logoColor=white" />
+</p>
 
-| Home                                                        | Quran Light                                                       | Quran Dark                                                      |
-| ----------------------------------------------------------- | ----------------------------------------------------------------- | --------------------------------------------------------------- |
-| ![ImanVibes home screen](public/screenshots/home-light.png) | ![Quran by mood light screen](public/screenshots/quran-light.png) | ![Quran by mood dark screen](public/screenshots/quran-dark.png) |
+<p align="center">
+  <img alt="Next.js" src="https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=nextdotjs" />
+  <img alt="React" src="https://img.shields.io/badge/React-19-20232a?style=flat-square&logo=react" />
+  <img alt="PWA" src="https://img.shields.io/badge/PWA-Installable-6f8f7b?style=flat-square" />
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-Ready-3178c6?style=flat-square&logo=typescript&logoColor=white" />
+  <img alt="Local JSON" src="https://img.shields.io/badge/Data-Local%20JSON-c6aa6b?style=flat-square" />
+</p>
 
-| Hadith                                                | 99 Names                                               | Alif-1.0                                              |
-| ----------------------------------------------------- | ------------------------------------------------------ | ----------------------------------------------------- |
-| ![Hadith screen](public/screenshots/hadith-light.png) | ![99 Names screen](public/screenshots/names-light.png) | ![Alif-1.0 screen](public/screenshots/alif-light.png) |
+---
 
-| Android App Landing                                        | iOS Install Guide                                           |
-| ---------------------------------------------------------- | ----------------------------------------------------------- |
-| ![Android app page](public/screenshots/app-android-light.png) | ![iOS install guide](public/screenshots/app-ios-guide-light.png) |
+## ✨ Product Family
 
-| Duas                                                        |
-| ----------------------------------------------------------- |
-| ![Duas page](public/screenshots/duas-light.png) |
+| Product                          | Status      | Link                                                                                                                   | What it does                                                                    |
+| -------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| 🌐 **ImanVibes Web PWA**         | Live        | [imanvibes.vercel.app](https://imanvibes.vercel.app/)                                                                  | Quran by Mood, Hadith, Duas, 99 Names, Daily Verse, sharing, TTS, PWA install   |
+| 🧩 **ImanVibes Salah Companion** | Published   | [Chrome Web Store](https://chromewebstore.google.com/detail/mdgclabcabbbikdgmihabnaeplkfnnkb?utm_source=item-share-cb) | Location-based Salah timings, next prayer countdown, tracker, reminders         |
+| 📱 **ImanVibes Android**         | Coming soon | Play Store soon                                                                                                        | Native Android app experience with Islamic reading, reflection, and Salah tools |
 
-## What The App Does
+> Website scope: the web app intentionally does **not** include prayer pages, prayer widgets, prayer notifications, or location settings. Salah tools live in the Chrome extension and Android app.
 
-- Browse Quran verses grouped by mood
-- Read one item at a time in a clean, card-based flow
-- Open Hadith and the 99 Names of Allah in the same interface
-- Browse Duas grouped by occasion (before eating, before sleep, for anxiety, travel, and more)
-- Daily Verse on the homepage with share and download image
-- Search across moods, occasions, verses, and duas
-- Listen to Arabic TTS audio on any content with Arabic text
-- Explore **Alif-1.0**, the first Islamic AI model by ImanVibes
-- Share each item by link, WhatsApp, X, Telegram, share image, or download image
-- Generate dynamic Open Graph images for the homepage and quote pages
-- Install the site to the home screen / dock as a PWA
-- Persist dark mode across visits
+---
 
-## Core Experience
+## 🕋 Web App Preview
+
+<p align="center">
+  <img src="public/screenshots/readme/web/01-home-download-light.png" width="220" alt="ImanVibes web home light" />
+  <img src="public/screenshots/readme/web/02-home-daily-verse-light.png" width="220" alt="ImanVibes daily verse light" />
+  <img src="public/screenshots/readme/web/03-home-download-dark.png" width="220" alt="ImanVibes web home dark" />
+</p>
+
+<p align="center">
+  <img src="public/screenshots/readme/web/05-quran-moods-light.png" width="220" alt="Quran mood picker" />
+  <img src="public/screenshots/readme/web/06-quran-verse-dark.png" width="220" alt="Quran verse detail dark" />
+  <img src="public/screenshots/readme/web/11-duas-light.png" width="220" alt="Duas categories light" />
+</p>
+
+<details open>
+<summary><strong>📸 Full web screenshot set</strong></summary>
+
+| Home                                                                                                           | Daily Verse                                                                                                     | Settings                                                                                              |
+| -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| <img src="public/screenshots/readme/web/01-home-download-light.png" width="220" alt="Home download section" /> | <img src="public/screenshots/readme/web/02-home-daily-verse-light.png" width="220" alt="Daily verse section" /> | <img src="public/screenshots/readme/web/04-settings-dark.png" width="220" alt="Settings dark mode" /> |
+
+| Quran                                                                                                    | Quran Detail                                                                                             | Hadith                                                                                        |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| <img src="public/screenshots/readme/web/05-quran-moods-light.png" width="220" alt="Quran mood picker" /> | <img src="public/screenshots/readme/web/06-quran-verse-dark.png" width="220" alt="Quran verse detail" /> | <img src="public/screenshots/readme/web/07-hadith-light.png" width="220" alt="Hadith page" /> |
+
+| Hadith Detail                                                                                         | 99 Names                                                                                       | Name Detail                                                                                       |
+| ----------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| <img src="public/screenshots/readme/web/08-hadith-detail-dark.png" width="220" alt="Hadith detail" /> | <img src="public/screenshots/readme/web/09-names-light.png" width="220" alt="99 Names page" /> | <img src="public/screenshots/readme/web/10-name-detail-dark.png" width="220" alt="Name detail" /> |
+
+| Duas                                                                                      | Dua Detail                                                                                      | Privacy                                                                                         |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| <img src="public/screenshots/readme/web/11-duas-light.png" width="220" alt="Duas page" /> | <img src="public/screenshots/readme/web/12-dua-detail-dark.png" width="220" alt="Dua detail" /> | <img src="public/screenshots/readme/web/13-privacy-light.png" width="220" alt="Privacy page" /> |
+
+</details>
+
+---
+
+## 🧩 Chrome Extension Preview
+
+<p align="center">
+  <a href="https://chromewebstore.google.com/detail/mdgclabcabbbikdgmihabnaeplkfnnkb?utm_source=item-share-cb">
+    <img src="public/screenshots/readme/extension/extension-icon-128.png" width="72" alt="ImanVibes extension icon" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://chromewebstore.google.com/detail/mdgclabcabbbikdgmihabnaeplkfnnkb?utm_source=item-share-cb">
+    <strong>Install ImanVibes Salah Companion on Chrome Web Store</strong>
+  </a>
+</p>
+
+| Light Home                                                                                               | Light Schedule                                                                                                   |
+| -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| <img src="public/screenshots/readme/extension/01-extension-home-light.png" alt="Extension home light" /> | <img src="public/screenshots/readme/extension/02-extension-schedule-light.png" alt="Extension schedule light" /> |
+
+| Dark Settings                                                                                                  | Dark Home                                                                                              |
+| -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| <img src="public/screenshots/readme/extension/03-extension-settings-dark.png" alt="Extension settings dark" /> | <img src="public/screenshots/readme/extension/04-extension-home-dark.png" alt="Extension home dark" /> |
+
+### Extension Features
+
+- 🕌 Location-based Salah timings inside the browser
+- ⏳ Next prayer countdown with calm visual focus
+- ✅ Daily tracker for Fajr, Dhuhr, Asr, Maghrib, and Isha
+- 🔔 Browser reminder flow for selected Salah times
+- 🌗 Light and dark visual modes
+- 🔗 Quick shortcut back to the ImanVibes website
+
+---
+
+## 📱 Android App: Coming Soon
+
+The Android app is planned for Play Store distribution after the closed testing path is ready.
+
+### Planned Android Experience
+
+- 📖 Quran by Mood with Arabic, transliteration, translation, and source
+- 📚 Hadith, Duas, and 99 Names in the same calm app style
+- 🕌 Salah timings, tracker, and reminder controls
+- 📿 Tasbih counter for daily dhikr
+- 🔊 Arabic audio playback where available
+- 🌗 Native-feeling light and dark reading modes
+- 📤 Share links and branded share images
+
+No Android screenshots are included yet because the public Play Store flow is still coming soon.
+
+---
+
+## 💎 Web Features
+
+| Area           | Included                                                               |
+| -------------- | ---------------------------------------------------------------------- |
+| 📖 Quran       | Mood picker, verse cards, Arabic, transliteration, translation, source |
+| 📚 Hadith      | Hadith collection, detail routes, Arabic audio, share actions          |
+| 🤲 Duas        | Occasion categories, dua cards, transliteration, source references     |
+| 💠 99 Names    | Arabic names, transliteration, meaning, detail pages                   |
+| 🌤️ Daily Verse | Deterministic daily reflection on the home screen                      |
+| 🔎 Search      | Quran mood search and dua occasion search                              |
+| 🔊 Audio       | Arabic TTS through the `/api/tts` route                                |
+| 📤 Sharing     | Copy link, WhatsApp, X, Telegram, share image, download image          |
+| 🌙 Theme       | Persistent light and dark mode                                         |
+| 📲 PWA         | Installable web app with manifest and service worker                   |
+| 🖼️ OG Images   | Dynamic Open Graph images for pages and quote shares                   |
+
+---
+
+## 🧭 Core Flow
 
 ```mermaid
 flowchart TD
-  A[Home] --> B[Quran by Mood]
-  A --> C[Hadith]
-  A --> D[99 Names]
-  A --> Duas[Duas by Occasion]
-  A --> DV[Daily Verse]
-  A --> I[Alif-1.0]
-  B --> E[Item-specific link]
-  C --> E
-  D --> E
-  Duas --> E
-  E --> F[Social preview OG image]
-  E --> G[Share image / Download image]
-  A --> H[Add to Home]
+  A["Home"] --> B["Quran by Mood"]
+  A --> C["Hadith"]
+  A --> D["99 Names"]
+  A --> E["Duas"]
+  A --> F["Daily Verse"]
+  B --> G["Verse Detail"]
+  C --> H["Hadith Detail"]
+  D --> I["Name Detail"]
+  E --> J["Dua Detail"]
+  G --> K["Listen, Share, Copy, Download Image"]
+  H --> K
+  I --> K
+  J --> K
 ```
 
-## Routes
+---
 
-| Route              | Purpose                                       |
-| ------------------ | --------------------------------------------- |
-| `/`                | Landing page and entry point                  |
-| `/app`             | Android APK download page and iOS install guide |
-| `/alif`            | Alif-1.0 landing page                         |
-| `/quran`           | Mood picker                                   |
-| `/quran/[mood]`    | Quran verses filtered by mood                 |
-| `/hadith`          | Hadith collection landing page                |
-| `/hadith/[item]`   | Item-specific Hadith page                     |
-| `/names`           | 99 Names collection landing page              |
-| `/names/[item]`    | Item-specific Name page                       |
-| `/duas`            | Occasion picker with search                   |
-| `/duas/[occasion]` | Duas filtered by occasion                     |
-| `/temp`            | Local OG preview route for development review |
+## 🔗 Routes
 
-## PWA Features
+| Route              | Purpose                                                      |
+| ------------------ | ------------------------------------------------------------ |
+| `/`                | Home, download section, quick links, mood chips, Daily Verse |
+| `/quran`           | Quran mood picker                                            |
+| `/quran/[mood]`    | Quran verses for a selected mood                             |
+| `/hadith`          | Hadith collection landing page                               |
+| `/hadith/[item]`   | Item-specific Hadith page                                    |
+| `/names`           | 99 Names collection page                                     |
+| `/names/[item]`    | Item-specific Name page                                      |
+| `/duas`            | Dua occasion picker                                          |
+| `/duas/[occasion]` | Duas for a selected occasion                                 |
+| `/privacy`         | Privacy policy                                               |
+| `/temp`            | Local OG preview route for development review                |
 
-- Installable in supported browsers
-- `manifest.webmanifest` with icons, shortcuts, and screenshots
-- Custom service worker for route and asset caching
-- Add to Home button with browser-specific fallback guidance
-- Desktop Chrome install flow verified
-- Safari desktop fallback verified via `File -> Add to Dock`
+---
 
-### Install Notes
+## 🛠️ Tech Stack
 
-- `Chrome on desktop`: should show a real install prompt
-- `Safari on Mac`: uses Add to Dock, not the Chrome-style prompt
-- `Arc on Mac`: does not behave like Chrome for PWA install
-- `iPhone / iPad`: uses Share -> Add to Home Screen
+- ⚡ Next.js 16 App Router
+- ⚛️ React 19
+- 🧠 TypeScript
+- 🎨 Tailwind CSS 4
+- 🖼️ React Icons
+- 🔊 `node-edge-tts` for Arabic TTS generation
+- 📸 `html-to-image` for branded share image creation
+- 📊 Vercel Analytics
+- 🗂️ Static local JSON content
 
-## Sharing
+---
 
-Each Quran, Hadith, Name, and Dua card supports:
+## 🧾 Content Integrity
 
-- next item navigation
-- item-specific deep links
-- WhatsApp share
-- X share
-- Telegram share
-- branded share image
-- branded image download
+All Islamic content is read from local JSON:
 
-The exported image is intentionally rendered in the light share-card style, even if the app is being viewed in dark mode.
+- `islamic_final.json`
 
-## Alif-1.0
+Rules followed by the app:
 
-Alif-1.0 is the first Islamic AI model by ImanVibes. Inside this repo, it currently has a dedicated product page at [`/alif`](https://imanvibes.vercel.app/alif), while the public model listing lives on Hugging Face:
+- Quran, Hadith, and Dua text is rendered exactly as stored
+- No paraphrasing of Islamic source text
+- No user-generated content
+- No database
+- No auth
+- No content mutation
 
-- Product page: [https://imanvibes.vercel.app/alif](https://imanvibes.vercel.app/alif)
-- Hugging Face: [https://huggingface.co/mdayaan1911/alif-1.0](https://huggingface.co/mdayaan1911/alif-1.0)
+---
 
-The `/alif` route includes:
-
-- route-specific metadata
-- its own OG image
-- `SoftwareApplication` JSON-LD
-- sitemap and `llms.txt` discoverability
-
-## SEO And GEO
-
-The app includes a full metadata foundation for both traditional search and AI-driven discovery:
-
-- canonical metadata
-- Open Graph metadata
-- Twitter card metadata
-- route-aware item metadata for quote pages
-- dynamic OG image generation
-- `robots.txt`
-- `sitemap.xml`
-- `llms.txt`
-- JSON-LD for organization, website, collection pages, breadcrumbs, Quran quotes, Hadith, Duas, and the 99 Names
-- JSON-LD for the Alif-1.0 software/application page
-- `data-nosnippet` applied to non-content UI chrome where useful
-
-## Stack
-
-- Next.js 16 App Router
-- React 19
-- TypeScript
-- Tailwind CSS 4
-- React Icons
-- `html-to-image`
-- `node-edge-tts` (Arabic TTS)
-- Vercel Analytics
-- Static local JSON content
-
-## Local Development
-
-### 1. Install dependencies
+## 🚀 Local Development
 
 ```bash
 npm install
-```
-
-### 2. Start the dev server
-
-```bash
 npm run dev
 ```
 
-### 3. Production build check
+Quality checks:
 
 ```bash
+npm run lint
 npm run build
-npm run start
 ```
 
-Open `http://localhost:3000`.
+Open:
 
-## Project Structure
+```bash
+http://localhost:3000
+```
+
+---
+
+## 🗂️ Project Structure
 
 ```text
 app/
   page.tsx
-  app/page.tsx
-  app/opengraph-image.tsx
-  alif/page.tsx
-  alif/opengraph-image.tsx
   quran/page.tsx
   quran/[mood]/page.tsx
   hadith/page.tsx
@@ -213,25 +271,23 @@ app/
   names/[item]/page.tsx
   duas/page.tsx
   duas/[occasion]/page.tsx
-  og/duas/[item]/opengraph-image.tsx
-  layout.tsx
+  privacy/page.tsx
+  og/
+  api/tts/route.ts
   manifest.ts
   robots.ts
   sitemap.ts
-  opengraph-image.tsx
-  llms.txt/route.ts
 
 components/
-  AddToHomeButton.tsx
+  AppHeader.tsx
+  AudioPlayer.tsx
   BottomNav.tsx
   BrandWordmark.tsx
   ContentCard.tsx
   DailyVerseCard.tsx
-  Footer.tsx
-  JsonLd.tsx
-  MoodGrid.tsx
+  DownloadComingSoon.tsx
   SearchableGrid.tsx
-  ServiceWorkerRegistration.tsx
+  SettingsSheet.tsx
   ShareButton.tsx
   ThemeToggle.tsx
 
@@ -244,112 +300,31 @@ lib/
 
 public/
   icon2Circular.png
-  icon2Original.png
-  icon-192x192.png
-  icon-512x512.png
-  sw.js
-  screenshots/
+  screenshots/readme/
 
-imanvibes_dataset.json
-```
-
-## Content Model
-
-All content is read from a single local file:
-
-- `imanvibes_dataset.json`
-- Contains `quranByMood`, `hadithCollection`, `allahNames`, and `duas`
-
-Rules followed by the app:
-
-- Quran, Hadith, and Dua text are rendered exactly as stored
-- no remote fetches
-- no content mutation
-- no user-generated data
-
-## Design Direction
-
-- mobile-first layout
-- single-column reading flow
-- bottom navigation
-- calm sand-and-sage light theme
-- persistent dark theme
-- minimal visual noise
-
-## Development Notes
-
-<details>
-<summary><strong>Item links and sharing</strong></summary>
-
-Quran and Duas item URLs use `?item=<id>` within each mood/occasion route, while Hadith and Names use cleaner path-based item routes like `/hadith/1` and `/names/1`. Metadata is generated with item awareness so shared URLs can produce meaningful titles, descriptions, and preview images.
-
-</details>
-
-<details>
-<summary><strong>Open Graph image system</strong></summary>
-
-There are two OG directions in the app:
-
-- landing OG: icon + wordmark + tagline + domain
-- quote OG: branded share-card style for Quran, Hadith, Names, and Duas
-
-The `/temp` route exists to preview these OG outputs during development before checking them on live social platforms.
-
-</details>
-
-<details>
-<summary><strong>PWA implementation notes</strong></summary>
-
-The app currently uses a custom service worker in `public/sw.js` instead of a separate plugin abstraction. It caches the main routes, app icons, manifest, and common runtime assets to keep the experience installable and resilient.
-
-</details>
-
-## Current Status
-
-Ship-ready MVP with:
-
-- live deployment
-- working PWA install flow
-- working OG image previews
-- working share actions
-- full basic SEO/GEO layer
-- Duas section (45 duas grouped by occasion)
-- Daily Verse on homepage
-- Arabic TTS audio playback
-- Search on Quran and Duas pages
-
-## Remaining Nice-To-Haves
-
-- real-device smoke test on iPhone Safari
-- real-device smoke test on Android Chrome
-- automated tests for core flows
-- optional custom domain beyond `vercel.app`
-- optional stronger security headers if explicitly prioritized later
-
-## Commands
-
-```bash
-npm run dev
-npm run build
-npm run start
-npm run lint
+islamic_final.json
 ```
 
 ---
 
-# 👨‍💻 About the Developer
+## 🧪 Screenshot Assets
 
-<p align="center">
-  <img src="https://gateway.lighthouse.storage/ipfs/bafybeidlpfu7vy2rgevvo2msiebtvjfjtejlgjsgjja4jixly45sq3woii/profile.jpeg" alt="Mohammad Ayaan Siddiqui" width="200" />
-</p>
+Fresh README screenshots are stored here:
 
-Assalamualaikum guys! 🙌 This is Mohammad Ayaan Siddiqui (♦moayaan.eth♦). I’m a **Full Stack Blockchain Developer** , **Crypto Investor** and **MBA in Blockchain Management** with **2 years of experience** rocking the Web3 world! 🚀 I’ve worn many hats:
+- `public/screenshots/readme/web/`
+- `public/screenshots/readme/extension/`
 
-- Research Intern at a Hong Kong-based firm 🇭🇰
-- Founding Engineer at a Netherlands-based firm 🇳🇱
-- Full Stack Intern at a Singapore-based crypto hardware wallet firm 🇸🇬
-- Blockchain Developer at a US-based Bitcoin DeFi project 🇺🇸
-- PG Diploma in Blockchain Management from Cambridge International Qualifications (CIQ) 🇬🇧
-- MBA in Blockchain Management from University of Studies Guglielmo Marconi, Italy 🇮🇹
+Raw Playwright capture copies are also kept in:
 
-Let’s connect and build something epic! Find me at [moayaan.com](https://moayaan.com) 🌐
+- `output/playwright/readme-capture/`
+
+---
+
+## 🌍 Links
+
+- 🌐 Website: [https://imanvibes.vercel.app](https://imanvibes.vercel.app)
+- 🧩 Chrome Extension: [ImanVibes Salah Companion](https://chromewebstore.google.com/detail/mdgclabcabbbikdgmihabnaeplkfnnkb?utm_source=item-share-cb)
+- 💻 GitHub: [https://github.com/moayaan1911/imanvibes](https://github.com/moayaan1911/imanvibes)
+- 🙋‍♂️ Developer: [https://moayaan.com](https://moayaan.com)
+
+---

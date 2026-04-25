@@ -16,6 +16,7 @@ export default async function OpenGraphImage({
   return createQuoteOgImage({
     kind: "hadith",
     arabic: entry.arabic,
+    transliteration: entry.transliteration,
     translation: entry.translation,
     source: entry.source,
   });

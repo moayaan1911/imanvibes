@@ -1,8 +1,9 @@
-import dataset from "@/imanvibes_dataset.json";
+import dataset from "@/islamic_final.json";
 
 export type QuranEntry = {
   entry: number;
   arabic: string;
+  transliteration: string;
   translation: string;
   source: string;
 };
@@ -10,6 +11,7 @@ export type QuranEntry = {
 export type HadithEntry = {
   id: number;
   arabic: string;
+  transliteration: string;
   translation: string;
   source: string;
 };

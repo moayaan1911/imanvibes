@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
+import AppHeader from "@/components/AppHeader";
 import ContentCard, { type ContentCardItem } from "@/components/ContentCard";
 import JsonLd from "@/components/JsonLd";
 import {
   duasByOccasion,
   getDuaByOccasionAndId,
+  getOccasionHref,
   getOccasionFromSlug,
   occasionNames,
   slugifyOccasion,
@@ -115,60 +116,31 @@ export default async function DuasOccasionPage({
       : []),
   ];
 
-  const relatedOccasions = occasionNames
+  const relatedOccasionLinks = occasionNames
     .filter((o) => o !== occasion)
-    .slice(0, 6);
+    .slice(0, 6)
+    .map((o) => ({
+      href: getOccasionHref(o),
+      label: o,
+    }));
 
   return (
     <div className="page-bg min-h-screen">
-      <main className="mx-auto flex min-h-screen w-full max-w-md flex-col px-4 pt-5">
+      <main className="app-shell">
         <JsonLd data={structuredData} />
-        <section className="surface-panel rounded-[32px] p-5">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--sage-700)]">
-            Duas
-          </p>
-          <h1 className="mt-3 text-[2rem] font-semibold leading-[1.05] tracking-[-0.03em] text-[var(--ink-900)]">
-            {occasion}
-          </h1>
-          <p className="mt-4 text-sm leading-6 text-[var(--ink-700)]">
-            Browse {duasByOccasion[occasion].length} duas for this occasion.
-          </p>
-        </section>
+        <AppHeader showBackButton />
 
-        <section className="mt-5">
+        <section className="mt-7">
           <Suspense fallback={null}>
             <ContentCard
               items={items}
               kind="duas"
               initialItemId={currentItemId}
+              duaOccasion={occasion}
+              relatedOccasionLinks={relatedOccasionLinks}
             />
           </Suspense>
         </section>
-
-        {relatedOccasions.length > 0 ? (
-          <section className="surface-section mt-5 rounded-[32px] p-5">
-            <h2 className="text-lg font-semibold text-[var(--ink-900)]">
-              More occasions
-            </h2>
-            <div className="mt-4 grid grid-cols-2 gap-3">
-              {relatedOccasions.map((o) => (
-                <Link
-                  key={o}
-                  href={`/duas/${slugifyOccasion(o)}`}
-                  className="surface-item cursor-pointer rounded-[24px] px-4 py-4"
-                >
-                  <p className="text-sm font-semibold text-[var(--ink-900)]">
-                    {o}
-                  </p>
-                  <p className="mt-1 text-xs leading-5 text-[var(--ink-700)]">
-                    {duasByOccasion[o].length} dua
-                    {duasByOccasion[o].length === 1 ? "" : "s"}
-                  </p>
-                </Link>
-              ))}
-            </div>
-          </section>
-        ) : null}
       </main>
     </div>
   );

@@ -18,7 +18,7 @@ export default function MoodGrid({
         <Link
           key={mood}
           href={getMoodHref(mood)}
-          className="surface-item cursor-pointer rounded-[24px] px-4 py-4"
+          className="surface-item cursor-pointer rounded-[22px] px-4 py-4"
         >
           <p className="text-sm font-semibold text-[var(--ink-900)]">{mood}</p>
           {showCounts ? (
