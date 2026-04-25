@@ -1,7 +1,44 @@
 const PRAYERS = ["Fajr", "Dhuhr", "Asr", "Maghrib", "Isha"];
+const ICONS = {
+  check: {
+    viewBox: "0 0 448 512",
+    path: "M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z",
+  },
+  cloudMoon: {
+    viewBox: "0 0 640 512",
+    path: "M495.8 0c5.5 0 10.9 .2 16.3 .7c7 .6 12.8 5.7 14.3 12.5s-1.6 13.9-7.7 17.3c-44.4 25.2-74.4 73-74.4 127.8c0 81 65.5 146.6 146.2 146.6c8.6 0 17-.7 25.1-2.1c6.9-1.2 13.8 2.2 17 8.5s1.9 13.8-3.1 18.7c-34.5 33.6-81.7 54.4-133.6 54.4c-9.3 0-18.4-.7-27.4-1.9c-11.2-22.6-29.8-40.9-52.6-51.7c-2.7-58.5-50.3-105.3-109.2-106.7c-1.7-10.4-2.6-21-2.6-31.8C304 86.1 389.8 0 495.8 0zM447.9 431.9c0 44.2-35.8 80-80 80L96 511.9c-53 0-96-43-96-96c0-47.6 34.6-87 80-94.6l0-1.3c0-53 43-96 96-96c34.9 0 65.4 18.6 82.2 46.4c13-9.1 28.8-14.4 45.8-14.4c44.2 0 80 35.8 80 80c0 5.9-.6 11.7-1.9 17.2c37.4 6.7 65.8 39.4 65.8 78.7z",
+  },
+  sun: {
+    viewBox: "0 0 512 512",
+    path: "M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z",
+  },
+  cloudSun: {
+    viewBox: "0 0 640 512",
+    path: "M294.2 1.2c5.1 2.1 8.7 6.7 9.6 12.1l14.1 84.7 84.7 14.1c5.4 .9 10 4.5 12.1 9.6s1.5 10.9-1.6 15.4l-38.5 55c-2.2-.1-4.4-.2-6.7-.2c-23.3 0-45.1 6.2-64 17.1l0-1.1c0-53-43-96-96-96s-96 43-96 96s43 96 96 96c8.1 0 15.9-1 23.4-2.9c-36.6 18.1-63.3 53.1-69.8 94.9l-24.4 17c-4.5 3.2-10.3 3.8-15.4 1.6s-8.7-6.7-9.6-12.1L98.1 317.9 13.4 303.8c-5.4-.9-10-4.5-12.1-9.6s-1.5-10.9 1.6-15.4L52.5 208 2.9 137.2c-3.2-4.5-3.8-10.3-1.6-15.4s6.7-8.7 12.1-9.6L98.1 98.1l14.1-84.7c.9-5.4 4.5-10 9.6-12.1s10.9-1.5 15.4 1.6L208 52.5 278.8 2.9c4.5-3.2 10.3-3.8 15.4-1.6zM144 208a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zM639.9 431.9c0 44.2-35.8 80-80 80l-271.9 0c-53 0-96-43-96-96c0-47.6 34.6-87 80-94.6l0-1.3c0-53 43-96 96-96c34.9 0 65.4 18.6 82.2 46.4c13-9.1 28.8-14.4 45.8-14.4c44.2 0 80 35.8 80 80c0 5.9-.6 11.7-1.9 17.2c37.4 6.7 65.8 39.4 65.8 78.7z",
+  },
+  moon: {
+    viewBox: "0 0 384 512",
+    path: "M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z",
+  },
+};
+
 const STORAGE_KEYS = {
   location: "imanvibes-extension-location-v1",
   prayers: "imanvibes-extension-prayers-v1",
+  notificationPrefs: "imanvibes-extension-notification-prefs-v1",
+  theme: "theme",
+};
+
+const URLS = {
+  website: "https://imanvibes.vercel.app",
+  github: "https://github.com/moayaan1911/imanvibes",
+  developer: "https://moayaan.com",
+  extension: "https://chrome.google.com/webstore/detail/imanvibes-prayer-companion/demo-extension-link",
+};
+
+const THEME_COLOR = {
+  light: "#fff9ef",
+  dark: "#0f1512",
 };
 
 const state = {
@@ -9,9 +46,20 @@ const state = {
   prayerTimes: null,
   hijri: null,
   prayerHistory: {},
+  notificationPrefs: {
+    Fajr: true,
+    Dhuhr: true,
+    Asr: true,
+    Maghrib: true,
+    Isha: true,
+  },
+  notificationPermission: "loading",
+  locationPermission: "loading",
+  theme: "light",
   now: new Date(),
   searchOpen: false,
   searchTimer: null,
+  settingsOpen: false,
 };
 
 const els = {
@@ -26,14 +74,25 @@ const els = {
   remainingLabel: document.getElementById("remainingLabel"),
   remainingTime: document.getElementById("remainingTime"),
   hijriDate: document.getElementById("hijriDate"),
-  locationLabel: document.getElementById("locationLabel"),
-  countdownLabel: document.getElementById("countdownLabel"),
-  countdownValue: document.getElementById("countdownValue"),
   completedCount: document.getElementById("completedCount"),
   trackerRow: document.getElementById("trackerRow"),
   scheduleList: document.getElementById("scheduleList"),
   statusLine: document.getElementById("statusLine"),
+  goToImanVibesButton: document.getElementById("goToImanVibesButton"),
+  settingsButton: document.getElementById("settingsButton"),
+  settingsOverlay: document.getElementById("settingsOverlay"),
+  settingsCloseButton: document.getElementById("settingsCloseButton"),
+  notificationStatus: document.getElementById("notificationStatus"),
+  notificationButton: document.getElementById("notificationButton"),
+  notificationPrefs: document.getElementById("notificationPrefs"),
+  themeToggleButton: document.getElementById("themeToggleButton"),
+  themeToggleIcon: document.getElementById("themeToggleIcon"),
+  themeToggleLabel: document.getElementById("themeToggleLabel"),
+  shareButton: document.getElementById("shareButton"),
+  shareButtonLabel: document.getElementById("shareButtonLabel"),
 };
+
+applyTheme(getInitialTheme(), false);
 
 function storageGet(key) {
   return new Promise((resolve) => {
@@ -67,6 +126,31 @@ function storageSet(key, value) {
 
     extensionStorage.set({ [key]: value }, resolve);
   });
+}
+
+function getInitialTheme() {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEYS.theme);
+    return stored === "dark" || stored === "light" ? stored : "light";
+  } catch {
+    return "light";
+  }
+}
+
+function applyTheme(theme, persist = true) {
+  state.theme = theme === "dark" ? "dark" : "light";
+  document.documentElement.dataset.theme = state.theme;
+  document.documentElement.style.colorScheme = state.theme;
+
+  try {
+    localStorage.setItem(STORAGE_KEYS.theme, state.theme);
+  } catch {}
+
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.setAttribute("content", THEME_COLOR[state.theme]);
+
+  if (persist) void storageSet(STORAGE_KEYS.theme, state.theme);
+  renderThemeToggle();
 }
 
 function getDateKey(date = new Date()) {
@@ -214,6 +298,108 @@ function setStatus(message) {
   els.statusLine.textContent = message || "";
 }
 
+function getIconSvg(iconName, className) {
+  const icon = ICONS[iconName];
+  return `<svg class="${className}" viewBox="${icon.viewBox}" aria-hidden="true"><path d="${icon.path}"></path></svg>`;
+}
+
+function setSvgIcon(element, iconName) {
+  const icon = ICONS[iconName];
+  if (!element || !icon) return;
+  element.setAttribute("viewBox", icon.viewBox);
+  element.innerHTML = `<path d="${icon.path}"></path>`;
+}
+
+function getNotificationPermission() {
+  if (globalThis.chrome?.notifications && globalThis.chrome?.alarms) return "granted";
+  if (!("Notification" in window)) return "unavailable";
+  if (Notification.permission === "granted") return "granted";
+  if (Notification.permission === "denied") return "denied";
+  return "prompt";
+}
+
+async function refreshLocationPermission() {
+  if (!navigator.permissions?.query) {
+    state.locationPermission = navigator.geolocation ? "prompt" : "unavailable";
+    return;
+  }
+
+  try {
+    const result = await navigator.permissions.query({ name: "geolocation" });
+    state.locationPermission = result.state;
+  } catch {
+    state.locationPermission = navigator.geolocation ? "prompt" : "unavailable";
+  }
+}
+
+function getLocationStatusLabel() {
+  if (state.location?.label) return state.location.label;
+  if (state.location) return `${state.location.lat.toFixed(2)}, ${state.location.lng.toFixed(2)}`;
+  if (state.locationPermission === "granted") return "Allowed";
+  if (state.locationPermission === "denied") return "Blocked";
+  if (state.locationPermission === "unavailable") return "Unavailable";
+  return "Ask first";
+}
+
+function getNotificationStatusLabel() {
+  if (state.notificationPermission === "granted") return "Allowed";
+  if (state.notificationPermission === "denied") return "Blocked";
+  if (state.notificationPermission === "unavailable") return "Unavailable";
+  if (state.notificationPermission === "loading") return "Checking";
+  return "Ask first";
+}
+
+function renderThemeToggle() {
+  if (!els.themeToggleButton) return;
+
+  const nextLabel = state.theme === "dark" ? "Light mode" : "Dark mode";
+  const nextIcon = state.theme === "dark" ? "sun" : "moon";
+  els.themeToggleLabel.textContent = nextLabel;
+  els.themeToggleButton.setAttribute("aria-label", `Switch to ${state.theme === "dark" ? "light" : "dark"} mode`);
+  setSvgIcon(els.themeToggleIcon, nextIcon);
+}
+
+function renderNotificationPrefs() {
+  if (!els.notificationPrefs) return;
+
+  const notificationsAllowed = state.notificationPermission === "granted";
+  els.notificationPrefs.innerHTML = "";
+
+  PRAYERS.forEach((prayer) => {
+    const active = notificationsAllowed && state.notificationPrefs[prayer] === true;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `prayer-toggle ${active ? "active" : ""}`;
+    button.role = "switch";
+    button.setAttribute("aria-checked", String(active));
+    button.disabled = !notificationsAllowed;
+    button.innerHTML = `
+      <span>${prayer}</span>
+      <span class="toggle-track"><span class="toggle-knob"></span></span>
+    `;
+    button.addEventListener("click", () => toggleNotificationPref(prayer));
+    els.notificationPrefs.append(button);
+  });
+}
+
+function renderSettings() {
+  state.notificationPermission = getNotificationPermission();
+
+  els.notificationStatus.textContent = getNotificationStatusLabel();
+  els.notificationButton.hidden = state.notificationPermission === "granted";
+  els.notificationButton.disabled =
+    state.notificationPermission === "denied" || state.notificationPermission === "unavailable";
+  els.notificationButton.textContent =
+    state.notificationPermission === "denied"
+      ? "Blocked"
+      : state.notificationPermission === "unavailable"
+        ? "Unavailable"
+        : "Allow";
+
+  renderThemeToggle();
+  renderNotificationPrefs();
+}
+
 function renderTracker() {
   const todayPrayers = getTodayPrayers();
   const completedCount = PRAYERS.filter((name) => isPrayerCompleted(todayPrayers[name])).length;
@@ -231,7 +417,7 @@ function renderTracker() {
     button.type = "button";
     button.className = `tracker-check ${isPrayerCompleted(todayPrayers[name]) ? "completed" : ""}`;
     button.setAttribute("aria-label", `Toggle ${name}`);
-    button.textContent = isPrayerCompleted(todayPrayers[name]) ? "✓" : "";
+    button.innerHTML = isPrayerCompleted(todayPrayers[name]) ? getIconSvg("check", "tracker-check-icon") : "";
     button.addEventListener("click", () => togglePrayer(name));
 
     const label = document.createElement("span");
@@ -253,12 +439,13 @@ function renderTracker() {
 
 function renderSchedule() {
   els.scheduleList.innerHTML = "";
+  const icons = { Fajr: "cloudMoon", Dhuhr: "sun", Asr: "cloudSun", Maghrib: "moon", Isha: "moon" };
 
   if (!state.prayerTimes) {
     PRAYERS.forEach((name) => {
       const row = document.createElement("div");
-      row.className = "schedule-row";
-      row.innerHTML = `<div class="schedule-left"><span class="prayer-icon">•</span><span class="schedule-name">${name}</span></div><div class="schedule-right"><span class="schedule-time">--:--</span></div>`;
+      row.className = "schedule-row upcoming";
+      row.innerHTML = `<div class="schedule-left">${getIconSvg(icons[name], "prayer-icon")}<span class="schedule-name">${name}</span></div><div class="schedule-right"><span class="schedule-time">--:--</span></div>`;
       els.scheduleList.append(row);
     });
     return;
@@ -266,7 +453,6 @@ function renderSchedule() {
 
   const todayPrayers = getTodayPrayers();
   const latestOverduePrayer = getMostRecentOverduePrayer(state.prayerTimes, todayPrayers, state.now);
-  const icons = { Fajr: "☾", Dhuhr: "☼", Asr: "☁", Maghrib: "☾", Isha: "☾" };
 
   PRAYERS.forEach((name) => {
     const status = getPrayerScheduleStatus(name, state.prayerTimes, todayPrayers, state.now, latestOverduePrayer);
@@ -276,7 +462,7 @@ function renderSchedule() {
     const statusLabel = getStatusLabel(status);
     row.innerHTML = `
       <div class="schedule-left">
-        <span class="prayer-icon">${icons[name]}</span>
+        ${getIconSvg(icons[name], "prayer-icon")}
         <span class="schedule-name">${name}</span>
       </div>
       <div class="schedule-right">
@@ -295,19 +481,14 @@ function renderTiming() {
   els.nextPrayerName.textContent = nextPrayer ? nextPrayer.name : "Disabled";
   els.nextPrayerTime.hidden = !nextPrayer;
   els.nextPrayerTime.textContent = nextPrayer ? formatTimeLabel(nextPrayer.time) : "";
-  els.locationLabel.textContent = state.location?.label || "Tap to fetch location";
   els.hijriDate.textContent = formatHijri(state.hijri);
 
   if (nextPrayer) {
     els.remainingLabel.textContent = "Remaining Time";
     els.remainingTime.textContent = getTimeUntilDetailed(nextPrayer.time, state.now);
-    els.countdownLabel.textContent = `Next: ${nextPrayer.name}`;
-    els.countdownValue.textContent = getTimeUntilDetailed(nextPrayer.time, state.now);
   } else {
     els.remainingLabel.textContent = "Enable Location access to See timings";
     els.remainingTime.textContent = "Tap the location icon or search your city.";
-    els.countdownLabel.textContent = "Loading prayer times";
-    els.countdownValue.textContent = "--:--:--";
   }
 }
 
@@ -335,6 +516,7 @@ async function fetchPrayerTimes(location) {
     Isha: timings.Isha,
   };
   state.hijri = payload.data?.date?.hijri || null;
+  await syncNotificationAlarms();
   render();
 }
 
@@ -360,6 +542,17 @@ async function saveLocation(location) {
   };
   await storageSet(STORAGE_KEYS.location, state.location);
   await fetchPrayerTimes(state.location);
+  await refreshLocationPermission();
+  renderSettings();
+}
+
+async function requestAndSaveCurrentLocation() {
+  const position = await getBrowserLocation();
+  await saveLocation({
+    lat: position.coords.latitude,
+    lng: position.coords.longitude,
+    label: "Current location",
+  });
 }
 
 async function fetchCurrentLocation() {
@@ -367,12 +560,7 @@ async function fetchCurrentLocation() {
   els.locationButton.disabled = true;
 
   try {
-    const position = await getBrowserLocation();
-    await saveLocation({
-      lat: position.coords.latitude,
-      lng: position.coords.longitude,
-      label: "Current location",
-    });
+    await requestAndSaveCurrentLocation();
     setStatus("");
   } catch {
     setStatus("Location blocked. Search your city instead.");
@@ -430,6 +618,151 @@ async function searchCities(query) {
   }
 }
 
+function openExternal(url) {
+  if (globalThis.chrome?.tabs?.create) {
+    chrome.tabs.create({ url });
+    return;
+  }
+
+  window.open(url, "_blank", "noopener,noreferrer");
+}
+
+async function openSettings() {
+  state.settingsOpen = true;
+  els.settingsOverlay.hidden = false;
+  await refreshLocationPermission();
+  renderSettings();
+}
+
+function closeSettings() {
+  state.settingsOpen = false;
+  els.settingsOverlay.hidden = true;
+}
+
+async function requestNotificationPermission() {
+  if (globalThis.chrome?.notifications && globalThis.chrome?.alarms) {
+    state.notificationPermission = "granted";
+    renderSettings();
+    await syncNotificationAlarms();
+    return;
+  }
+
+  if (!("Notification" in window)) {
+    state.notificationPermission = "unavailable";
+    renderSettings();
+    return;
+  }
+
+  els.notificationButton.disabled = true;
+  els.notificationButton.textContent = "Working...";
+
+  try {
+    await Notification.requestPermission();
+  } finally {
+    state.notificationPermission = getNotificationPermission();
+    renderSettings();
+  }
+}
+
+async function toggleNotificationPref(prayer) {
+  if (state.notificationPermission !== "granted") return;
+
+  state.notificationPrefs = {
+    ...state.notificationPrefs,
+    [prayer]: !state.notificationPrefs[prayer],
+  };
+
+  await storageSet(STORAGE_KEYS.notificationPrefs, state.notificationPrefs);
+  await syncNotificationAlarms();
+  renderSettings();
+}
+
+function clearPrayerAlarms() {
+  return new Promise((resolve) => {
+    if (!globalThis.chrome?.alarms) {
+      resolve();
+      return;
+    }
+
+    chrome.alarms.getAll((alarms) => {
+      const prayerAlarms = alarms.filter((alarm) => alarm.name.startsWith("imanvibes-prayer-"));
+
+      if (!prayerAlarms.length) {
+        resolve();
+        return;
+      }
+
+      let remaining = prayerAlarms.length;
+      prayerAlarms.forEach((alarm) => {
+        chrome.alarms.clear(alarm.name, () => {
+          remaining -= 1;
+          if (remaining === 0) resolve();
+        });
+      });
+    });
+  });
+}
+
+async function syncNotificationAlarms() {
+  if (!globalThis.chrome?.alarms || state.notificationPermission !== "granted" || !state.prayerTimes) {
+    return;
+  }
+
+  await clearPrayerAlarms();
+
+  const now = new Date();
+  PRAYERS.forEach((prayer) => {
+    if (!state.notificationPrefs[prayer]) return;
+
+    const parts = getTimeParts(state.prayerTimes[prayer]);
+    if (!parts) return;
+
+    const scheduledAt = new Date(now);
+    scheduledAt.setHours(parts.hours, parts.minutes, 0, 0);
+    if (scheduledAt <= now) return;
+
+    chrome.alarms.create(`imanvibes-prayer-${getDateKey(now)}-${prayer}`, {
+      when: scheduledAt.getTime(),
+    });
+  });
+}
+
+async function shareExtension() {
+  const shareText = `${URLS.extension}\nTrack daily prayers, view accurate timings, and get Salah reminders while you browse.\nWebsite: ${URLS.website}`;
+
+  els.shareButton.disabled = true;
+  els.shareButtonLabel.textContent = "Preparing...";
+
+  try {
+    if (navigator.share) {
+      await navigator.share({
+        title: "ImanVibes Salah Companion",
+        text: `Track daily prayers, view accurate timings, and get Salah reminders while you browse.\nWebsite: ${URLS.website}`,
+        url: URLS.extension,
+      });
+      els.shareButtonLabel.textContent = "Shared";
+    } else {
+      await navigator.clipboard.writeText(shareText);
+      els.shareButtonLabel.textContent = "Copied";
+    }
+  } catch (error) {
+    if (error instanceof Error && error.name === "AbortError") {
+      els.shareButtonLabel.textContent = "Share ImanVibes";
+    } else {
+      els.shareButtonLabel.textContent = "Try again";
+    }
+  } finally {
+    window.setTimeout(() => {
+      els.shareButton.disabled = false;
+      els.shareButtonLabel.textContent = "Share ImanVibes";
+    }, 1400);
+  }
+}
+
+function toggleTheme() {
+  applyTheme(state.theme === "dark" ? "light" : "dark");
+}
+
 async function togglePrayer(name) {
   const todayKey = getDateKey();
   const current = state.prayerHistory[todayKey] || createEmptyDailyPrayers();
@@ -450,8 +783,21 @@ async function togglePrayer(name) {
 async function init() {
   state.location = await storageGet(STORAGE_KEYS.location);
   state.prayerHistory = (await storageGet(STORAGE_KEYS.prayers)) || {};
+  state.notificationPrefs = {
+    ...state.notificationPrefs,
+    ...((await storageGet(STORAGE_KEYS.notificationPrefs)) || {}),
+  };
+
+  const storedTheme = await storageGet(STORAGE_KEYS.theme);
+  if (storedTheme === "dark" || storedTheme === "light") {
+    applyTheme(storedTheme, false);
+  }
+
+  await refreshLocationPermission();
+  state.notificationPermission = getNotificationPermission();
 
   render();
+  renderSettings();
 
   if (state.location) {
     setStatus("Loading prayer times...");
@@ -465,6 +811,24 @@ async function init() {
 }
 
 els.locationButton.addEventListener("click", fetchCurrentLocation);
+els.goToImanVibesButton.addEventListener("click", () => openExternal(URLS.website));
+els.settingsButton.addEventListener("click", () => void openSettings());
+els.settingsCloseButton.addEventListener("click", closeSettings);
+els.settingsOverlay.addEventListener("click", (event) => {
+  if (event.target === els.settingsOverlay) closeSettings();
+});
+els.notificationButton.addEventListener("click", () => void requestNotificationPermission());
+els.themeToggleButton.addEventListener("click", toggleTheme);
+els.shareButton.addEventListener("click", () => void shareExtension());
+
+document.querySelectorAll(".link-tile").forEach((button) => {
+  button.addEventListener("click", () => openExternal(button.dataset.url));
+});
+
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && state.settingsOpen) closeSettings();
+});
+
 els.searchButton.addEventListener("click", () => {
   state.searchOpen = !state.searchOpen;
   els.searchForm.hidden = !state.searchOpen;
