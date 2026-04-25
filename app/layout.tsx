@@ -56,6 +56,9 @@ export const metadata: Metadata = {
     imagePath: "/opengraph-image",
   }),
   manifest: "/manifest.webmanifest",
+  verification: {
+    google: "hNDV2Yp-KRNuDW-gJuCH1hQtrcs7RgOjMUW532Ksn5A",
+  },
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
