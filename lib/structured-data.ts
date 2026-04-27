@@ -1,4 +1,10 @@
-import { absoluteUrl, siteDescription, siteName } from "@/lib/site";
+import {
+  absoluteUrl,
+  siteAlternateNames,
+  siteDescription,
+  siteName,
+  siteSameAs,
+} from "@/lib/site";
 
 type BreadcrumbItem = {
   name: string;
@@ -11,8 +17,10 @@ export function getOrganizationJsonLd() {
     "@type": "Organization",
     "@id": `${absoluteUrl("/")}#organization`,
     name: siteName,
+    alternateName: siteAlternateNames,
     url: absoluteUrl("/"),
     logo: absoluteUrl("/icon2Circular.png"),
+    sameAs: siteSameAs,
   };
 }
 
@@ -22,6 +30,7 @@ export function getWebsiteJsonLd() {
     "@type": "WebSite",
     "@id": `${absoluteUrl("/")}#website`,
     name: siteName,
+    alternateName: siteAlternateNames,
     url: absoluteUrl("/"),
     description: siteDescription,
     publisher: {

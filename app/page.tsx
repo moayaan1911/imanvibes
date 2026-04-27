@@ -103,6 +103,7 @@ export default function Home() {
               className="icon-ring rounded-full border"
             />
             <BrandWordmark
+              as="h1"
               showTagline
               wordmarkClassName="text-[1.7rem]"
               taglineClassName="text-[11px] leading-4"

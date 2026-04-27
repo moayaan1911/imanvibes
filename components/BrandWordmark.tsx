@@ -1,4 +1,5 @@
 type BrandWordmarkProps = {
+  as?: "h1" | "p";
   showTagline?: boolean;
   className?: string;
   wordmarkClassName?: string;
@@ -6,14 +7,17 @@ type BrandWordmarkProps = {
 };
 
 export default function BrandWordmark({
+  as = "p",
   showTagline = false,
   className = "",
   wordmarkClassName = "",
   taglineClassName = "",
 }: BrandWordmarkProps) {
+  const Wordmark = as;
+
   return (
     <div className={className}>
-      <p
+      <Wordmark
         className={`flex items-baseline gap-2 leading-none text-[var(--sage-700)] ${wordmarkClassName}`.trim()}
       >
         <span className="text-[1.18em] [font-family:var(--font-brand-arabic)]">
@@ -22,7 +26,7 @@ export default function BrandWordmark({
         <span className="italic tracking-[0.02em] [font-family:var(--font-display)]">
           Vibes
         </span>
-      </p>
+      </Wordmark>
 
       {showTagline ? (
         <p

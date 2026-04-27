@@ -2,6 +2,11 @@ export const siteName = "ImanVibes";
 export const siteTagline = "Quranic comfort for every mood";
 export const siteDomain = "imanvibes.vercel.app";
 export const defaultSiteUrl = `https://${siteDomain}`;
+export const siteAlternateNames = ["Iman Vibes", siteDomain];
+export const siteSameAs = [
+  "https://github.com/moayaan1911/imanvibes",
+  "https://chromewebstore.google.com/detail/mdgclabcabbbikdgmihabnaeplkfnnkb",
+];
 export const siteDescription =
   "Quranic comfort for every mood. Read Quran by mood, browse Hadith, and reflect on the 99 Names of Allah in a calm, text-first Islamic web app.";
 
