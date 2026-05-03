@@ -363,7 +363,9 @@ export default function HomeSettingsSheet() {
     setShareState("preparing");
 
     const homepageUrl = absoluteUrl("/");
-    const shareText = `Check out ImanVibes\nQuranic comfort for every mood.\nWebsite: ${homepageUrl}\nPlay Store: ${playStoreUrl}`;
+    const extensionUrl =
+      "https://chromewebstore.google.com/detail/mdgclabcabbbikdgmihabnaeplkfnnkb?utm_source=item-share-cb";
+    const shareText = `✨ ImanVibes — Quranic comfort for every mood\n\n📖 Quran by Mood · 💬 Hadith · 📿 99 Names\n🤲 Duas · 🕌 Prayer Times · 📿 Tasbih\n\n🌐 ${homepageUrl}\n📱 ${playStoreUrl}\n🧩 ${extensionUrl}`;
 
     try {
       if (isAndroidApp) {
@@ -391,7 +393,7 @@ export default function HomeSettingsSheet() {
       if (navigator.share) {
         await navigator.share({
           title: "ImanVibes",
-          text: `Check out ImanVibes\nQuranic comfort for every mood.\nPlay Store: ${playStoreUrl}`,
+          text: `✨ ImanVibes — Quranic comfort for every mood\n\n📖 Quran by Mood · 💬 Hadith · 📿 99 Names\n🤲 Duas · 🕌 Prayer Times · 📿 Tasbih\n\n🌐 ${homepageUrl}\n📱 ${playStoreUrl}\n🧩 ${extensionUrl}`,
           url: homepageUrl,
         });
 

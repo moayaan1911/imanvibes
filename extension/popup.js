@@ -33,7 +33,8 @@ const URLS = {
   website: "https://imanvibes.vercel.app",
   github: "https://github.com/moayaan1911/imanvibes",
   developer: "https://moayaan.com",
-  extension: "https://chrome.google.com/webstore/detail/imanvibes-prayer-companion/demo-extension-link",
+  extension: "https://chromewebstore.google.com/detail/mdgclabcabbbikdgmihabnaeplkfnnkb?utm_source=item-share-cb",
+  support: "https://moayaan.com/support",
 };
 
 const THEME_COLOR = {
@@ -66,7 +67,7 @@ const els = {
   timingEyebrow: document.getElementById("timingEyebrow"),
   nextPrayerName: document.getElementById("nextPrayerName"),
   nextPrayerTime: document.getElementById("nextPrayerTime"),
-  locationButton: document.getElementById("locationButton"),
+  locationPill: document.getElementById("locationPill"),
   searchButton: document.getElementById("searchButton"),
   searchForm: document.getElementById("searchForm"),
   cityInput: document.getElementById("cityInput"),
@@ -78,6 +79,7 @@ const els = {
   trackerRow: document.getElementById("trackerRow"),
   scheduleList: document.getElementById("scheduleList"),
   statusLine: document.getElementById("statusLine"),
+  supportButton: document.getElementById("supportButton"),
   goToImanVibesButton: document.getElementById("goToImanVibesButton"),
   settingsButton: document.getElementById("settingsButton"),
   settingsOverlay: document.getElementById("settingsOverlay"),
@@ -88,8 +90,8 @@ const els = {
   themeToggleButton: document.getElementById("themeToggleButton"),
   themeToggleIcon: document.getElementById("themeToggleIcon"),
   themeToggleLabel: document.getElementById("themeToggleLabel"),
-  shareButton: document.getElementById("shareButton"),
-  shareButtonLabel: document.getElementById("shareButtonLabel"),
+  shareButton: document.getElementById("copyStoreButton"),
+  shareButtonLabel: document.getElementById("copyStoreLabel"),
 };
 
 applyTheme(getInitialTheme(), false);
@@ -477,6 +479,11 @@ function renderSchedule() {
 function renderTiming() {
   const nextPrayer = state.prayerTimes ? getNextPrayer(state.prayerTimes, state.now) : null;
 
+  els.locationPill.hidden = !state.location;
+  els.locationPill.innerHTML = state.location
+    ? `<svg width="10" height="10" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>${state.location.label}`
+    : "";
+
   els.timingEyebrow.textContent = state.prayerTimes ? "Next Prayer" : "Prayer Times";
   els.nextPrayerName.textContent = nextPrayer ? nextPrayer.name : "Disabled";
   els.nextPrayerTime.hidden = !nextPrayer;
@@ -487,8 +494,8 @@ function renderTiming() {
     els.remainingLabel.textContent = "Remaining Time";
     els.remainingTime.textContent = getTimeUntilDetailed(nextPrayer.time, state.now);
   } else {
-    els.remainingLabel.textContent = "Enable Location access to See timings";
-    els.remainingTime.textContent = "Tap the location icon or search your city.";
+    els.remainingLabel.textContent = "Add your city to see timings";
+    els.remainingTime.textContent = "Tap the search icon and select your city.";
   }
 }
 
@@ -520,21 +527,6 @@ async function fetchPrayerTimes(location) {
   render();
 }
 
-function getBrowserLocation() {
-  return new Promise((resolve, reject) => {
-    if (!navigator.geolocation) {
-      reject(new Error("Geolocation unavailable"));
-      return;
-    }
-
-    navigator.geolocation.getCurrentPosition(resolve, reject, {
-      enableHighAccuracy: true,
-      timeout: 10000,
-      maximumAge: 300000,
-    });
-  });
-}
-
 async function saveLocation(location) {
   state.location = {
     ...location,
@@ -544,29 +536,6 @@ async function saveLocation(location) {
   await fetchPrayerTimes(state.location);
   await refreshLocationPermission();
   renderSettings();
-}
-
-async function requestAndSaveCurrentLocation() {
-  const position = await getBrowserLocation();
-  await saveLocation({
-    lat: position.coords.latitude,
-    lng: position.coords.longitude,
-    label: "Current location",
-  });
-}
-
-async function fetchCurrentLocation() {
-  setStatus("Fetching location...");
-  els.locationButton.disabled = true;
-
-  try {
-    await requestAndSaveCurrentLocation();
-    setStatus("");
-  } catch {
-    setStatus("Location blocked. Search your city instead.");
-  } finally {
-    els.locationButton.disabled = false;
-  }
 }
 
 async function searchCities(query) {
@@ -727,35 +696,22 @@ async function syncNotificationAlarms() {
   });
 }
 
-async function shareExtension() {
-  const shareText = `${URLS.extension}\nTrack daily prayers, view accurate timings, and get Salah reminders while you browse.\nWebsite: ${URLS.website}`;
-
+async function copyStoreLink() {
   els.shareButton.disabled = true;
-  els.shareButtonLabel.textContent = "Preparing...";
+  els.shareButtonLabel.textContent = "Copying...";
+
+  const promoText = `✨ ImanVibes — Quranic comfort for every mood\n\n📖 Quran by Mood · 💬 Hadith · 📿 99 Names\n🤲 Duas · 🕌 Prayer Times · 📿 Tasbih\n\n🌐 ${URLS.website}\n🧩 ${URLS.extension}`;
 
   try {
-    if (navigator.share) {
-      await navigator.share({
-        title: "ImanVibes Salah Companion",
-        text: `Track daily prayers, view accurate timings, and get Salah reminders while you browse.\nWebsite: ${URLS.website}`,
-        url: URLS.extension,
-      });
-      els.shareButtonLabel.textContent = "Shared";
-    } else {
-      await navigator.clipboard.writeText(shareText);
-      els.shareButtonLabel.textContent = "Copied";
-    }
-  } catch (error) {
-    if (error instanceof Error && error.name === "AbortError") {
-      els.shareButtonLabel.textContent = "Share ImanVibes";
-    } else {
-      els.shareButtonLabel.textContent = "Try again";
-    }
+    await navigator.clipboard.writeText(promoText);
+    els.shareButtonLabel.textContent = "Copied!";
+  } catch {
+    els.shareButtonLabel.textContent = "Try again";
   } finally {
     window.setTimeout(() => {
       els.shareButton.disabled = false;
-      els.shareButtonLabel.textContent = "Share ImanVibes";
-    }, 1400);
+      els.shareButtonLabel.textContent = "Share Extension";
+    }, 1600);
   }
 }
 
@@ -810,7 +766,7 @@ async function init() {
   }
 }
 
-els.locationButton.addEventListener("click", fetchCurrentLocation);
+els.supportButton.addEventListener("click", () => openExternal(URLS.support));
 els.goToImanVibesButton.addEventListener("click", () => openExternal(URLS.website));
 els.settingsButton.addEventListener("click", () => void openSettings());
 els.settingsCloseButton.addEventListener("click", closeSettings);
@@ -819,9 +775,9 @@ els.settingsOverlay.addEventListener("click", (event) => {
 });
 els.notificationButton.addEventListener("click", () => void requestNotificationPermission());
 els.themeToggleButton.addEventListener("click", toggleTheme);
-els.shareButton.addEventListener("click", () => void shareExtension());
+els.shareButton.addEventListener("click", () => void copyStoreLink());
 
-document.querySelectorAll(".link-tile").forEach((button) => {
+document.querySelectorAll(".quick-link-btn").forEach((button) => {
   button.addEventListener("click", () => openExternal(button.dataset.url));
 });
 

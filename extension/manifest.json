@@ -1,10 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "ImanVibes Salah Companion",
+  "name": "ImanVibes Salah : Prayer Times, Countdown, Reminder & Tracker",
   "description": "Track daily prayers, view accurate timings, and get Salah reminders while you browse.",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "action": {
-    "default_title": "ImanVibes Salah Companion",
+    "default_title": "ImanVibes Salah : Prayer Times, Countdown, Reminder & Tracker",
     "default_popup": "popup.html",
     "default_icon": {
       "128": "assets/icon.png"

@@ -6,6 +6,8 @@ const PRAYER_NOTIFICATION_COPY = {
   Isha: "It is time for Isha. End the night with prayer and reflection.",
 };
 
+chrome.runtime.setUninstallURL("https://forms.gle/FtnaJx3xQ8udLpJS7");
+
 chrome.alarms.onAlarm.addListener((alarm) => {
   if (!alarm.name.startsWith("imanvibes-prayer-")) return;
 

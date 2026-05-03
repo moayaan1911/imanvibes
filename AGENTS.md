@@ -643,17 +643,19 @@ Note: `/api/tts` route uses Microsoft Edge Neural TTS as an external synthesis s
   - place the download link on the website in `main`
   - keep the APK binary out of the repository
 
-### Browser Extension Direction (Future)
+### Browser Extension
 
-- A future `extension` branch may be created for browser-extension work
-- Extension should act as an ImanVibes Prayer companion for web users, not a duplicate of the website
-- Core extension scope:
+- Extension lives in the `extension/` folder (manifest v3)
+- Acts as an ImanVibes Prayer companion for web users, not a duplicate of the website
+- Core extension features:
   - location-based prayer timings
   - next Salah countdown
   - browser popup notifications / reminders for Salah
   - prayer tracker / check-off flow inspired by the Android Prayer page
   - optional Jummah reminder
   - button to open the ImanVibes website
+- Extension version: `1.0.0`
+- Extension share/copy button copies promotional text with emojis (website link + extension link)
 - Do not duplicate Quran by Mood, Hadith, Names, or Duas inside the extension because those remain website/app content
 - Keep extension-specific code isolated from `main` and `android`; shared data/UI decisions should be ported selectively
 

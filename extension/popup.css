@@ -179,6 +179,7 @@ button {
   gap: 8px;
 }
 
+.support-button,
 .go-link-button,
 .settings-trigger,
 .settings-close,
@@ -188,6 +189,20 @@ button {
   color: var(--theme-toggle-text);
   box-shadow: var(--shadow-card);
   backdrop-filter: blur(18px);
+}
+
+.support-button {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 999px;
+  padding: 8px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #b8860b;
 }
 
 .go-link-button {
@@ -217,6 +232,7 @@ button {
   padding: 0;
 }
 
+.support-button svg,
 .go-link-button svg,
 .settings-trigger svg,
 .settings-close svg,
@@ -322,6 +338,26 @@ button {
   fill: currentColor;
 }
 
+.timing-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.location-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  border-radius: 999px;
+  background: rgba(111, 143, 123, 0.08);
+  color: var(--sage-700);
+  padding: 3px 10px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
 .search-panel {
   position: relative;
   z-index: 2;
@@ -403,19 +439,15 @@ button {
 }
 
 .tracker-card {
-  margin-top: 32px;
-  border: 1px solid var(--surface-line);
-  border-radius: 24px;
-  background: var(--surface-solid);
-  padding: 20px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  margin-top: 24px;
+  padding: 0;
 }
 
 .section-head {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 .section-head h3 {
@@ -447,13 +479,13 @@ button {
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .tracker-check {
   display: flex;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   align-items: center;
   justify-content: center;
   border: 1.5px solid var(--surface-line);
@@ -499,7 +531,7 @@ button {
 }
 
 .schedule-section {
-  margin-top: 40px;
+  margin-top: 28px;
 }
 
 .schedule-section h3 {
@@ -510,20 +542,20 @@ button {
 
 .schedule-list {
   display: grid;
-  gap: 12px;
-  margin-top: 16px;
+  gap: 8px;
+  margin-top: 12px;
 }
 
 .schedule-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
+  gap: 10px;
   border: 1px solid rgba(194, 200, 193, 0.35);
   border-radius: 20px;
   background: var(--surface-solid);
   color: var(--ink-900);
-  padding: 16px;
+  padding: 12px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
@@ -568,7 +600,7 @@ button {
 .schedule-left {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 .prayer-icon {
@@ -577,7 +609,7 @@ button {
   flex-shrink: 0;
   color: var(--ink-700);
   fill: currentColor;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .schedule-row.now .prayer-icon {
@@ -591,7 +623,7 @@ button {
 }
 
 .schedule-name {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
 }
 
 .schedule-right {
@@ -697,39 +729,41 @@ button {
 }
 
 .settings-sheet h2 {
-  margin: 4px 0 0;
+  margin: 0;
   color: var(--ink-900);
   font-size: 20px;
   font-weight: 700;
 }
 
-.settings-grid {
+.settings-body {
   display: grid;
-  gap: 12px;
-  margin-top: 16px;
+  gap: 6px;
+  margin-top: 4px;
 }
 
-.settings-card {
-  border: 1px solid var(--surface-line-strong);
-  border-radius: 24px;
-  background: var(--surface-card);
-  padding: 16px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+.settings-section {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--surface-line);
 }
 
-html[data-theme="dark"] .settings-card {
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+.settings-section:last-of-type {
+  border-bottom: 0;
+  padding-bottom: 0;
 }
 
-.settings-card-row {
+.settings-row {
   display: flex;
-  align-items: flex-start;
+  min-height: 40px;
+  align-items: center;
   gap: 12px;
 }
 
-.settings-card-body {
+.settings-label {
   min-width: 0;
   flex: 1;
+  color: var(--ink-900);
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .settings-icon {
@@ -745,44 +779,10 @@ html[data-theme="dark"] .settings-card {
   font-size: 14px;
 }
 
-.settings-card h3,
-.settings-title-row h3 {
-  margin: 0;
-  color: var(--ink-900);
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.settings-card p {
-  margin: 4px 0 0;
-  color: var(--ink-700);
-  font-size: 0.82rem;
-  line-height: 1.45;
-}
-
-.settings-inline,
-.settings-inline-card,
-.settings-action-button {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.settings-inline {
-  margin-top: 12px;
-}
-
-.settings-inline-card,
-.settings-action-button {
-  width: 100%;
-}
-
-.settings-title-row {
-  display: flex;
-  min-width: 0;
-  align-items: center;
-  gap: 12px;
+.settings-icon svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
 }
 
 .settings-pill {
@@ -813,10 +813,100 @@ html[data-theme="dark"] .settings-card {
 }
 
 .settings-secondary:disabled,
-.settings-action-button:disabled,
 .prayer-toggle:disabled {
   cursor: not-allowed;
   opacity: 0.6;
+}
+
+.quick-links-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.quick-link-btn {
+  display: flex;
+  width: 46px;
+  height: 46px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--button-secondary-border);
+  border-radius: 999px;
+  background: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
+  padding: 0;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.quick-link-btn:hover {
+  background: var(--sage-100);
+  transform: scale(1.06);
+}
+
+.quick-link-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.settings-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--surface-line);
+}
+
+.copy-store-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  color: var(--ink-700);
+  padding: 8px 4px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+
+.copy-store-btn:hover {
+  color: var(--sage-700);
+}
+
+.copy-store-btn svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  fill: currentColor;
+}
+
+.version-pill {
+  border-radius: 999px;
+  background: var(--sage-100);
+  color: var(--sage-700);
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.settings-grid,
+.settings-card,
+.settings-card-row,
+.settings-card-body,
+.settings-kicker,
+.settings-inline-card,
+.settings-action-button,
+.action-card,
+.action-trail-icon,
+.link-grid,
+.link-tile {
+  display: none;
 }
 
 .prayer-toggle-list {
@@ -996,6 +1086,7 @@ body {
   font-size: 11px;
 }
 
+.support-button,
 .go-link-button {
   max-width: none;
   min-height: 38px;
@@ -1027,6 +1118,15 @@ body {
 
 .timing-actions {
   gap: 7px;
+}
+
+.timing-right {
+  gap: 5px;
+}
+
+.location-pill {
+  background: rgba(111, 143, 123, 0.16);
+  color: var(--sage-500);
 }
 
 .time-pill {
@@ -1078,7 +1178,6 @@ body {
 
 .tracker-card {
   margin-top: 22px;
-  padding: 16px 12px;
 }
 
 .section-head {
@@ -1170,22 +1269,16 @@ body {
   font-size: 19px;
 }
 
-.settings-kicker {
-  font-size: 11px;
+.settings-section {
+  padding: 11px 0;
 }
 
-.settings-grid {
-  gap: 10px;
-  margin-top: 14px;
+.settings-body {
+  gap: 4px;
 }
 
-.settings-card {
-  overflow-x: hidden;
-  border-radius: 22px;
-  padding: 14px;
-}
-
-.settings-card-row {
+.settings-row {
+  min-height: 36px;
   gap: 10px;
 }
 
@@ -1194,8 +1287,34 @@ body {
   height: 36px;
 }
 
-.settings-inline {
-  gap: 8px;
+.settings-label {
+  font-size: 13px;
+}
+
+.quick-links-row {
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.quick-link-btn {
+  width: 42px;
+  height: 42px;
+}
+
+.quick-link-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.settings-footer {
+  margin-top: 12px;
+  padding-top: 12px;
+}
+
+.copy-store-btn {
+  font-size: 11px;
+  padding: 6px 2px;
+  border-radius: 12px;
 }
 
 .prayer-toggle-list {
@@ -1223,28 +1342,6 @@ body {
 
 .prayer-toggle.active .toggle-knob {
   transform: translateX(18px);
-}
-
-.action-card .settings-icon {
-  width: 44px;
-  height: 44px;
-  font-size: 19px;
-}
-
-.action-trail-icon {
-  width: 18px;
-  height: 18px;
-}
-
-.link-grid {
-  gap: 6px;
-}
-
-.link-tile {
-  min-height: 72px;
-  border-radius: 17px;
-  padding: 10px 5px;
-  font-size: 9.5px;
 }
 
 /* Dark timing wizard contrast fixes */
