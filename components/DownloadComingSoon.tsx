@@ -72,6 +72,13 @@ export default function DownloadComingSoon() {
                       Coming Soon
                     </span>
                   </button>
+                  <a
+                    href="/apk/imanvibes-BETA.apk"
+                    download
+                    className="text-center text-[10px] font-semibold text-[var(--sage-600)] underline underline-offset-2 transition-colors hover:text-[var(--sage-700)]"
+                  >
+                    Or download Beta APK
+                  </a>
                 </div>
               );
             }

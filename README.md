@@ -35,7 +35,7 @@ Let’s connect and build something epic! Find me at [moayaan.com](https://moaya
   <a href="https://chromewebstore.google.com/detail/mdgclabcabbbikdgmihabnaeplkfnnkb?utm_source=item-share-cb">
     <img alt="Chrome Extension" src="https://img.shields.io/badge/Chrome%20Extension-Published-4d6556?style=for-the-badge&logo=googlechrome&logoColor=white" />
   </a>
-  <img alt="Android App" src="https://img.shields.io/badge/Android-Coming%20Soon-8ca88e?style=for-the-badge&logo=googleplay&logoColor=white" />
+  <img alt="Android App" src="https://img.shields.io/badge/Android-Beta%20APK-8ca88e?style=for-the-badge&logo=googleplay&logoColor=white" />
 </p>
 
 <p align="center">
@@ -54,7 +54,7 @@ Let’s connect and build something epic! Find me at [moayaan.com](https://moaya
 | -------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | 🌐 **ImanVibes Web PWA**         | Live        | [imanvibes.vercel.app](https://imanvibes.vercel.app/)                                                                  | Quran by Mood, Hadith, Duas, 99 Names, Daily Verse, sharing, TTS, PWA install   |
 | 🧩 **ImanVibes Salah Companion** | Published   | [Chrome Web Store](https://chromewebstore.google.com/detail/mdgclabcabbbikdgmihabnaeplkfnnkb?utm_source=item-share-cb) | Location-based Salah timings, next prayer countdown, tracker, reminders         |
-| 📱 **ImanVibes Android**         | Coming soon | Play Store soon                                                                                                        | Native Android app experience with Islamic reading, reflection, and Salah tools |
+| 📱 **ImanVibes Android**         | Beta APK available | [Download on site](https://imanvibes.vercel.app/)                                                                    | Native Android app experience with Islamic reading, reflection, and Salah tools |
 
 > Website scope: the web app intentionally does **not** include prayer pages, prayer widgets, prayer notifications, or location settings. Salah tools live in the Chrome extension and Android app.
 
@@ -130,11 +130,11 @@ Let’s connect and build something epic! Find me at [moayaan.com](https://moaya
 
 ---
 
-## 📱 Android App: Coming Soon
+## 📱 Android App: Beta APK Available
 
-The Android app is planned for Play Store distribution after the closed testing path is ready.
+A beta APK is available for download on the [ImanVibes website](https://imanvibes.vercel.app/) under the Play Store card.
 
-### Planned Android Experience
+### Android Experience
 
 - 📖 Quran by Mood with Arabic, transliteration, translation, and source
 - 📚 Hadith, Duas, and 99 Names in the same calm app style
@@ -143,8 +143,6 @@ The Android app is planned for Play Store distribution after the closed testing 
 - 🔊 Arabic audio playback where available
 - 🌗 Native-feeling light and dark reading modes
 - 📤 Share links and branded share images
-
-No Android screenshots are included yet because the public Play Store flow is still coming soon.
 
 ---
 
@@ -300,7 +298,11 @@ lib/
 
 public/
   icon2Circular.png
+  apk/
+    imanvibes-BETA.apk
   screenshots/readme/
+    web/
+    extension/
 
 islamic_final.json
 ```
