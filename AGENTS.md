@@ -654,7 +654,7 @@ Note: `/api/tts` route uses Microsoft Edge Neural TTS as an external synthesis s
   - prayer tracker / check-off flow inspired by the Android Prayer page
   - optional Jummah reminder
   - button to open the ImanVibes website
-- Extension version: `1.0.0`
+- Extension version: `1.0.1`
 - Extension share/copy button copies promotional text with emojis (website link + extension link)
 - Do not duplicate Quran by Mood, Hadith, Names, or Duas inside the extension because those remain website/app content
 - Keep extension-specific code isolated from `main` and `android`; shared data/UI decisions should be ported selectively

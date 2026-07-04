@@ -86,6 +86,7 @@ const els = {
   settingsCloseButton: document.getElementById("settingsCloseButton"),
   notificationStatus: document.getElementById("notificationStatus"),
   notificationButton: document.getElementById("notificationButton"),
+  testNotificationButton: document.getElementById("testNotificationButton"),
   notificationPrefs: document.getElementById("notificationPrefs"),
   themeToggleButton: document.getElementById("themeToggleButton"),
   themeToggleIcon: document.getElementById("themeToggleIcon"),
@@ -688,12 +689,43 @@ async function syncNotificationAlarms() {
 
     const scheduledAt = new Date(now);
     scheduledAt.setHours(parts.hours, parts.minutes, 0, 0);
-    if (scheduledAt <= now) return;
+    if (scheduledAt <= now) scheduledAt.setDate(scheduledAt.getDate() + 1);
 
-    chrome.alarms.create(`imanvibes-prayer-${getDateKey(now)}-${prayer}`, {
+    chrome.alarms.create(`imanvibes-prayer-${getDateKey(scheduledAt)}-${prayer}`, {
       when: scheduledAt.getTime(),
     });
   });
+}
+
+async function triggerTestNotification() {
+  if (!els.testNotificationButton) return;
+
+  els.testNotificationButton.disabled = true;
+  els.testNotificationButton.textContent = "Sending...";
+
+  try {
+    if (globalThis.chrome?.notifications) {
+      chrome.notifications.create({
+        type: "basic",
+        iconUrl: "assets/icon.png",
+        title: "ImanVibes Salah — Test",
+        message: "Notifications are working. Jazak Allah khair.",
+        priority: 2,
+      });
+    } else if ("Notification" in window) {
+      new Notification("ImanVibes Salah — Test", {
+        body: "Notifications are working. Jazak Allah khair.",
+      });
+    }
+    els.testNotificationButton.textContent = "Sent";
+  } catch {
+    els.testNotificationButton.textContent = "Try again";
+  } finally {
+    window.setTimeout(() => {
+      els.testNotificationButton.disabled = false;
+      els.testNotificationButton.textContent = "Test notification";
+    }, 1600);
+  }
 }
 
 async function copyStoreLink() {
@@ -774,6 +806,7 @@ els.settingsOverlay.addEventListener("click", (event) => {
   if (event.target === els.settingsOverlay) closeSettings();
 });
 els.notificationButton.addEventListener("click", () => void requestNotificationPermission());
+els.testNotificationButton.addEventListener("click", () => void triggerTestNotification());
 els.themeToggleButton.addEventListener("click", toggleTheme);
 els.shareButton.addEventListener("click", () => void copyStoreLink());
 
